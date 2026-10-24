@@ -1,24 +1,23 @@
 {
   "local_status": "LOCAL_DEMO_READY",
-  "staging_status": "BLOCKED_FOR_PUBLIC_ACCESS",
+  "staging_status": "PUBLIC_DEPLOYMENT_BLOCKED",
   "deployed": false,
   "local_checks": {
     "model_digest": true,
     "sensor_digest": true,
-    "executed_local_suites": true
+    "executed_local_suites": true,
+    "auth_tests_pass_without_skip_or_xfail": true
   },
   "staging_checks": {
-    "server_identity_enforced": false,
-    "session_ownership_enforced": false,
+    "server_identity_enforced_locally": true,
+    "session_ownership_enforced_locally": true,
     "protected_origin_and_https_verified": false,
     "hosted_persistence_verified": false,
-    "container_built_and_smoked": false
+    "approved_hosting_and_budget_available": false
   },
   "blockers": [
-    "server_identity_enforced",
-    "session_ownership_enforced",
     "protected_origin_and_https_verified",
     "hosted_persistence_verified",
-    "container_built_and_smoked"
+    "approved_hosting_and_budget_available"
   ]
 }

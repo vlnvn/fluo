@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:09,014
+Fluo / Private guest demonstration / http://127.0.0.1:8000
+
+2
+00:00:09,014 --> 00:00:24,018
+Fictional textile facility. Recorded research telemetry, original frozen HGB.
+
+3
+00:00:24,018 --> 00:00:33,022
+Warning sound is opt-in. This screen recording is muted.
+
+4
+00:00:33,022 --> 00:00:47,027
+Normal operation / actual steam and return measurements from the archive.
+
+5
+00:00:47,027 --> 00:01:06,048
+A genuine replay crossing raises a warning. The cause remains unconfirmed.
+
+6
+00:01:06,048 --> 00:01:18,051
+Scrubbing previews real frames continuously; releasing commits the replay cursor.
+
+7
+00:01:18,051 --> 00:01:29,056
+Meter bias is an experiment scenario, not a diagnosed physical loss.
+
+8
+00:01:29,056 --> 00:01:40,061
+Connection quality gates withhold interpretation when data is unavailable.
+
+9
+00:01:40,061 --> 00:01:53,082
+Filter recorded events and inspect the selected warning evidence.
+
+10
+00:01:53,082 --> 00:02:13,090
+Manual verification / save a private draft, then explicitly record the review.
+
+11
+00:02:13,090 --> 00:02:25,089
+Reload preserves this guest review. A checklist does not authorize recovery.
+
+12
+00:02:25,089 --> 00:02:46,097
+Event-specific report / real PDF download and A4 print layout.
+
+13
+00:02:46,097 --> 00:02:56,099
+Notifications remain consistent across pages and full/compact navigation.
+
+14
+00:02:56,099 --> 00:03:06,105
+Synthetic model / no field validation, verified savings, or equipment actuation.

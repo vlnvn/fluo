@@ -1,53 +1,34 @@
-# Deployment runbook
+# Secure guest deployment runbook — 25 October 2026
 
-Current outcome: **LOCAL_DEMO_READY; external deployment BLOCKED.** No protected HTTPS URL exists. Do not expose this unauthenticated API, use a public tunnel, or loosen ingress to bypass the gate.
+**PUBLIC_DEPLOYMENT_BLOCKED. No public HTTPS deployment exists.** Guest authentication and object ownership are implemented and tested locally. Account access, billing approval, private artifact storage, Linux startup and actual hosted TLS/persistence tests remain outstanding. No public tunnel is permitted.
 
-## Verified local path
+## Local reproduction
 
-```powershell
-cd C:\College\DEEPX\fluo
-# Stop an existing launcher before setup.
-.\setup.ps1
-.\.venv\Scripts\python.exe tools\dev.py
-```
+Run setup.ps1 then .venv/Scripts/python.exe tools/dev.py. Requires the original audited archive; never trains. Loopback ports 5173/8000. Built single-origin alternative: npm ci and npm run build in web, then .venv/Scripts/python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --workers 1 --no-server-header. Open http://127.0.0.1:8000 and explicitly start a guest workspace. /docs, /redoc and /openapi.json are disabled.
 
-Open http://127.0.0.1:5173. Built single-origin alternative:
+Guest capability authentication does not verify a human operator. Anyone may create their own empty workspace; this is the intentional reviewer entry policy. Logout revokes access. Legacy unowned records remain offline and are never auto-assigned. Back up the database before migration; never publish it.
 
-```powershell
-cd web
-npm run build
-cd ..
-.\.venv\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --workers 1 --no-server-header
-```
+## Prepared Render native Python path (not provisioned)
 
-Open http://127.0.0.1:8000. `/health/live` and `/health/ready` are implemented. Research docs remain local at `/docs`. Setup requires the original audited archive and never trains.
+render.yaml builds frontend and API on one origin, one worker, Singapore Starter service, 1GB persistent disk at /var/data. Native Python avoids the unavailable Docker engine. Docker base digests are recorded in BASE_IMAGES.json; that recipe was not built.
 
-## Local container recipe — NOT EXECUTED
+Required user actions:
+1. Sign in at https://dashboard.render.com/ and connect vlnvn/fluo with authority to create the service. Read-only inspection reached /login.
+2. Approve recurring plan/disk costs. Checked [Render pricing](https://render.com/pricing): Starter US$7/month plus disk US$0.25/GB/month, approximately US$7.25/month before tax/egress or other resources. Confirm current checkout terms. No purchase was made.
+3. Provide approved private HTTPS build-artifact storage. The ignored .local/fluo-runtime-private.zip contains only two audited runtime files; RUNTIME_PACKET.json records exact hashes. Confirm permission for this private upload. Never put signed URLs, bearer secrets or private data in Git/video/chat.
 
-Docker CLI/engine was absent. On an approved build host, install Docker, run preparation and review `.dockerignore`. Its allowlist excludes ZIP/private docs/DB/source exports and packages only minimal sensor/catalog/model/runtime files. Confirm rights before a remote build/registry upload.
+Then:
+1. Import blueprint from release/fluo-secure-guest-demo; review final commit/billing. Keep automatic deployments off during release review.
+2. Set FLUO_RUNTIME_URL, FLUO_RUNTIME_PACKET_SHA256 and optional FLUO_RUNTIME_BEARER in provider secret settings. Downloader requires HTTPS, rejects redirects, limits size and validates exact packet members/digests. No public artifact URL.
+3. Confirm FLUO_RELEASE_MODE=public, FLUO_DB_PATH=/var/data/fluo.sqlite3 and provider-owned RENDER_EXTERNAL_URL. Only set FLUO_PUBLIC_ORIGIN for a verified custom domain. Exact HTTPS host, no wildcard CORS. Public cookie is __Host-/Secure/HttpOnly/SameSite=Strict; public raw research inference is forbidden.
+4. Deploy reviewed commit. Save sanitized build/start logs and actual URL/commit. Check /health/live and /health/ready. Minimal readiness is public; all research/session/report endpoints require ownership. Startup validates model/data/catalog.
+5. Run browser tests against the ACTUAL HTTPS URL using FLUO_BASE_URL. Use two independent guests and anonymous requests on every session/preview/event/report/preference/mutation route. Verify 401/404, CSRF403, expiry/logout, Secure cookie, exact hosts/origins, docs/raw inference/file denial and direct-origin behavior. TestClient is not hosted TLS evidence.
+6. Create test review/preferences, restart and redeploy, verify both survive. Take an online SQLite backup via private provider console; restore to a separate test path and verify integrity/revisions/ownership. Never ordinary-copy a live WAL database. Keep one worker.
+7. Test all Full/Compact routes, keyboard/axe, report download/print, opt-in chime, parity, bounded load and provider logs/budget/disk alerts. A 512MB plan is not capacity-validated.
+8. Only after real hosted evidence, add reviewed URL/commit/results and extend release_gate.py to consume those records. Current gate deliberately cannot claim deployment from local results.
 
-```powershell
-.\.venv\Scripts\python.exe tools/prepare_runtime.py
-docker compose -f compose.local.yaml build
-docker compose -f compose.local.yaml up
-```
+Default guest TTL two hours, max200 active guests, five sessions/guest,500 mutations/guest,30 review revisions. Expired data cleaned when another workspace opens; no periodic deletion SLA. Process-local limits are not distributed DDoS defense.
 
-Compose publishes127.0.0.1:8000 only; nonroot10001, persistent named volume, read-only root, dropped capabilities and one worker. Stop ordinary Fluo before using the same port. Verify build, Linux startup, reports, volume ownership/restart and full tests before treating packaging as ready. Back up state; do not delete the volume to troubleshoot. Resolve base tags to reviewed immutable digests and record the final image digest; current recipe is not a future byte-for-byte build guarantee.
+Rollback: backup before migration. Schema2 preserves legacy data; do not downgrade a schema2 database into an older app. Restore compatible application and online backup together during maintenance; test provider restore. fluo-local-baseline-20261025 preserves pre-auth code but is unsafe publicly.
 
-## Minimal external prerequisites and release sequence
-
-1. Supply a private container-host account/project with confirmed plan, region, CPU/RAM, durable disk and budget. Connector returned no visible Vercel teams/Fluo project; no container-host/IdP entitlement was available. No account or price is invented.
-2. Implement verified server principal and explicit owner/guest authorization for every API, preview, session, review, preference and HTML/PDF endpoint. Preserve local notes through a deliberate migration. Anonymous/cross-owner tests must pass normally, not xfail.
-3. Configure trusted identity-aware HTTPS ingress, validate signed assertions and prevent direct origin/IP/hostname/port bypass. Protect frontend and backend together. Verify anonymous direct URLs, including docs/health exceptions under an explicit policy.
-4. Define expiry/logout/invalidation, Secure/HttpOnly/SameSite cookies and CSRF if cookie auth is chosen. Review exact hosts/origins. Current local allowlist/nonlocal startup refusal must not be loosened before real auth/tests exist.
-5. Mount durable state or implement another tested durable store; keep one worker until concurrency is redesigned. Define backup/restore/retention, migrations and two authenticated-owner tests.
-6. Build audited code/data/model using reviewed image digests and lockfiles; no training or untrusted model download at startup. Execute all local gates before deploying privately.
-7. On the actual HTTPS URL, run anonymous/login/logout/expiry, cross-owner/guest, direct API/PDF/preview, CSRF/XSS/rate/size, full UI/media/report/visual tests, restart+redeploy durability, rollback, logs and capacity/budget checks. Only then record DEPLOYED_ACCESS_CONTROLLED with a tested URL.
-
-`python tools/release_gate.py --target local` checks evidence/digests; `--target staging` currently exits2 with blockers. Editing a PASS file is not implementing access control.
-
-## Provider and cost limits
-
-Private persistent container is a candidate, not a purchased service. [Render disks](https://render.com/docs/disks) documents ephemeral defaults and eligible paid persistence. Region, sleep/cold-start, fees, latency and credits remain unverified. A static frontend alone is not this fullstack deployment. No external billing resource was created.
-
-Use simulated telemetry/fictional facility disclosures and unverified local operator identity. Never claim plant diagnosis, savings, recovery authority or physical device integration. Avoid sensitive real customer notes in this local installation.
+Synthetic telemetry, fictional facility, no field savings, verified human identity or physical actuation.

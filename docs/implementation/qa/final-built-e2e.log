@@ -1,0 +1,29 @@
+
+> fluo-web@0.1.0 test:e2e
+> playwright test
+
+
+Running 18 tests using 1 worker
+
+(node:26704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\corrections.spec.ts:10:1 › consistent notification counts, navigation icon states, actual summary visuals and spaced actions (2.7s)
+  ok  2 tests\corrections.spec.ts:77:1 › continuous pointer scrubbing sends one seek on release; keyboard and forward/backward stay deterministic (1.7s)
+  ok  3 tests\fluo.spec.ts:12:1 › real HGB readings, four pages, Full/Compact geometry and original local assets (1.8s)
+  ok  4 tests\fluo.spec.ts:44:1 › deterministic replay controls, scenario reset, model/quality cases, reload and retained navigation (4.3s)
+  ok  5 tests\fluo.spec.ts:66:1 › filter overlay all/return/quality, cancel, reset, contextual notifications/preferences/help and focus (2.3s)
+  ok  6 tests\fluo.spec.ts:91:1 › four events have independent persisted checklists, real PDFs, A4 preview/print, accessible keyboard path (5.7s)
+  ok  7 tests\fluo.spec.ts:124:1 › accessibility, focus trap, reduced motion and narrower desktop remain usable (1.6s)
+  ok  8 tests\fluo.spec.ts:135:1 › warning audio requires opt-in and a newly crossed detector event; no mount cue (2.9s)
+  ok  9 tests\guest-security.spec.ts:5:1 › guest entry is accessible and starts a workspace with the keyboard (1.0s)
+  ok 10 tests\guest-security.spec.ts:16:1 › fresh browsers isolate objects; HttpOnly credential, CSRF and logout are enforced (1.4s)
+  ok 11 tests\post-audit.spec.ts:13:1 › live scrub previews real frames without committing; playing clock cannot pull thumb back (3.7s)
+  ok 12 tests\post-audit.spec.ts:43:1 › all core routes and contextual dialogs pass scoped Axe; four event contexts in both shells (6.6s)
+  ok 13 tests\post-audit.spec.ts:59:1 › favicon, original chime decoding/media delivery, error recovery and malformed deep link (1.1s)
+  ok 14 tests\post-audit.spec.ts:74:1 › new warning surfaces a notice across routes; seek is silent and autoplay denial is truthful (4.4s)
+  ok 15 tests\post-audit.spec.ts:94:1 › touch scrub previews actual data; delayed preview cannot overwrite committed seek (1.7s)
+  ok 16 tests\post-audit.spec.ts:109:1 › opt-in chime actually starts through native media playback (2.7s)
+  ok 17 tests\post-audit.spec.ts:121:1 › rapid review actions save once, 409 is visible, and empty/backdrop states remain usable (1.1s)
+  ok 18 tests\visual-regression.spec.ts:4:1 › paused fixed telemetry visual baselines: four routes in Full and Compact (2.0s)
+
+  18 passed (51.0s)

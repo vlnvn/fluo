@@ -1,0 +1,22 @@
+
+> fluo-web@0.1.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                      0.73 kB │ gzip:  0.42 kB
+dist/assets/barlow-condensed-vietnamese-600-normal-CNlPk46_.woff     6.08 kB
+dist/assets/barlow-condensed-vietnamese-600-normal-A5AYRdjN.woff2    7.70 kB
+dist/assets/barlow-condensed-latin-ext-600-normal-Clv9cIcR.woff     11.97 kB
+dist/assets/archivo-vietnamese-wght-normal-XAtsl5Q_.woff2           13.24 kB
+dist/assets/barlow-condensed-latin-ext-600-normal-18ESti3H.woff2    14.52 kB
+dist/assets/barlow-condensed-latin-600-normal-BFJEwTuo.woff         18.89 kB
+dist/assets/barlow-condensed-latin-600-normal-DepVgxBB.woff2        22.31 kB
+dist/assets/archivo-latin-ext-wght-normal-C4zznr8T.woff2            32.61 kB
+dist/assets/archivo-latin-wght-normal-E0tuGl4L.woff2                34.93 kB
+dist/assets/index-BQxQFXVn.css                                      33.88 kB │ gzip:  7.98 kB
+dist/assets/index-CaNp0HUQ.js                                      268.44 kB │ gzip: 83.36 kB
+✓ built in 1.03s

@@ -1,19 +1,9 @@
-# Deployment decision — 25 October 2026
+# Release deployment decision — 25 October 2026
 
-Implementation `e84b5ca`. **LOCAL_DEMO_READY + BLOCKED_FOR_PUBLIC_ACCESS.** No protected HTTPS deployment exists. No cloud resources, billing commitment, DNS, public ingress, Git push or private artifact upload was created.
+**LOCAL_DEMO_READY; PUBLIC_DEPLOYMENT_BLOCKED.** Guest identity/ownership is now implemented and tested; previous reports of missing application auth are historical. No public URL, paid resource or private artifact upload exists.
 
-Retain the existing single-origin Vite build served by FastAPI. Its startup-scored in-memory HGB and one-worker SQLite fit a persistent container better than a split ephemeral frontend/function arrangement. This is an architecture assessment, not a provisioned service guarantee.
+Keep the existing frontend build served by FastAPI, original frozen inference and one-worker SQLite. The prepared Render native-Python blueprint adds persistent disk without requiring local Docker. Vercel split frontend/serverless is not selected because persistence and a second origin would add unverified boundaries. Read-only Vercel inventory found no visible teams/Fluo projects; Render browser inspection reached /login. No provider entitlement or billing consent is inferred.
 
-Inventory: connected Vercel returned no visible teams and no Fluo project. That does not prove no account exists, but supplies no verified protected staging entitlement. No Render/container-host/IdP configuration was available. Docker CLI/engine was absent. gh exists; no remote repository mutation was necessary.
+The exact next actions and checked estimated cost are in DEPLOYMENT_RUNBOOK.md. Public entry intentionally permits a new isolated guest workspace, not access to other guests' data. Deployment must prove HTTPS/cookie/host policy, negative ownership tests and restart/redeploy durability on the actual host before any deployed claim.
 
-Options:
-
-1. Current trusted loopback demonstration: selected now, existing code and state preserved.
-2. Future private managed container + durable disk + identity-aware HTTPS ingress: preferred candidate once identity, ownership, account/plan and on-host negative tests exist. A private service alone does not establish browser/SSO access.
-3. Vercel frontend plus separate Python origin: not selected; introduces another protected origin and persistence boundary without verified entitlement. A static frontend alone would not be this fullstack demo.
-
-Dockerfile/compose.local.yaml are a minimal local-only recipe, **NOT BUILT here**: Node22/Python3.12 stages, tested runtime version lock, nonroot10001, one worker, loopback host publication, persistent named volume, read-only root and dropped capabilities. They package only model/sensor/catalog/runtime assets, not ZIP, ground truth, documents, reports, credentials or current DB. External build/publish still needs rights and gate review. Base-image tags must be resolved to reviewed immutable digests before release; current tags are not a byte-for-byte reproducibility claim.
-
-Observed Windows API process RSS225857536 bytes, peak298786816 bytes after testing: one sample, not capacity/soak evidence. Linux image startup/CPU/RAM and cloud costs are NOT TESTED. No region, sleep behavior, credit, fee or cold-start is assumed.
-
-References: [Render persistent disks](https://render.com/docs/disks) documents ephemeral default storage and eligible paid disks; [public/private services](https://render.com/docs/web-services); [FastAPI trusted proxies](https://fastapi.tiangolo.com/advanced/behind-a-proxy/).
+Git release branch and draft PR were created using existing authorized Git transport/connector. No merge/reset/rebuild of research was performed. Docker base manifests were resolved to immutable digests, but image build, Linux host startup and capacity remain unexecuted.

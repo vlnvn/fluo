@@ -1,0 +1,2 @@
+# Optional local demonstration capture/encoding only, never runtime inference.
+imageio-ffmpeg==0.6.0

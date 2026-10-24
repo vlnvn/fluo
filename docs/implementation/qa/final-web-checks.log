@@ -1,0 +1,21 @@
+
+> fluo-web@0.1.0 typecheck
+> tsc -b --pretty false
+
+
+> fluo-web@0.1.0 lint
+> eslint .
+
+
+> fluo-web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/College/DEEPX/fluo/web
+
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  05:15:41
+   Duration  287ms (import 56%, transform 23%, worker 14%, tests 7%)
+

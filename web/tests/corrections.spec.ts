@@ -107,6 +107,7 @@ test('continuous pointer scrubbing sends one seek on release; keyboard and forwa
   await slider.focus(); await page.keyboard.press('End');
   await expect(page.getByRole('button', { name: 'Forward 10 samples', exact: true })).toBeDisabled();
   await expect(slider).toHaveValue(String(maximum));
+  await expect(slider).toBeEnabled();
   await slider.focus(); await page.keyboard.press('Home');
   await expect(slider).toHaveValue('0');
   await expect(page.getByRole('button', { name: 'Rewind 10 samples', exact: true })).toBeDisabled();

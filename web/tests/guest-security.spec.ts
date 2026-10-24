@@ -1,5 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { enterGuest, csrfHeaders } from './guest';
+import AxeBuilder from '@axe-core/playwright';
+
+test('guest entry is accessible and starts a workspace with the keyboard',async({page})=>{
+  await page.goto('/');
+  const start=page.getByRole('button',{name:'Start guest workspace',exact:true});
+  await expect(start).toBeVisible();
+  expect((await new AxeBuilder({page}).analyze()).violations).toEqual([]);
+  await page.keyboard.press('Tab');
+  await expect(start).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.page-overview')).toBeVisible();
+});
 
 test('fresh browsers isolate objects; HttpOnly credential, CSRF and logout are enforced',async({page,browser})=>{
   await enterGuest(page);

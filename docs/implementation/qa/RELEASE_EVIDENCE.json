@@ -1,37 +1,39 @@
 {
-  "code_revision": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
-  "baseline_revision": "3f393fe52e12450070b8182e2004a8f263a9a1b9",
+  "application_security_commit": "f7d4ae992ffc89a0349bcb995c25de7cdb941d1e",
+  "video_app_commit": "0c0fe3b0f5f640a3e140de2fd68e748d1a164e3f",
+  "date": "2026-10-25",
   "local_gates_passed": true,
-  "python_passed": 21,
-  "python_expected_failure": 1,
-  "expected_failure_is_public_auth_blocker": true,
+  "python_passed": 26,
+  "python_expected_failure": 0,
+  "python_skipped": 0,
   "web_unit_passed": 3,
-  "dev_e2e_passed": 16,
-  "built_e2e_passed": 16,
+  "dev_e2e": {
+    "startTime": "2026-10-24T22:13:35.027Z",
+    "duration": 56316.528999999995,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "built_e2e": {
+    "startTime": "2026-10-24T22:11:44.218Z",
+    "duration": 50960.989,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
   "screenshot_assertions": 8,
-  "axe_scans": 10,
+  "axe_scans": 11,
   "axe_violations": 0,
-  "known_installed_advisories_after": 0,
-  "sast_findings": 0,
-  "public_security_gate": "BLOCKED",
+  "public_e2e_executed": false,
+  "public_security_gate": "PUBLIC_DEPLOYMENT_BLOCKED",
   "deployed": false,
-  "browser": "153.0.8010.12",
   "runtime": {
     "python": "3.12.14",
     "node": "24.11.0",
-    "platform": "Windows",
-    "scale": 1
+    "browser": "153.0.8010.12",
+    "platform": "Windows"
   },
-  "figma_current_active_frames": 83,
-  "cloud_resource_inventory": {
-    "visible_vercel_teams": 0,
-    "visible_fluo_projects": 0,
-    "docker_engine_available": false,
-    "hosting_entitlement_verified": false
-  },
-  "memory_sample_bytes": {
-    "working_set": 225857536,
-    "peak_working_set": 298786816,
-    "capacity_claim": false
-  }
+  "scope": "Final application differs from security commit only by guest entry main landmark. Source manifest records exact tested files. No full public-host test exists."
 }

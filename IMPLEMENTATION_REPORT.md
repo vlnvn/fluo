@@ -1,6 +1,6 @@
 # Fluo implementation and QA report
 
-Latest audit: [POST_IMPLEMENTATION_AUDIT](docs/implementation/qa/POST_IMPLEMENTATION_AUDIT.md), [functional QA](docs/implementation/qa/FUNCTIONAL_QA_FINAL.md), [visual QA](docs/implementation/qa/VISUAL_QA_FINAL.md), [security/release](docs/implementation/deployment/SECURITY_CHECKLIST.md). Historical counts below are retained; final evidence is21 Python+1 auth xfail,3 unit tests,16 DEV and16 BUILT E2E. Public staging remains BLOCKED.
+Latest release evidence: [FINAL_RELEASE_AUDIT](docs/implementation/qa/FINAL_RELEASE_AUDIT.md), [handoff](docs/implementation/PROPOSAL_EVIDENCE_HANDOFF.md), [video](docs/implementation/demo/DEMO_SCRIPT.md), [security/release](docs/implementation/deployment/SECURITY_CHECKLIST.md). Current results:26 Python,0 xfail/skips;3 units;18 DEV and18 BUILT E2E. Guest authentication/ownership implemented; PUBLIC_DEPLOYMENT_BLOCKED pending hosting/budget and actual hosted tests. Everything below is historical delivery context.
 
 Latest follow-up: [UI corrections and regression QA](docs/implementation/qa/UI_CORRECTIONS_20261025.md). The initial delivery evidence below is retained as historical context.
 

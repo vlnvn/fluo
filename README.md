@@ -1,6 +1,6 @@
 # Fluo — local operator workspace
 
-Latest [post-implementation audit](docs/implementation/qa/POST_IMPLEMENTATION_AUDIT.md) and [deployment runbook](docs/implementation/deployment/DEPLOYMENT_RUNBOOK.md): local demo verified; external staging blocked by missing server identity/ownership and protected hosting. Live drag now previews actual cached frames before committing.
+Latest [release audit](docs/implementation/qa/FINAL_RELEASE_AUDIT.md), [evidence handoff](docs/implementation/PROPOSAL_EVIDENCE_HANDOFF.md), [real recorded demo](docs/implementation/demo/DEMO_SCRIPT.md) and [deployment runbook](docs/implementation/deployment/DEPLOYMENT_RUNBOOK.md). Expiring guest authentication and object ownership are implemented. PUBLIC_DEPLOYMENT_BLOCKED: hosting access, billing approval and actual HTTPS/persistence verification remain outstanding.
 
 Functional React/TypeScript + FastAPI prototype using the **original frozen HGB** and the supplied audited telemetry. Four operator pages, nine recorded scenario windows, replay, quality gates, events, persisted reviews/preferences, genuine PDF and A4 print are implemented. Research scripts and historical results below remain unchanged.
 
@@ -14,7 +14,7 @@ cd C:\College\DEEPX\fluo
 .\.venv\Scripts\python.exe tools\dev.py
 ```
 
-Open http://127.0.0.1:5173 ; API/OpenAPI at http://127.0.0.1:8000/docs. The launcher reports readiness only after both services answer. Ctrl+C stops its own child processes. Logs: `.local/api.log`, `.local/web.log`. If Python is not detected: `./setup.ps1 -PythonPath C:/path/to/python.exe`.
+Open http://127.0.0.1:5173 and start a private guest workspace. Research docs endpoints are disabled. The launcher reports readiness only after both services answer. Ctrl+C stops its own child processes. Logs: `.local/api.log`, `.local/web.log`. If Python is not detected: `./setup.ps1 -PythonPath C:/path/to/python.exe`.
 
 `setup.ps1` verifies ZIP SHA-256 and every package checksum, materializes original data without overwriting conflicting files, verifies the selected model and installs locked web dependencies. It never trains. For a different archive location set `$env:FLUO_ARCHIVE_PATH` explicitly; `.env.example` documents optional process environment variables (not automatically loaded).
 
@@ -27,7 +27,7 @@ cd ..
 .\.venv\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 ```
 
-Then open http://127.0.0.1:8000. Build **before** starting the API so the static mount exists. Alternatively run API and `npm run dev` in two terminals. These are loopback research services without authenticated user identities.
+Then open http://127.0.0.1:8000. Build **before** starting the API so the static mount exists. Alternatively run API and `npm run dev` in two terminals. These are loopback research services with expiring private guest capabilities; human operator identity remains unverified.
 
 ## Reproducible demonstration
 
