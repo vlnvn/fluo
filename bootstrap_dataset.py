@@ -9,7 +9,12 @@ OUT=BASE/'data'/'original'
 FILES={'fluo_sensor_stream.csv.gz','fluo_physics_ground_truth.csv.gz','fluo_episode_labels.csv','fluo_manifest.json','fluo_parameter_provenance.csv','fluo_site_configs.csv'}
 
 def main():
-    if not ARCHIVE.is_file():raise FileNotFoundError(f'Dataset package not found: {ARCHIVE}')
+    if not ARCHIVE.is_file():
+        from generate_fluo import generate
+        OUT.mkdir(parents=True,exist_ok=True)
+        generate(OUT)
+        print('Generated synthetic data from the checked-in generator:', OUT)
+        return
     OUT.mkdir(parents=True,exist_ok=True)
     with ZipFile(ARCHIVE) as archive:
         seen=set()
