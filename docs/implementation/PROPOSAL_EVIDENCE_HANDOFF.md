@@ -1,6 +1,6 @@
 # PROPOSAL_EVIDENCE_HANDOFF
 
-Evidence handoff only; no DEEPX proposal text or Google Doc was changed. Evidence date: 25 October 2026 (Asia/Jakarta). Scientific source and original code remain frozen. Commit references identify the implementation tested, not the date of field validation.
+Evidence handoff only; no DEEPX proposal text or Google Doc was changed. Exact tested source commit: **4b21a7203f4ec7e9b07e2ca734c32176eceb421f**; source manifest in qa/TESTED_SOURCE_MANIFEST.json. Evidence date: 25 October 2026 (Asia/Jakarta). Scientific source and original code remain frozen. Commit references identify the implementation tested, not the date of field validation.
 
 | Claim | Proof file/URL | Commit | Date | Verification scope | Scientific/legal caveat | Safe wording for proposal |
 |---|---|---|---|---|---|---|

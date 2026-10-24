@@ -15,7 +15,7 @@ Decision: **LOCAL_DEMO_READY / PUBLIC_DEPLOYMENT_BLOCKED**. No public HTTPS URL 
 | Typecheck/lint/build/Ruff |PASS|final-web-checks.log,final-web-build.log; Ruff executed on backend/tools/tests|
 | Model parity |86,400 locked rows, exact repeat/prefix parity5sites, tolerance0|INFERENCE_VERIFICATION.json; digest276bcd03bcd1be4d1d7c708f53e4cba49cce4b5b18b1b6bb5161345a24c3cf93|
 | Dependency advisories |0 known in executed npm/runtime/installed scans|final-npm-audit.json,release-python-audit.json,release-installed-audit.json|
-| Bandit/source history |0 Bandit findings;0 detected secret patterns in17 commits/269 unique text blobs at pre-final scan|guest-bandit.json,SECURITY_INVENTORY.json; bounded detection only|
+| Bandit/source history |0 Bandit findings;0 detected secret patterns in18 commits/308 unique text blobs at pre-final scan|guest-bandit.json,SECURITY_INVENTORY.json; bounded detection only|
 | Video |Actual continuous local capture,185.8s,H264/1440x980/25fps,muted; full decode0;13 sampled QA frames|../demo/VIDEO_PROVENANCE.json; actual MP4 ignored locally|
 | PDF/print/media |Actual event PDF downloaded and parsed in tests; real A4 paths and original chime/native playback exercised|browser/API cases; demo real PDF and150/153s sampled preview|
 | Real public HTTPS/security/persistence |NOT EXECUTED|No approved hosting/billing/artifact storage or deployed URL|
@@ -41,3 +41,5 @@ Independent boundary inspection confirmed authorization precedes all current API
 Residual risks: one worker/process-local abuse budgets; open guest entry can consume quota; no distributed DDoS defense; guest cleanup occurs on subsequent entry; no verified named identities; local cookie HTTP is not equivalent to public Secure TLS; no hosted capacity/disaster-recovery evidence; scanner blind spots and future dependency changes. SQLite migration preserves old unowned records privately, and no new guest can auto-claim them. No physical sensors, actuation, field diagnosis, measured savings, partner commitment or TKT4 claim.
 
 Reproduce local setup/build/API/browser using README and deployment runbook. Gate local exits0; staging deliberately returns nonzero and records PUBLIC_DEPLOYMENT_BLOCKED. Deployment is unfinished, not waived.
+
+Exact tested application/source commit: **4b21a7203f4ec7e9b07e2ca734c32176eceb421f**. This final documentation update changes no application/test/model code; the tested source manifest still matches. Secret scan covers history through that commit.

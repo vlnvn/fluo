@@ -35,5 +35,6 @@
     "browser": "153.0.8010.12",
     "platform": "Windows"
   },
-  "scope": "Final application differs from security commit only by guest entry main landmark. Source manifest records exact tested files. No full public-host test exists."
+  "scope": "Final application differs from security commit only by guest entry main landmark. Source manifest records exact tested files. No full public-host test exists.",
+  "tested_source_commit": "4b21a7203f4ec7e9b07e2ca734c32176eceb421f"
 }
