@@ -1,0 +1,48 @@
+{
+  "/health/live": {
+    "status": 200,
+    "milliseconds": 58.28,
+    "server_header": null,
+    "csp": true
+  },
+  "/health/ready": {
+    "status": 200,
+    "milliseconds": 12.11,
+    "server_header": null,
+    "csp": true
+  },
+  "/api/v1/health": {
+    "status": 200,
+    "milliseconds": 13.72,
+    "server_header": null,
+    "csp": true,
+    "lineage": {
+      "model_sha256": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+      "dataset_sha256": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+      "model": "HistGradientBoostingClassifier / frozen synthetic deficit signature",
+      "source_kind": "simulated research telemetry",
+      "sample_period_seconds": 60,
+      "replay_seconds_per_sample_at_1x": 1,
+      "field_validation": false,
+      "facility_is_fictional": true
+    }
+  },
+  "/": {
+    "status": 200,
+    "milliseconds": 15.92,
+    "server_header": null,
+    "csp": true
+  },
+  "/favicon.svg": {
+    "status": 200,
+    "milliseconds": 3.21,
+    "server_header": null,
+    "csp": true
+  },
+  "untrusted_host": {
+    "status": 400
+  },
+  "hostile_origin": {
+    "status": 403
+  }
+}

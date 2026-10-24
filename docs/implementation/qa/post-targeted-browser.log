@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:16776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\post-audit.spec.ts:12:1 › live scrub previews real frames without committing; playing clock cannot pull thumb back (4.3s)
+  ok 2 tests\post-audit.spec.ts:42:1 › all core routes and contextual dialogs pass scoped Axe; four event contexts in both shells (12.1s)
+  ok 3 tests\post-audit.spec.ts:58:1 › favicon, original chime decoding/media delivery, error recovery and malformed deep link (1.9s)
+  ok 4 tests\post-audit.spec.ts:73:1 › new warning surfaces a notice across routes; seek is silent and autoplay denial is truthful (5.5s)
+  ok 5 tests\post-audit.spec.ts:93:1 › touch scrub previews actual data; delayed preview cannot overwrite committed seek (2.2s)
+
+  5 passed (28.3s)

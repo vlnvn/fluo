@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.2"
+  },
+  "artifact_sha256": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+  "estimator": "HistGradientBoostingClassifier",
+  "model_params": {
+    "categorical_features": "from_dtype",
+    "class_weight": null,
+    "early_stopping": "auto",
+    "interaction_cst": null,
+    "l2_regularization": 3.0,
+    "learning_rate": 0.05,
+    "loss": "log_loss",
+    "max_bins": 255,
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_iter": 75,
+    "max_leaf_nodes": 9,
+    "min_samples_leaf": 70,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "random_state": 71,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "features": [
+    "loss_ratio_instant",
+    "loss_ratio_ewma5",
+    "loss_ratio_ewma15",
+    "steam_step_rel",
+    "steam_rolling_cv",
+    "return_rolling_cv"
+  ],
+  "dataset_sha256": "162ed5816208929ce8f95822c16afbcd8d3f8061719bde1f0c471acf5eea5ada",
+  "telemetry_rows": 86400,
+  "input_columns": [
+    "timestamp",
+    "site_id",
+    "minute_id",
+    "split",
+    "operating_mode",
+    "throughput_index",
+    "steam_flow_obs_kg_h",
+    "condensate_return_obs_kg_h",
+    "steam_pressure_obs_barg",
+    "steam_temperature_obs_C",
+    "return_temperature_obs_C",
+    "link_online",
+    "data_quality_flag"
+  ],
+  "cadence_seconds_by_site": {
+    "CFG_A": [
+      60.0
+    ],
+    "CFG_B": [
+      60.0
+    ],
+    "CFG_C": [
+      60.0
+    ],
+    "CFG_D": [
+      60.0
+    ],
+    "CFG_E": [
+      60.0
+    ]
+  },
+  "warning_minutes": 3755,
+  "quality_states": {
+    "SCORE_ALLOWED": 51335,
+    "NONPRODUCTION_MONITORING_ONLY": 32400,
+    "MODE_STABILIZATION": 1200,
+    "GATEWAY_OFFLINE": 689,
+    "VERIFY_RETURN_METER": 486,
+    "INSUFFICIENT_VALID_HISTORY": 290
+  },
+  "output_digest": "276bcd03bcd1be4d1d7c708f53e4cba49cce4b5b18b1b6bb5161345a24c3cf93",
+  "repeat_exact": true,
+  "prefix_parity_exact_sites": [
+    "CFG_A",
+    "CFG_B",
+    "CFG_C",
+    "CFG_D",
+    "CFG_E"
+  ],
+  "tolerance": 0,
+  "inference_seconds": 1.0103710999992472,
+  "legacy_qa_exit_code": 0,
+  "training_performed": false,
+  "upstream_zero_valid_prefix_error_count": 15,
+  "upstream_limitation": "Original inference calls predict_proba with zero rows during all-gated prefixes. Adapter must return no scores for those rows without changing scored behavior."
+}

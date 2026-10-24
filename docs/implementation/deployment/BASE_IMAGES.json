@@ -1,0 +1,16 @@
+[
+  {
+    "image": "node:22-bookworm-slim",
+    "digest": "sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d",
+    "manifest_media_type": "application/vnd.oci.image.index.v1+json",
+    "source": "Docker official library registry",
+    "build_tested": false
+  },
+  {
+    "image": "python:3.12-slim",
+    "digest": "sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704",
+    "manifest_media_type": "application/vnd.oci.image.index.v1+json",
+    "source": "Docker official library registry",
+    "build_tested": false
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "state": "overview-full",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-overview-full.png",
+    "after": "docs/implementation/qa/screenshots/overview-full.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.0,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "overview-compact",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-overview-compact.png",
+    "after": "docs/implementation/qa/screenshots/overview-compact.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.0,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "scenario-full",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-scenario-full.png",
+    "after": "docs/implementation/qa/screenshots/scenario-full.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 9.290026748971194,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "scenario-compact",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-scenario-compact.png",
+    "after": "docs/implementation/qa/screenshots/scenario-compact.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.0,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "events-full",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-events-full.png",
+    "after": "docs/implementation/qa/screenshots/events-full.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.3366728395061728,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "events-compact",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-events-compact.png",
+    "after": "docs/implementation/qa/screenshots/events-compact.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.35095550411522636,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "details-full",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-details-full.png",
+    "after": "docs/implementation/qa/screenshots/details-full.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.0,
+    "same_default_paused_cursor": true
+  },
+  {
+    "state": "details-compact",
+    "before": "docs/implementation/qa/post-audit/before/screenshots-details-compact.png",
+    "after": "docs/implementation/qa/screenshots/details-compact.png",
+    "same_size": true,
+    "mean_absolute_RGB_error": 0.0,
+    "same_default_paused_cursor": true
+  }
+]

@@ -1,0 +1,513 @@
+{
+  "frames": [
+    {
+      "id": "74:2",
+      "name": "FLUO_V2/overview",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "74:107",
+      "name": "FLUO_V2/lab",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "74:198",
+      "name": "FLUO_V2/events",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "74:302",
+      "name": "FLUO_V2/details",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "96:2",
+      "name": "FLUO_FLOW/lab-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "96:130",
+      "name": "FLUO_FLOW/lab-paused",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "96:253",
+      "name": "FLUO_FLOW/lab-normal",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "96:383",
+      "name": "FLUO_FLOW/events-filtered",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:2",
+      "name": "FLUO_FLOW/lab-pipe-loss",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:125",
+      "name": "FLUO_FLOW/lab-trap",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:248",
+      "name": "FLUO_FLOW/lab-meter",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:371",
+      "name": "FLUO_FLOW/lab-delay",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:494",
+      "name": "FLUO_FLOW/lab-outage",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:620",
+      "name": "FLUO_FLOW/lab-speed-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "100:748",
+      "name": "FLUO_FLOW/lab-normal-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "101:2",
+      "name": "FLUO_FLOW/event-mode",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "101:107",
+      "name": "FLUO_FLOW/event-meter",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "101:212",
+      "name": "FLUO_FLOW/event-restored",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "102:2",
+      "name": "FLUO_FLOW/lab-pipe-loss-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "102:125",
+      "name": "FLUO_FLOW/lab-trap-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "102:248",
+      "name": "FLUO_FLOW/lab-meter-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "102:371",
+      "name": "FLUO_FLOW/lab-delay-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "102:494",
+      "name": "FLUO_FLOW/lab-outage-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "102:620",
+      "name": "FLUO_FLOW/lab-normal-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "103:2",
+      "name": "FLUO_FLOW/lab-pipe-loss-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "103:125",
+      "name": "FLUO_FLOW/lab-trap-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "103:248",
+      "name": "FLUO_FLOW/lab-meter-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "103:371",
+      "name": "FLUO_FLOW/lab-delay-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "103:494",
+      "name": "FLUO_FLOW/lab-outage-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "124:2",
+      "name": "FLUO_FLOW/events-quality",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "124:131",
+      "name": "FLUO_FLOW/filter-all",
+      "w": 675,
+      "h": 624
+    },
+    {
+      "id": "124:289",
+      "name": "FLUO_FLOW/filter-return",
+      "w": 675,
+      "h": 624
+    },
+    {
+      "id": "124:447",
+      "name": "FLUO_FLOW/filter-quality",
+      "w": 675,
+      "h": 624
+    },
+    {
+      "id": "128:5",
+      "name": "FLUO_COMPACT/FLUO_V2/overview",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:144",
+      "name": "FLUO_COMPACT/FLUO_V2/lab",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:286",
+      "name": "FLUO_COMPACT/FLUO_V2/events",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:422",
+      "name": "FLUO_COMPACT/FLUO_V2/details",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:1171",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:1318",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-paused",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:1460",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-normal",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:1601",
+      "name": "FLUO_COMPACT/FLUO_FLOW/events-filtered",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:1734",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-pipe-loss",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:1875",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-trap",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2016",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-meter",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2157",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-delay",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2298",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-outage",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2444",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-speed-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2591",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-normal-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2858",
+      "name": "FLUO_COMPACT/FLUO_FLOW/event-mode",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:2998",
+      "name": "FLUO_COMPACT/FLUO_FLOW/event-meter",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3123",
+      "name": "FLUO_COMPACT/FLUO_FLOW/event-restored",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3246",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-pipe-loss-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3387",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-trap-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3528",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-meter-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3669",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-delay-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3810",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-outage-playing",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:3956",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-normal-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4097",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-pipe-loss-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4238",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-trap-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4379",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-meter-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4520",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-delay-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4661",
+      "name": "FLUO_COMPACT/FLUO_FLOW/lab-outage-2x",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4807",
+      "name": "FLUO_COMPACT/FLUO_FLOW/events-quality",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "128:4943",
+      "name": "FLUO_COMPACT/FLUO_FLOW/filter-all",
+      "w": 675,
+      "h": 624
+    },
+    {
+      "id": "128:5110",
+      "name": "FLUO_COMPACT/FLUO_FLOW/filter-return",
+      "w": 675,
+      "h": 624
+    },
+    {
+      "id": "128:5277",
+      "name": "FLUO_COMPACT/FLUO_FLOW/filter-quality",
+      "w": 675,
+      "h": 624
+    },
+    {
+      "id": "130:2",
+      "name": "FLUO_PRINT/A4 Inspection EV-018",
+      "w": 794,
+      "h": 1123
+    },
+    {
+      "id": "170:2",
+      "name": "FLUO_OVERLAY/notifications",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "170:31",
+      "name": "FLUO_OVERLAY/help",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "170:47",
+      "name": "FLUO_OVERLAY/preferences",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "170:70",
+      "name": "FLUO_OVERLAY/preferences-off",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "170:93",
+      "name": "FLUO_OVERLAY/profile",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "170:106",
+      "name": "FLUO_OVERLAY/inspection-summary",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "173:2",
+      "name": "FLUO_OVERLAY/inspection-EV-017",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "173:14",
+      "name": "FLUO_PRINT/A4 Inspection EV-017",
+      "w": 794,
+      "h": 1123
+    },
+    {
+      "id": "173:65",
+      "name": "FLUO_OVERLAY/inspection-EV-016",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "173:77",
+      "name": "FLUO_PRINT/A4 Inspection EV-016",
+      "w": 794,
+      "h": 1123
+    },
+    {
+      "id": "173:128",
+      "name": "FLUO_OVERLAY/inspection-EV-015",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "173:140",
+      "name": "FLUO_PRINT/A4 Inspection EV-015",
+      "w": 794,
+      "h": 1123
+    },
+    {
+      "id": "186:34",
+      "name": "FLUO_OVERLAY/print-preview-EV-018",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "186:106",
+      "name": "FLUO_OVERLAY/print-preview-EV-017",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "186:178",
+      "name": "FLUO_OVERLAY/print-preview-EV-016",
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "id": "186:250",
+      "name": "FLUO_OVERLAY/print-preview-EV-015",
+      "w": 1440,
+      "h": 900
+    }
+  ],
+  "flowStartingPoints": [
+    {
+      "nodeId": "74:2",
+      "name": "Fluo | Full navigation"
+    },
+    {
+      "nodeId": "128:5",
+      "name": "Fluo | Compact navigation"
+    }
+  ],
+  "interactionCount": 1465
+}

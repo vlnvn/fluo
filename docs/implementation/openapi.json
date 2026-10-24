@@ -1,0 +1,1765 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fluo research replay API",
+    "description": "Read-only simulated research telemetry; no equipment controls or verified operator authentication.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/auth/guest": {
+      "post": {
+        "summary": "Guest Entry",
+        "operationId": "guest_entry_api_v1_auth_guest_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/session": {
+      "get": {
+        "summary": "Guest Session",
+        "operationId": "guest_session_api_v1_auth_session_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "Guest Logout",
+        "operationId": "guest_logout_api_v1_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        }
+      }
+    },
+    "/health/live": {
+      "get": {
+        "summary": "Liveness",
+        "operationId": "liveness_health_live_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "summary": "Readiness",
+        "operationId": "readiness_health_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios": {
+      "get": {
+        "summary": "Scenarios",
+        "operationId": "scenarios_api_v1_scenarios_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Scenario"
+                  },
+                  "type": "array",
+                  "title": "Response Scenarios Api V1 Scenarios Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions": {
+      "post": {
+        "summary": "Create Session",
+        "operationId": "create_session_api_v1_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSession"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}": {
+      "get": {
+        "summary": "Snapshot",
+        "operationId": "snapshot_api_v1_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/preview": {
+      "get": {
+        "summary": "Preview",
+        "operationId": "preview_api_v1_sessions__session_id__preview_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "title": "Cursor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/replay": {
+      "post": {
+        "summary": "Command",
+        "operationId": "command_api_v1_sessions__session_id__replay_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplayCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/events": {
+      "get": {
+        "summary": "Events",
+        "operationId": "events_api_v1_sessions__session_id__events_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(all|return|quality)$",
+              "default": "all",
+              "title": "Category"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 100,
+              "default": "",
+              "title": "Search"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(asc|desc)$",
+              "default": "desc",
+              "title": "Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  },
+                  "title": "Response Events Api V1 Sessions  Session Id  Events Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/events/{event_id}": {
+      "get": {
+        "summary": "Detail",
+        "operationId": "detail_api_v1_sessions__session_id__events__event_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/events/{event_id}/review": {
+      "put": {
+        "summary": "Save Review",
+        "operationId": "save_review_api_v1_sessions__session_id__events__event_id__review_put",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Review"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/events/{event_id}/review/submit": {
+      "post": {
+        "summary": "Submit Review",
+        "operationId": "submit_review_api_v1_sessions__session_id__events__event_id__review_submit_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Review"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/preferences": {
+      "get": {
+        "summary": "Preferences",
+        "operationId": "preferences_api_v1_sessions__session_id__preferences_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Save Preferences",
+        "operationId": "save_preferences_api_v1_sessions__session_id__preferences_put",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreferencesUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferencesUpdate"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inference": {
+      "post": {
+        "summary": "Infer",
+        "operationId": "infer_api_v1_inference_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InferenceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  "type": "array",
+                  "title": "Response Infer Api V1 Inference Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/events/{event_id}/report.pdf": {
+      "get": {
+        "summary": "Report",
+        "operationId": "report_api_v1_sessions__session_id__events__event_id__report_pdf_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/events/{event_id}/print": {
+      "get": {
+        "summary": "Print Report",
+        "operationId": "print_report_api_v1_sessions__session_id__events__event_id__print_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          },
+          {
+            "name": "embedded",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Embedded"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateSession": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id",
+            "default": "return-diversion"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "CreateSession"
+      },
+      "Event": {
+        "properties": {
+          "quality_action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quality Action"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "site_id": {
+            "type": "string",
+            "title": "Site Id"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "end_timestamp": {
+            "type": "string",
+            "title": "End Timestamp"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "return",
+              "quality"
+            ],
+            "title": "Category"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "duration_min": {
+            "type": "integer",
+            "title": "Duration Min"
+          },
+          "minute_id": {
+            "type": "integer",
+            "title": "Minute Id"
+          },
+          "peak_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Peak Score"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "review_status": {
+            "type": "string",
+            "title": "Review Status",
+            "default": "pending"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "site_id",
+          "timestamp",
+          "end_timestamp",
+          "category",
+          "title",
+          "state",
+          "duration_min",
+          "minute_id",
+          "peak_score",
+          "evidence"
+        ],
+        "title": "Event"
+      },
+      "EventDetail": {
+        "properties": {
+          "event": {
+            "$ref": "#/components/schemas/Event"
+          },
+          "frame": {
+            "$ref": "#/components/schemas/Frame"
+          },
+          "context": {
+            "items": {
+              "$ref": "#/components/schemas/Frame"
+            },
+            "type": "array",
+            "title": "Context"
+          },
+          "review": {
+            "$ref": "#/components/schemas/Review"
+          },
+          "lineage": {
+            "$ref": "#/components/schemas/Lineage"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event",
+          "frame",
+          "context",
+          "review",
+          "lineage",
+          "limitations"
+        ],
+        "title": "EventDetail"
+      },
+      "Frame": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "minute_id": {
+            "type": "integer",
+            "title": "Minute Id"
+          },
+          "site_id": {
+            "type": "string",
+            "title": "Site Id"
+          },
+          "operating_mode": {
+            "type": "string",
+            "title": "Operating Mode"
+          },
+          "link_online": {
+            "type": "boolean",
+            "title": "Link Online"
+          },
+          "data_quality_flag": {
+            "type": "string",
+            "title": "Data Quality Flag"
+          },
+          "quality_action": {
+            "type": "string",
+            "title": "Quality Action"
+          },
+          "readings": {
+            "$ref": "#/components/schemas/Readings"
+          },
+          "inference": {
+            "$ref": "#/components/schemas/InferenceResult"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "timestamp",
+          "minute_id",
+          "site_id",
+          "operating_mode",
+          "link_online",
+          "data_quality_flag",
+          "quality_action",
+          "readings",
+          "inference"
+        ],
+        "title": "Frame"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "InferenceRequest": {
+        "properties": {
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/Telemetry"
+            },
+            "type": "array",
+            "maxItems": 5000,
+            "minItems": 1,
+            "title": "Rows"
+          },
+          "run_mode": {
+            "type": "string",
+            "const": "SYNTHETIC_REPLAY",
+            "title": "Run Mode",
+            "default": "SYNTHETIC_REPLAY"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "rows"
+        ],
+        "title": "InferenceRequest"
+      },
+      "InferenceResult": {
+        "properties": {
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "warning": {
+            "type": "boolean",
+            "title": "Warning"
+          },
+          "persistence_hits": {
+            "type": "integer",
+            "title": "Persistence Hits"
+          },
+          "triage_status": {
+            "type": "string",
+            "title": "Triage Status"
+          },
+          "score_meaning": {
+            "type": "string",
+            "title": "Score Meaning"
+          },
+          "next_safe_action": {
+            "type": "string",
+            "title": "Next Safe Action"
+          },
+          "recovery_eligibility": {
+            "type": "string",
+            "const": "UNKNOWN_REQUIRES_SITE_ASSESSMENT",
+            "title": "Recovery Eligibility"
+          },
+          "auto_actuation_allowed": {
+            "type": "boolean",
+            "const": false,
+            "title": "Auto Actuation Allowed"
+          },
+          "fixed_ratio_warning": {
+            "type": "boolean",
+            "title": "Fixed Ratio Warning"
+          },
+          "physics_residual_warning": {
+            "type": "boolean",
+            "title": "Physics Residual Warning"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "score",
+          "warning",
+          "persistence_hits",
+          "triage_status",
+          "score_meaning",
+          "next_safe_action",
+          "recovery_eligibility",
+          "auto_actuation_allowed",
+          "fixed_ratio_warning",
+          "physics_residual_warning"
+        ],
+        "title": "InferenceResult"
+      },
+      "Lineage": {
+        "properties": {
+          "model_sha256": {
+            "type": "string",
+            "title": "Model Sha256"
+          },
+          "dataset_sha256": {
+            "type": "string",
+            "title": "Dataset Sha256"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "source_kind": {
+            "type": "string",
+            "const": "simulated research telemetry",
+            "title": "Source Kind"
+          },
+          "sample_period_seconds": {
+            "type": "integer",
+            "const": 60,
+            "title": "Sample Period Seconds"
+          },
+          "replay_seconds_per_sample_at_1x": {
+            "type": "integer",
+            "const": 1,
+            "title": "Replay Seconds Per Sample At 1X"
+          },
+          "field_validation": {
+            "type": "boolean",
+            "const": false,
+            "title": "Field Validation"
+          },
+          "facility_is_fictional": {
+            "type": "boolean",
+            "const": true,
+            "title": "Facility Is Fictional"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "model_sha256",
+          "dataset_sha256",
+          "model",
+          "source_kind",
+          "sample_period_seconds",
+          "replay_seconds_per_sample_at_1x",
+          "field_validation",
+          "facility_is_fictional"
+        ],
+        "title": "Lineage"
+      },
+      "PreferencesUpdate": {
+        "properties": {
+          "warning_sound": {
+            "type": "boolean",
+            "title": "Warning Sound"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "warning_sound"
+        ],
+        "title": "PreferencesUpdate"
+      },
+      "Readings": {
+        "properties": {
+          "steam_kg_h": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steam Kg H"
+          },
+          "return_kg_h": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Return Kg H"
+          },
+          "pressure_barg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pressure Barg"
+          },
+          "steam_temperature_C": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steam Temperature C"
+          },
+          "return_temperature_C": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Return Temperature C"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "steam_kg_h",
+          "return_kg_h",
+          "pressure_barg",
+          "steam_temperature_C",
+          "return_temperature_C"
+        ],
+        "title": "Readings"
+      },
+      "ReplayCommand": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "play",
+              "pause",
+              "reset",
+              "rewind",
+              "forward",
+              "seek",
+              "speed",
+              "scenario"
+            ],
+            "title": "Action"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          },
+          "speed": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed"
+          },
+          "scenario_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scenario Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "title": "ReplayCommand"
+      },
+      "Review": {
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "title": "Event Id"
+          },
+          "operator_id": {
+            "type": "string",
+            "title": "Operator Id"
+          },
+          "operator_label": {
+            "type": "string",
+            "const": "Guest operator (unverified)",
+            "title": "Operator Label"
+          },
+          "authenticated": {
+            "type": "boolean",
+            "const": false,
+            "title": "Authenticated"
+          },
+          "revision": {
+            "type": "integer",
+            "title": "Revision"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "submitted",
+              "pending"
+            ],
+            "title": "Status"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewStep"
+            },
+            "type": "array",
+            "title": "Steps"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At"
+          },
+          "submitted_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted At"
+          },
+          "audit": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Audit"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event_id",
+          "operator_id",
+          "operator_label",
+          "authenticated",
+          "revision",
+          "status",
+          "steps",
+          "note",
+          "updated_at",
+          "submitted_at",
+          "audit"
+        ],
+        "title": "Review"
+      },
+      "ReviewStep": {
+        "properties": {
+          "step_id": {
+            "type": "string",
+            "title": "Step Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "checked": {
+            "type": "boolean",
+            "title": "Checked",
+            "default": false
+          },
+          "evidence": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Evidence",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "step_id",
+          "label"
+        ],
+        "title": "ReviewStep"
+      },
+      "ReviewUpdate": {
+        "properties": {
+          "checked_steps": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 4,
+            "title": "Checked Steps"
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 2000,
+            "title": "Note",
+            "default": ""
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "checked_steps",
+          "revision"
+        ],
+        "title": "ReviewUpdate"
+      },
+      "Scenario": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "group": {
+            "type": "string",
+            "title": "Group"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "site_id": {
+            "type": "string",
+            "title": "Site Id"
+          },
+          "start_timestamp": {
+            "type": "string",
+            "title": "Start Timestamp"
+          },
+          "end_timestamp": {
+            "type": "string",
+            "title": "End Timestamp"
+          },
+          "total_frames": {
+            "type": "integer",
+            "title": "Total Frames"
+          },
+          "default_cursor": {
+            "type": "integer",
+            "title": "Default Cursor"
+          },
+          "source_kind": {
+            "type": "string",
+            "const": "simulated research telemetry",
+            "title": "Source Kind"
+          },
+          "setup_is_not_diagnosis": {
+            "type": "boolean",
+            "const": true,
+            "title": "Setup Is Not Diagnosis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "group",
+          "description",
+          "site_id",
+          "start_timestamp",
+          "end_timestamp",
+          "total_frames",
+          "default_cursor",
+          "source_kind",
+          "setup_is_not_diagnosis"
+        ],
+        "title": "Scenario"
+      },
+      "SessionState": {
+        "properties": {
+          "is_preview": {
+            "type": "boolean",
+            "title": "Is Preview",
+            "default": false
+          },
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version"
+          },
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "scenario": {
+            "$ref": "#/components/schemas/Scenario"
+          },
+          "cursor": {
+            "type": "integer",
+            "title": "Cursor"
+          },
+          "speed": {
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ],
+            "title": "Speed"
+          },
+          "playback": {
+            "type": "string",
+            "enum": [
+              "PLAYING",
+              "PAUSED",
+              "ENDED"
+            ],
+            "title": "Playback"
+          },
+          "current": {
+            "$ref": "#/components/schemas/Frame"
+          },
+          "frames": {
+            "items": {
+              "$ref": "#/components/schemas/Frame"
+            },
+            "type": "array",
+            "title": "Frames"
+          },
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            },
+            "type": "array",
+            "title": "Events"
+          },
+          "active_event_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Event Id"
+          },
+          "lineage": {
+            "$ref": "#/components/schemas/Lineage"
+          },
+          "review_scope": {
+            "type": "string",
+            "title": "Review Scope"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "session_id",
+          "scenario",
+          "cursor",
+          "speed",
+          "playback",
+          "current",
+          "frames",
+          "events",
+          "active_event_id",
+          "lineage",
+          "review_scope"
+        ],
+        "title": "SessionState"
+      },
+      "Telemetry": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "site_id": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Site Id"
+          },
+          "minute_id": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Minute Id"
+          },
+          "split": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Split"
+          },
+          "operating_mode": {
+            "type": "string",
+            "enum": [
+              "production",
+              "startup",
+              "shutdown",
+              "idle"
+            ],
+            "title": "Operating Mode"
+          },
+          "throughput_index": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Throughput Index"
+          },
+          "steam_flow_obs_kg_h": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steam Flow Obs Kg H"
+          },
+          "condensate_return_obs_kg_h": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condensate Return Obs Kg H"
+          },
+          "steam_pressure_obs_barg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steam Pressure Obs Barg"
+          },
+          "steam_temperature_obs_C": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steam Temperature Obs C"
+          },
+          "return_temperature_obs_C": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Return Temperature Obs C"
+          },
+          "link_online": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ],
+            "title": "Link Online"
+          },
+          "data_quality_flag": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Data Quality Flag"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "timestamp",
+          "site_id",
+          "minute_id",
+          "split",
+          "operating_mode",
+          "throughput_index",
+          "steam_flow_obs_kg_h",
+          "condensate_return_obs_kg_h",
+          "steam_pressure_obs_barg",
+          "steam_temperature_obs_C",
+          "return_temperature_obs_C",
+          "link_online",
+          "data_quality_flag"
+        ],
+        "title": "Telemetry"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

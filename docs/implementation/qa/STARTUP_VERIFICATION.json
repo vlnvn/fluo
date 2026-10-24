@@ -1,0 +1,28 @@
+{
+  "api": {
+    "status": 200,
+    "health": {
+      "status": "ok",
+      "schema_version": "1.0",
+      "model_loaded": true,
+      "training_performed": false,
+      "read_only": true,
+      "lineage": {
+        "model_sha256": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+        "dataset_sha256": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+        "model": "HistGradientBoostingClassifier / frozen synthetic deficit signature",
+        "source_kind": "simulated research telemetry",
+        "sample_period_seconds": 60,
+        "replay_seconds_per_sample_at_1x": 1,
+        "field_validation": false,
+        "facility_is_fictional": true
+      }
+    }
+  },
+  "dev_web": {
+    "status": 200
+  },
+  "production_web": {
+    "status": 200
+  }
+}

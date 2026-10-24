@@ -1,0 +1,20 @@
+services:
+  fluo:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      FLUO_RELEASE_MODE: local
+      FLUO_DB_PATH: /app/.local/fluo.sqlite3
+    volumes:
+      - fluo-state:/app/.local
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+volumes:
+  fluo-state:

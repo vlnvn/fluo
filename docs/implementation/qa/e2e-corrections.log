@@ -1,0 +1,13 @@
+
+Running 8 tests using 1 worker
+
+  ok 1 tests\corrections.spec.ts:9:1 › consistent notification counts, navigation icon states, actual summary visuals and spaced actions (2.6s)
+  ok 2 tests\corrections.spec.ts:68:1 › continuous pointer scrubbing sends one seek on release; keyboard and forward/backward stay deterministic (1.9s)
+  ok 3 tests\fluo.spec.ts:11:1 › real HGB readings, four pages, Full/Compact geometry and original local assets (1.9s)
+  ok 4 tests\fluo.spec.ts:43:1 › deterministic replay controls, scenario reset, model/quality cases, reload and retained navigation (5.8s)
+  ok 5 tests\fluo.spec.ts:65:1 › filter overlay all/return/quality, cancel, reset, contextual notifications/preferences/help and focus (4.7s)
+  ok 6 tests\fluo.spec.ts:90:1 › four events have independent persisted checklists, real PDFs, A4 preview/print, accessible keyboard path (12.2s)
+  ok 7 tests\fluo.spec.ts:123:1 › accessibility, focus trap, reduced motion and narrower desktop remain usable (2.3s)
+  ok 8 tests\fluo.spec.ts:134:1 › warning audio requires opt-in and a newly crossed detector event; no mount cue (3.5s)
+
+  8 passed (38.3s)

@@ -1,0 +1,48 @@
+Requirement already satisfied: numpy==2.3.5 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 1)) (2.3.5)
+Requirement already satisfied: pandas==2.2.3 in .\.venv\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 2)) (2.2.3)
+Requirement already satisfied: scipy==1.16.3 in .\.venv\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 3)) (1.16.3)
+Requirement already satisfied: scikit-learn==1.8.0 in .\.venv\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 4)) (1.8.0)
+Requirement already satisfied: joblib==1.5.2 in .\.venv\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 5)) (1.5.2)
+Requirement already satisfied: fastapi==0.162.0 in .\.venv\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 6)) (0.162.0)
+Requirement already satisfied: pydantic==2.14.1 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 7)) (2.14.1)
+Requirement already satisfied: uvicorn==0.54.0 in .\.venv\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 8)) (0.54.0)
+Requirement already satisfied: reportlab==4.4.9 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from -r C:\College\DEEPX\fluo\requirements-app.txt (line 9)) (4.4.9)
+Requirement already satisfied: pytest==9.1.1 in .\.venv\Lib\site-packages (from -r requirements-dev.txt (line 2)) (9.1.1)
+Requirement already satisfied: httpx==0.28.1 in .\.venv\Lib\site-packages (from -r requirements-dev.txt (line 3)) (0.28.1)
+Requirement already satisfied: ruff==0.17.2 in .\.venv\Lib\site-packages (from -r requirements-dev.txt (line 4)) (0.17.2)
+Requirement already satisfied: pypdf==6.10.0 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from -r requirements-dev.txt (line 5)) (6.10.0)
+Requirement already satisfied: Pillow<13,>=11 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from -r requirements-dev.txt (line 6)) (12.3.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from pandas==2.2.3->-r C:\College\DEEPX\fluo\requirements-app.txt (line 2)) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in .\.venv\Lib\site-packages (from pandas==2.2.3->-r C:\College\DEEPX\fluo\requirements-app.txt (line 2)) (2026.5)
+Requirement already satisfied: tzdata>=2022.7 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from pandas==2.2.3->-r C:\College\DEEPX\fluo\requirements-app.txt (line 2)) (2026.5)
+Requirement already satisfied: threadpoolctl>=3.2.0 in .\.venv\Lib\site-packages (from scikit-learn==1.8.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 4)) (3.7.0)
+Requirement already satisfied: starlette>=0.46.0 in .\.venv\Lib\site-packages (from fastapi==0.162.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 6)) (1.10.0)
+Requirement already satisfied: typing-extensions>=4.8.0 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from fastapi==0.162.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 6)) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from fastapi==0.162.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 6)) (0.4.4)
+Requirement already satisfied: annotated-doc>=0.0.2 in .\.venv\Lib\site-packages (from fastapi==0.162.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 6)) (0.0.5)
+Requirement already satisfied: opentelemetry-api>=1.44.0 in .\.venv\Lib\site-packages (from fastapi==0.162.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 6)) (1.45.1)
+Requirement already satisfied: annotated-types>=0.6.0 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from pydantic==2.14.1->-r C:\College\DEEPX\fluo\requirements-app.txt (line 7)) (0.8.0)
+Requirement already satisfied: pydantic-core==2.50.1 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from pydantic==2.14.1->-r C:\College\DEEPX\fluo\requirements-app.txt (line 7)) (2.50.1)
+Requirement already satisfied: click>=7.0 in .\.venv\Lib\site-packages (from uvicorn==0.54.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 8)) (8.5.0)
+Requirement already satisfied: h11>=0.8 in .\.venv\Lib\site-packages (from uvicorn==0.54.0->-r C:\College\DEEPX\fluo\requirements-app.txt (line 8)) (0.16.0)
+Requirement already satisfied: charset-normalizer in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from reportlab==4.4.9->-r C:\College\DEEPX\fluo\requirements-app.txt (line 9)) (3.5.2)
+Requirement already satisfied: colorama>=0.4 in .\.venv\Lib\site-packages (from pytest==9.1.1->-r requirements-dev.txt (line 2)) (0.4.6)
+Requirement already satisfied: iniconfig>=1.0.1 in .\.venv\Lib\site-packages (from pytest==9.1.1->-r requirements-dev.txt (line 2)) (2.3.1)
+Requirement already satisfied: packaging>=22 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from pytest==9.1.1->-r requirements-dev.txt (line 2)) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in .\.venv\Lib\site-packages (from pytest==9.1.1->-r requirements-dev.txt (line 2)) (1.7.0)
+Requirement already satisfied: pygments>=2.7.2 in .\.venv\Lib\site-packages (from pytest==9.1.1->-r requirements-dev.txt (line 2)) (2.21.0)
+Requirement already satisfied: anyio in .\.venv\Lib\site-packages (from httpx==0.28.1->-r requirements-dev.txt (line 3)) (4.15.1)
+Requirement already satisfied: certifi in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from httpx==0.28.1->-r requirements-dev.txt (line 3)) (2026.10.19)
+Requirement already satisfied: httpcore==1.* in .\.venv\Lib\site-packages (from httpx==0.28.1->-r requirements-dev.txt (line 3)) (1.0.9)
+Requirement already satisfied: idna in .\.venv\Lib\site-packages (from httpx==0.28.1->-r requirements-dev.txt (line 3)) (3.20)
+Requirement already satisfied: six>=1.5 in C:\Users\Valensius Alven\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages (from python-dateutil>=2.8.2->pandas==2.2.3->-r C:\College\DEEPX\fluo\requirements-app.txt (line 2)) (1.17.0)
+Verified archive, all package checksums, original data and selected HGB; no training performed.
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 283 packages, and audited 284 packages in 19s
+
+80 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+Setup complete. Run: .\.venv\Scripts\python.exe tools\dev.py

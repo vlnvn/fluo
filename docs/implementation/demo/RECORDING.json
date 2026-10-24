@@ -1,0 +1,94 @@
+{
+  "commit": "0c0fe3b0f5f640a3e140de2fd68e748d1a164e3f",
+  "recordedAt": "2026-10-24T22:08:50.491Z",
+  "url": "http://127.0.0.1:8000",
+  "publicDeployment": false,
+  "videoPath": "raw/page@c5ee86464c05fc610f95a9ecd65b8a30.webm",
+  "seconds": 186.107,
+  "resolution": [
+    1440,
+    900
+  ],
+  "browser": "153.0.8010.12",
+  "captions": [
+    {
+      "start": 0,
+      "end": 9.014,
+      "title": "Fluo / Private guest demonstration / http://127.0.0.1:8000"
+    },
+    {
+      "start": 9.014,
+      "end": 24.018,
+      "title": "Fictional textile facility. Recorded research telemetry, original frozen HGB."
+    },
+    {
+      "start": 24.018,
+      "end": 33.022,
+      "title": "Warning sound is opt-in. This screen recording is muted."
+    },
+    {
+      "start": 33.022,
+      "end": 47.027,
+      "title": "Normal operation / actual steam and return measurements from the archive."
+    },
+    {
+      "start": 47.027,
+      "end": 66.048,
+      "title": "A genuine replay crossing raises a warning. The cause remains unconfirmed."
+    },
+    {
+      "start": 66.048,
+      "end": 78.051,
+      "title": "Scrubbing previews real frames continuously; releasing commits the replay cursor."
+    },
+    {
+      "start": 78.051,
+      "end": 89.056,
+      "title": "Meter bias is an experiment scenario, not a diagnosed physical loss."
+    },
+    {
+      "start": 89.056,
+      "end": 100.061,
+      "title": "Connection quality gates withhold interpretation when data is unavailable."
+    },
+    {
+      "start": 100.061,
+      "end": 113.082,
+      "title": "Filter recorded events and inspect the selected warning evidence."
+    },
+    {
+      "start": 113.082,
+      "end": 133.09,
+      "title": "Manual verification / save a private draft, then explicitly record the review."
+    },
+    {
+      "start": 133.09,
+      "end": 145.089,
+      "title": "Reload preserves this guest review. A checklist does not authorize recovery."
+    },
+    {
+      "start": 145.089,
+      "end": 166.097,
+      "title": "Event-specific report / real PDF download and A4 print layout."
+    },
+    {
+      "start": 166.097,
+      "end": 176.099,
+      "title": "Notifications remain consistent across pages and full/compact navigation."
+    },
+    {
+      "start": 176.099,
+      "end": 186.105,
+      "title": "Synthetic model / no field validation, verified savings, or equipment actuation."
+    }
+  ],
+  "selectedEvent": "EV-019",
+  "scenario": "return-diversion",
+  "canonicalCursor": 79,
+  "downloadName": "Fluo-EV-019-inspection.pdf",
+  "consoleErrors": [],
+  "printDialogSuppressedForRecording": true,
+  "recordingMuted": true,
+  "recorderSha256": "57a673569c2dc3753018e6bf05c52c5f4a25aa4addff29ca9538bb5a389e1cbc",
+  "recorderWorkingTreeNote": "Checkbox awaits async server-confirmed state; recorder modified after recorded app commit. App code unchanged."
+}

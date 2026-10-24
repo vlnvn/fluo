@@ -1,0 +1,47 @@
+{
+  "source": "raw/page@c5ee86464c05fc610f95a9ecd65b8a30.webm",
+  "source_sha256": "9f31383190769e4a9142847b856987e60c61c5ac6d3299ed662c6ab6b5eba8af",
+  "file": "FLUO_DEMO_END_TO_END.mp4",
+  "sha256": "b9a5cecacea9ab92fd843364c76c2979038178dada1f3acda3c8536d6446ac32",
+  "bytes": 5010789,
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "fps": 25.0,
+    "source_size": [
+      1440,
+      980
+    ],
+    "size": [
+      1440,
+      980
+    ],
+    "rotate": 0,
+    "duration": 185.8
+  },
+  "full_decode_exit": 0,
+  "decode_stderr": "",
+  "audio": "muted; no audio track",
+  "edit": "One continuous real browser capture; H264 encode and captions in added bottom strip. No UI frames fabricated.",
+  "visual_review": {
+    "status": "PASS_IN_SAMPLED_SCOPE",
+    "sample_seconds": [
+      5,
+      18,
+      58,
+      83,
+      95,
+      100,
+      124,
+      143,
+      150,
+      153,
+      156,
+      163,
+      182
+    ],
+    "findings": "Caption strip below original UI; guest/replay/review/A4/Compact sampled. Full file decoded without errors. Not a human review of every frame."
+  },
+  "public_deployment": false
+}

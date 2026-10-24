@@ -1,0 +1,10 @@
+
+Running 1 test using 1 worker
+
+(node:13812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+C:\College\DEEPX\fluo\web\tests\visual-regression.spec.ts-snapshots\events-full-win32.png is re-generated, writing actual.
+C:\College\DEEPX\fluo\web\tests\visual-regression.spec.ts-snapshots\events-compact-win32.png is re-generated, writing actual.
+  ok 1 tests\visual-regression.spec.ts:3:1 › paused fixed telemetry visual baselines: four routes in Full and Compact (5.3s)
+
+  1 passed (6.7s)

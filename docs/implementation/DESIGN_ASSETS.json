@@ -1,0 +1,170 @@
+{
+  "BrandOriginalRoundedVectorLogo": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/BrandOriginalRoundedVectorLogo.svg",
+    "bytes": 3927,
+    "sha256": "c10511123871a1a24f893049d0709b470bac72d110456a644f879eb5896d5f38",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"102\" height=\"47.8245\" viewBox=\"0 0 102 47.8245\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconOverview": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconOverview.svg",
+    "bytes": 461,
+    "sha256": "c5a210cac692339a13afbcffe88d9adfd47e82f2863d8abf9d61e622585bf4b4",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconLab": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconLab.svg",
+    "bytes": 356,
+    "sha256": "cefbe33865013d912d7a56a17ea52d428abb6bf9c04b56b1a90d7dbbd6c3cd98",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconEvents": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconEvents.svg",
+    "bytes": 363,
+    "sha256": "31c6caaa8a067733b7a682eef60db5e485a0b333a7d0c1b10e68bf9b21082a06",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconHelp": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconHelp.svg",
+    "bytes": 1267,
+    "sha256": "bbdd984d9c8a1346a0e6b96c9f94a86d9f94b0f4d21e76e0f0bc91030383c314",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconPreferences": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconPreferences.svg",
+    "bytes": 1230,
+    "sha256": "5d1048ba252cbdc9a2660d3d6dab2299f69901305f14ab1b0d3d1d6c4448882f",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconSidebarToggle": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconSidebarToggle.svg",
+    "bytes": 367,
+    "sha256": "9d3ba2ab6c6f22aac19a52d3d8617a9454cff281d0f35d02cf39c001fce9086b",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconBell": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconBell.svg",
+    "bytes": 590,
+    "sha256": "95e19382f506fd27996f72d2e72bf4785cff99c52bb4a99ec6364f7833f02712",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"22\" height=\"22\" viewBox=\"0 0 22 22\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "VectorIllustrativeTimeSeries": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/VectorIllustrativeTimeSeries.svg",
+    "bytes": 4196,
+    "sha256": "43351749ddedc27e064237134218d5132988f4946920087fdb47d8401b1283c4",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"731\" height=\"231\" viewBox=\"0 0 731 231\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconAlert": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/IconAlert.svg",
+    "bytes": 388,
+    "sha256": "bcee4e2411eba47f1b3f358d9dd5ed533496af6dd6b154fa0ace09df6f17d3ef",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "ActionTrailingArrow": {
+    "source_context": "figma-overview-context.txt",
+    "local": "/assets/ActionTrailingArrow.svg",
+    "bytes": 376,
+    "sha256": "6625d29f3ce36062f9ff2f3988d6ec5e11de4076314faddd47bc671030138080",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "ReportOriginalBrandVector": {
+    "source_context": "context-130-2.txt",
+    "local": "/assets/ReportOriginalBrandVector.svg",
+    "bytes": 3906,
+    "sha256": "f9012626fe196b6c778cd880af2073dc6602af5b158e04b851b5eb40c8669ad1",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"127\" height=\"58.858\" viewBox=\"0 0 127 58.858\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconRewind": {
+    "source_context": "context-74-133.txt",
+    "local": "/assets/IconRewind.svg",
+    "bytes": 395,
+    "sha256": "6a38fd1ff5daf7b328c44e42af7d63ca925107773e182a83da2661d797fa3102",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconPlay": {
+    "source_context": "context-74-133.txt",
+    "local": "/assets/IconPlay.svg",
+    "bytes": 356,
+    "sha256": "c8bcb093b2c63509d6e3328849543ba686ba01a0a51eefaff88ae77576fbdd53",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconPause": {
+    "source_context": "context-74-133.txt",
+    "local": "/assets/IconPause.svg",
+    "bytes": 354,
+    "sha256": "0bf5d25a40d957ada8ad7ca7cf5e3db943fda6ec5be9247b60b7f0ac4d0d0d1a",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconReset": {
+    "source_context": "context-74-133.txt",
+    "local": "/assets/IconReset.svg",
+    "bytes": 710,
+    "sha256": "6a66343611dfb9151601ba17fe918461c90db32dd7ab0b30452d997a3baf83f4",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "ProcessConnector": {
+    "source_context": "context-74-133.txt",
+    "local": "/assets/ProcessConnector.svg",
+    "bytes": 463,
+    "sha256": "6ee26e578b52dda034d17db9d7eee44fdf690663b0bae3fa6adf546069d25682",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"53\" height=\"24\" viewBox=\"0 0 53 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconFilter": {
+    "source_context": "context-74-224.txt",
+    "local": "/assets/IconFilter.svg",
+    "bytes": 345,
+    "sha256": "b664b27ca60cd87cf79b922d66f5d9271005d23dc3d08fcda80a92eab9e1febf",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconRow0": {
+    "source_context": "context-74-224.txt",
+    "local": "/assets/IconRow0.svg",
+    "bytes": 338,
+    "sha256": "3f456e0ffea3fce934a52e74ba9def9599289fb6debe8904051bbc1693ca6123",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconRow1": {
+    "source_context": "context-74-224.txt",
+    "local": "/assets/IconRow1.svg",
+    "bytes": 338,
+    "sha256": "7629222ee42b0102b042abb19b75bb50d6928b6addf6fbcb0fe04d3fa61cabc2",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconRow2": {
+    "source_context": "context-74-224.txt",
+    "local": "/assets/IconRow2.svg",
+    "bytes": 338,
+    "sha256": "0914d954c83360b4c8ad6085a76c3f5450932dffe942a680b682e02aae3cbf15",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconRow3": {
+    "source_context": "context-74-224.txt",
+    "local": "/assets/IconRow3.svg",
+    "bytes": 338,
+    "sha256": "e5a829257a77ca5ef0640b24b097515cb36c3bf13b79af04417525ceca7bcc51",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconWarn": {
+    "source_context": "context-74-328.txt",
+    "local": "/assets/IconWarn.svg",
+    "bytes": 375,
+    "sha256": "94dbcda925a2a43d59339c4e8d5ba2bd99b6d5d8d951fbb4a81c5da081e95780",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  "IconEvidence0": {
+    "source_context": "context-74-328.txt",
+    "local": "/assets/IconEvidence0.svg",
+    "bytes": 341,
+    "sha256": "9cc22d0b1f9270e59a225bacecd47ff17d184dcfc8c1d9206cfe88a94b16628d",
+    "root_dimensions": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  }
+}

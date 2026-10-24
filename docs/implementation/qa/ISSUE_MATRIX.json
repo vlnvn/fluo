@@ -1,0 +1,338 @@
+[
+  {
+    "id": "UI-01",
+    "observed_symptom_and_source": "Inactive navigation, Figma74/128 shells",
+    "root_cause": "Prior neutral styles existed; baseline test sampled a route transition",
+    "code_change": "Retain styles, await canonical aria-current; verify both shells",
+    "severity": "P1",
+    "test": "corrections.spec; screenshots",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-02",
+    "observed_symptom_and_source": "Production casing",
+    "root_cause": "Previously corrected display formatter",
+    "code_change": "Retain formatter in pages/detail/report, raw API unchanged",
+    "severity": "P1",
+    "test": "four reports and casing assertions",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-03",
+    "observed_symptom_and_source": "Unread badge inconsistency",
+    "root_cause": "Previous exact session/site policy existed; preview needed shared view state",
+    "code_change": "Shared preview/committed selector and recent/unread totals; preserve explicit read action",
+    "severity": "P1",
+    "test": "routes/tabs/reload tests",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-04",
+    "observed_symptom_and_source": "Thick review-items line, Figma bars",
+    "root_cause": "Previous13-bin SVG correction existed",
+    "code_change": "Retain real counts, separated bars and zero-bin baseline",
+    "severity": "P1",
+    "test": "sum/gap assertions; Full/Compact",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-05",
+    "observed_symptom_and_source": "Repeated report toolbar",
+    "root_cause": "Previous embedded fix existed; new CSP needed script nonce",
+    "code_change": "One visible parent toolbar; nonce-bearing print script",
+    "severity": "P1",
+    "test": "four event PDF/print/back/close tests",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-06",
+    "observed_symptom_and_source": "Review action spacing / duplicate writes",
+    "root_cause": "10px gap existed; state-only save lock could race",
+    "code_change": "12px wrapping gap; immediate ref lock; explicit draft feedback",
+    "severity": "P1",
+    "test": "rapid double click,409, reload",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-07",
+    "observed_symptom_and_source": "Smooth buffered scrub",
+    "root_cause": "Thumb changed locally but dependent data waited",
+    "code_change": "Read-only cached snapshot preview; one committed seek",
+    "severity": "P1",
+    "test": "pointer/live chart/no clock mutation",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-07A",
+    "observed_symptom_and_source": "Legacy slider/scrollbars",
+    "root_cause": "Browser-default appearance",
+    "code_change": "Light track/thumb/focus/scrollbar styling and reduced motion",
+    "severity": "P2",
+    "test": "screenshots and motion recording",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-07B",
+    "observed_symptom_and_source": "Stale data during drag",
+    "root_cause": "Only slider state was local",
+    "code_change": "80ms preview throttling, stale abort/version guard, suspend polling; render actual preview frames",
+    "severity": "P1",
+    "test": "touch, playing2x, delayed response tests",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-07C",
+    "observed_symptom_and_source": "Forward transport",
+    "root_cause": "Previously implemented10-sample action",
+    "code_change": "Retain symmetric control and clamps",
+    "severity": "P1",
+    "test": "bounds/round trip API and browser",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-07D",
+    "observed_symptom_and_source": "Chime integration",
+    "root_cause": "Exact asset existed; old playback tests instrumented",
+    "code_change": "Verify source hash, decode, native playback and rejection",
+    "severity": "P1",
+    "test": "native-audio.json; SECURITY_INVENTORY",
+    "status": "VERIFIED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-08",
+    "observed_symptom_and_source": "Warning popup reliability",
+    "root_cause": "No automatic visual cue with sound off",
+    "code_change": "Actionable nonmodal toast on natural new warning; manual bell history",
+    "severity": "P1",
+    "test": "cross-route warning and silent seek tests",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-09",
+    "observed_symptom_and_source": "Card metric meaning",
+    "root_cause": "Interruption total included mode/warmup",
+    "code_change": "Structured quality_action; count only gateway/return-meter interruptions; retain progress/real trends",
+    "severity": "P1",
+    "test": "new unit test; API counts",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "UI-10",
+    "observed_symptom_and_source": "Missing favicon",
+    "root_cause": "No icon/manifest links",
+    "code_change": "Original vector F crop; SVG/ICO/PNG and metadata",
+    "severity": "P2",
+    "test": "built asset checks; inspected render",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "AUD-01",
+    "observed_symptom_and_source": "Malformed deep-link crash",
+    "root_cause": "decodeURIComponent could throw",
+    "code_change": "Safe decode fallback and event recovery",
+    "severity": "P1",
+    "test": "malformed URL / retry E2E",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "SEC-01",
+    "observed_symptom_and_source": "Anonymous cross-session object access",
+    "root_cause": "No authenticated identity/ownership",
+    "code_change": "Keep loopback; explicit negative xfail; block staging",
+    "severity": "P0 public",
+    "test": "test_anonymous_client_cannot_read_another_session",
+    "status": "BLOCKED_FOR_PUBLIC_ACCESS",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "SEC-02",
+    "observed_symptom_and_source": "Unbounded request surface",
+    "root_cause": "Missing byte/rate/host/origin boundary",
+    "code_change": "4MiB/chunk cap,10s body timeout, rate/host/origin limits, CSP and safe500",
+    "severity": "P1",
+    "test": "test_audit.py; live smoke",
+    "status": "FIXED_LOCAL_SCOPE",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "SEC-03",
+    "observed_symptom_and_source": "Installed advisories",
+    "root_cause": "Fresh resolver hid old installed Pillow/pypdf",
+    "code_change": "Patch13.0.0/6.21.2; runtime lock; installed rescan",
+    "severity": "P1",
+    "test": "before/after advisory JSON",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "DATA-01",
+    "observed_symptom_and_source": "Runtime data integrity",
+    "root_cause": "Data hashes were reported but not enforced",
+    "code_change": "Sensor/catalog startup digest guard; original bytes unchanged",
+    "severity": "P1",
+    "test": "corrupt dataset test; preparation",
+    "status": "FIXED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "DB-01",
+    "observed_symptom_and_source": "Restart/backup/version evidence",
+    "root_cause": "Missing guard/backup/close helpers",
+    "code_change": "WAL/busy timeout, version0\u21921, newer-schema refusal, backup and concurrency checks",
+    "severity": "P1",
+    "test": "reopen/integrity/200+409 tests",
+    "status": "FIXED_LOCAL_SCOPE",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  },
+  {
+    "id": "DEP-01",
+    "observed_symptom_and_source": "Protected deployment unavailable",
+    "root_cause": "No verified hosting/IdP entitlement; no Docker engine; auth missing",
+    "code_change": "Local packaging/runbook; no external exposure",
+    "severity": "P0 release",
+    "test": "RELEASE_DECISION.json",
+    "status": "BLOCKED",
+    "fix_commit": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+    "evidence": [
+      "POST_AUDIT_ARTIFACTS.json",
+      "post-dev-e2e.log",
+      "post-built-e2e.log",
+      "post-api.log"
+    ]
+  }
+]

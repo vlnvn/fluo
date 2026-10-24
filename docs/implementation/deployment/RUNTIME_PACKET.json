@@ -1,0 +1,10 @@
+{
+  "filename": "fluo-runtime-private.zip",
+  "sha256": "536a19812b79135e821d524d0208adf1e1a42fca0a6451a0848d0351af8dbbc9",
+  "bytes": 1291873,
+  "contents": {
+    "data/original/fluo_sensor_stream.csv.gz": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+    "data/original/fluo_episode_labels.csv": "e5b1368942a98452abd8b49e3c93d154b0d07614d33e99ec4e755a8e45611106"
+  },
+  "public_upload_authorized": false
+}

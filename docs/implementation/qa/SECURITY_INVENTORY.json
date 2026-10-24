@@ -1,0 +1,18 @@
+{
+  "commits_scanned": 18,
+  "unique_text_blobs_scanned": 308,
+  "findings": [],
+  "limitation": "Pattern-based check, not proof that arbitrary secrets are absent; ignored private files are not published.",
+  "chime": {
+    "served_sha256": "5b23f10402f695225770b4d6ab5a2dc3a32a161d9ffe0015a5e32497970571dc",
+    "source_exists": true,
+    "original_sha256": "5b23f10402f695225770b4d6ab5a2dc3a32a161d9ffe0015a5e32497970571dc",
+    "identical": true
+  },
+  "tools": {
+    "pip-audit": "2.10.1",
+    "bandit": "1.9.4",
+    "Pillow": "13.0.0",
+    "pypdf": "6.21.2"
+  }
+}
