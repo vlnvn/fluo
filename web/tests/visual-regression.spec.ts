@@ -1,7 +1,8 @@
+import { enterGuest } from './guest';
 import { test, expect } from '@playwright/test';
 
 test('paused fixed telemetry visual baselines: four routes in Full and Compact',async({page})=>{
-  test.setTimeout(60000);await page.goto('/');await expect(page.locator('h1')).toHaveText('Condensate return');await page.evaluate(()=>document.fonts.ready);
+  test.setTimeout(60000);await enterGuest(page);await expect(page.locator('h1')).toHaveText('Condensate return');await page.evaluate(()=>document.fonts.ready);
   const id=await page.evaluate(()=>localStorage.getItem('fluo.session.v1'));
   const state=await(await page.request.get(`/api/v1/sessions/${id}`)).json();
   for(const compact of [false,true]){

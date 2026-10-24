@@ -3,6 +3,7 @@ import json
 import logging
 import uuid
 import secrets
+import re
 from contextlib import asynccontextmanager
 
 import pandas as pd
@@ -15,36 +16,51 @@ from .inference_adapter import ROOT, score_telemetry
 from .reporting import html_report, pdf_report
 from .schemas import CreateSession, Event, EventDetail, InferenceRequest, PreferencesUpdate, ReplayCommand, Review, ReviewUpdate, Scenario, SessionState
 from .service import DomainError, ReplayService
-from .security import LocalBoundary, assert_local_release
+from .security import LocalBoundary
+from .auth import GuestAccess, GuestSettings
 
 LOG = logging.getLogger('fluo.api')
 
 
-def create_app(service=None):
+def create_app(service=None, guest_settings=None):
+    settings = guest_settings or GuestSettings.from_env()
     @asynccontextmanager
     async def lifespan(application):
-        assert_local_release()
         application.state.service = service or ReplayService()
+        application.state.access = GuestAccess(application.state.service.store, settings)
         yield
         if service is None:
             application.state.service.store.close()
 
-    api = FastAPI(title='Fluo research replay API', version='1.0.0', lifespan=lifespan,
+    api = FastAPI(docs_url=None, redoc_url=None, openapi_url=None, title='Fluo research replay API', version='1.0.0', lifespan=lifespan,
                   description='Read-only simulated research telemetry; no equipment controls or verified operator authentication.')
     if service is not None:
         api.state.service = service
 
-    api.add_middleware(LocalBoundary, allow_test_host=service is not None)
+    api.add_middleware(LocalBoundary, allow_test_host=service is not None, public_origin=settings.public_origin)
 
     @api.middleware('http')
     async def correlation(request: Request, call_next):
         request.state.correlation_id = str(uuid.uuid4())
         request.state.csp_nonce = secrets.token_urlsafe(24)
         try:
+            path = request.url.path
+            if path.startswith('/api/v1/') and path != '/api/v1/auth/guest':
+                owner = request.app.state.access.authorize(request)
+                request.state.guest = owner
+                match = re.match(r'^/api/v1/sessions/([^/]+)', path)
+                if match and not request.app.state.service.store.owns_session(owner['digest'], match.group(1)):
+                    raise DomainError('UNKNOWN_SESSION', 'This replay session is unavailable.', 404)
+                if settings.public and path == '/api/v1/inference':
+                    raise DomainError('GUEST_CAPABILITY_DENIED', 'Guest access is limited to the audited recorded scenarios.', 403)
             response = await call_next(request)
+        except DomainError as error:
+            response = JSONResponse({'error': {'code': error.code, 'message': error.message, 'correlation_id': request.state.correlation_id}}, status_code=error.status)
         except Exception:
             LOG.exception('Unhandled request failure correlation=%s', request.state.correlation_id)
             response = JSONResponse({'error': {'code': 'INTERNAL_ERROR', 'message': 'The local service could not complete this request.', 'correlation_id': request.state.correlation_id}}, status_code=500)
+        if settings.public:
+            response.headers['Strict-Transport-Security'] = 'max-age=31536000'
         response.headers['X-Correlation-ID'] = request.state.correlation_id
         response.headers['X-Content-Type-Options'] = 'nosniff'
         response.headers['X-Frame-Options'] = 'SAMEORIGIN'
@@ -64,6 +80,30 @@ def create_app(service=None):
 
     def current(request):
         return request.app.state.service
+
+    @api.post('/api/v1/auth/guest')
+    def guest_entry(request: Request, response: Response):
+        if request.headers.get('x-fluo-intent') != 'guest':
+            raise DomainError('GUEST_INTENT_REQUIRED', 'Use the guest workspace entry.', 403)
+        access = request.app.state.access
+        try:
+            owner = access.principal(request)
+            return access.public_state(owner)
+        except DomainError:
+            token, owner = access.create()
+        response.set_cookie(settings.cookie_name, token, max_age=settings.ttl_seconds, httponly=True, secure=settings.public, samesite='strict', path='/')
+        return access.public_state(owner)
+
+    @api.get('/api/v1/auth/session')
+    def guest_session(request: Request):
+        return request.app.state.access.public_state(request.state.guest)
+
+    @api.post('/api/v1/auth/logout', status_code=204)
+    def guest_logout(request: Request):
+        request.app.state.service.store.revoke_guest(request.state.guest['digest'])
+        response = Response(status_code=204)
+        response.delete_cookie(settings.cookie_name, path='/', httponly=True, secure=settings.public, samesite='strict')
+        return response
 
     @api.get('/health/live')
     def liveness():
@@ -86,7 +126,8 @@ def create_app(service=None):
     @api.post('/api/v1/sessions', response_model=SessionState, status_code=201)
     def create_session(body: CreateSession, request: Request):
         s = current(request)
-        session = s.create(body.scenario_id)
+        with s.store.lock:
+            session = s.create(body.scenario_id, request.state.guest['digest'], settings.sessions_per_guest)
         return s.snapshot(session['id'])
 
     @api.get('/api/v1/sessions/{session_id}', response_model=SessionState)

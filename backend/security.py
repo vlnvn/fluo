@@ -1,6 +1,5 @@
 """Defence in depth for a loopback demo; this does not provide authentication."""
 import asyncio
-import os
 import time
 from collections import defaultdict, deque
 from urllib.parse import urlsplit
@@ -15,9 +14,13 @@ LOCAL_ORIGINS = {f'http://{host}:{port}' for host in ('localhost', '127.0.0.1') 
 class LocalBoundary:
     """Bound request memory and rates before JSON parsing, including chunked bodies."""
 
-    def __init__(self, app, max_body=MAX_BODY, rate_limit=600, allow_test_host=False):
+    def __init__(self, app, max_body=MAX_BODY, rate_limit=600, allow_test_host=False, public_origin=''):
         self.app, self.max_body, self.rate_limit = app, max_body, rate_limit
         self.hosts = LOCAL_HOSTS | ({'testserver'} if allow_test_host else set())
+        self.origins = LOCAL_ORIGINS | ({public_origin} if public_origin else set())
+        if public_origin:
+            self.hosts = {urlsplit(public_origin).hostname} | ({'testserver'} if allow_test_host else set())
+            self.origins = {public_origin}
         self.windows = defaultdict(deque)
 
     async def __call__(self, scope, receive, send):
@@ -32,7 +35,7 @@ class LocalBoundary:
         if hostname not in self.hosts:
             return await self.reject(scope, receive, send, 400, 'UNTRUSTED_HOST')
         origin = headers.get(b'origin', b'').decode('latin1')
-        if scope['method'] not in ('GET', 'HEAD', 'OPTIONS') and origin and origin not in LOCAL_ORIGINS:
+        if scope['method'] not in ('GET', 'HEAD', 'OPTIONS') and origin and origin not in self.origins:
             return await self.reject(scope, receive, send, 403, 'UNTRUSTED_ORIGIN')
         if len(scope.get('query_string', b'')) > 8192:
             return await self.reject(scope, receive, send, 414, 'QUERY_TOO_LONG')
@@ -46,6 +49,12 @@ class LocalBoundary:
             while window and window[0] < now - 60:
                 window.popleft()
             limit = self.rate_limit if key[1] else self.rate_limit * 4
+            if scope['path'] == '/api/v1/auth/guest':
+                key = (scope.get('client', ('local', 0))[0], 'guest-entry')
+                window = self.windows[key]
+                while window and window[0] < now - 60:
+                    window.popleft()
+                limit = 60
             if len(window) >= limit:
                 return await self.reject(scope, receive, send, 429, 'RATE_LIMITED')
             window.append(now)
@@ -86,5 +95,5 @@ class LocalBoundary:
 
 
 def assert_local_release():
-    if os.environ.get('FLUO_RELEASE_MODE', 'local') != 'local':
-        raise RuntimeError('BLOCKED_FOR_PUBLIC_ACCESS: verified authentication, ownership and protected hosting are not configured')
+    from .auth import GuestSettings
+    GuestSettings.from_env()

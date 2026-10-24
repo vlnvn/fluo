@@ -116,7 +116,7 @@ export interface ReviewStep {
 export interface Review {
   event_id: string;
   operator_id: string;
-  operator_label: "Local operator (unverified)";
+  operator_label: "Guest operator (unverified)";
   authenticated: false;
   revision: number;
   status: "draft" | "submitted" | "pending";

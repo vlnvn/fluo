@@ -32,3 +32,10 @@ node_modules/
 /docs/implementation/qa/post-audit/
 
 /web/tests/*-snapshots/
+
+/docs/implementation/demo/*.mp4
+/docs/implementation/demo/*.webm
+/docs/implementation/demo/*.png
+/docs/implementation/demo/*.pdf
+/docs/implementation/demo/raw/
+/docs/implementation/demo/frames/

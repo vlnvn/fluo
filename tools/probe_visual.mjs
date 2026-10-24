@@ -8,7 +8,7 @@ const context=await browser.newContext({baseURL:process.env.FLUO_BASE_URL??'http
 const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const measurements=[];
 try{
-  await page.goto(process.env.FLUO_BASE_URL??'http://127.0.0.1:8000');await page.locator('h1').filter({hasText:'Condensate return'}).waitFor();await page.evaluate(()=>document.fonts.ready);
+  await page.goto(process.env.FLUO_BASE_URL??'http://127.0.0.1:8000');await page.locator('h1').waitFor();if(await page.getByRole('button',{name:'Start guest workspace',exact:true}).isVisible())await page.getByRole('button',{name:'Start guest workspace',exact:true}).click();await page.locator('h1').filter({hasText:'Condensate return'}).waitFor();await page.evaluate(()=>document.fonts.ready);
   const session=await page.evaluate(()=>localStorage.getItem('fluo.session.v1'));
   const state=await(await page.request.get(`/api/v1/sessions/${session}`)).json();
   for(const compact of [false,true]){

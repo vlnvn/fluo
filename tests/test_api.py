@@ -21,6 +21,8 @@ def service(tmp_path_factory):
 @pytest.fixture
 def client(service):
     with TestClient(create_app(service)) as api:
+        identity = api.post('/api/v1/auth/guest', headers={'X-Fluo-Intent':'guest'}).json()
+        api.headers['X-CSRF-Token'] = identity['csrf_token']
         yield api
 
 
@@ -134,7 +136,7 @@ def test_events_filter_four_reports_reviews_and_isolation(client):
         text = '\n'.join(page.extract_text() for page in reader.pages)
         assert event['id'] in text and event['timestamp'] in text
         assert 'simulated research telemetry' in text.lower()
-        assert 'Local operator (unverified)' in text
+        assert 'Guest operator (unverified)' in text
         assert abs(float(reader.pages[0].mediabox.width) - 595.2756) < 1
         assert abs(float(reader.pages[0].mediabox.height) - 841.8898) < 1
     path = f'/api/v1/sessions/{sid}/events/{checked_id}/review'
@@ -164,7 +166,8 @@ def test_preferences_persist_and_no_actuation_routes(client):
     assert client.get(path).json()['warning_sound'] is False
     assert client.put(path, json={'warning_sound': True}).status_code == 200
     assert client.get(path).json()['warning_sound'] is True
-    schema = client.get('/openapi.json').json()
+    assert client.get('/openapi.json').status_code == 404
+    schema = client.app.openapi()
     assert not any('valve' in route or 'boiler' in route for route in schema['paths'])
 
 

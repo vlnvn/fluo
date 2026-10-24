@@ -158,7 +158,7 @@ class PreferencesUpdate(StrictModel):
 class Review(StrictModel):
     event_id: str
     operator_id: str
-    operator_label: Literal['Local operator (unverified)']
+    operator_label: Literal['Guest operator (unverified)']
     authenticated: Literal[False]
     revision: int
     status: Literal['draft', 'submitted', 'pending']

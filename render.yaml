@@ -1,0 +1,36 @@
+# Requires explicit hosting/billing approval and private runtime artifact storage.
+# This blueprint has not been provisioned; do not infer a live URL from its name.
+services:
+  - type: web
+    name: fluo-secure-guest-demo
+    runtime: python
+    plan: starter
+    region: singapore
+    branch: release/fluo-secure-guest-demo
+    autoDeployTrigger: off
+    buildCommand: bash tools/render_build.sh
+    startCommand: python -m uvicorn backend.app:app --host 0.0.0.0 --port $PORT --workers 1 --no-server-header --timeout-keep-alive 10 --limit-concurrency 24
+    healthCheckPath: /health/ready
+    disk:
+      name: fluo-private-state
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: NODE_VERSION
+        value: 24.11.0
+      - key: FLUO_RELEASE_MODE
+        value: public
+      - key: FLUO_DB_PATH
+        value: /var/data/fluo.sqlite3
+      - key: OMP_NUM_THREADS
+        value: '1'
+      - key: OPENBLAS_NUM_THREADS
+        value: '1'
+      - key: FLUO_RUNTIME_URL
+        sync: false
+      - key: FLUO_RUNTIME_PACKET_SHA256
+        sync: false
+      - key: FLUO_RUNTIME_BEARER
+        sync: false

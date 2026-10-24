@@ -11,6 +11,7 @@ import pandas as pd
 
 from .inference_adapter import ROOT, MODEL_SHA, FrozenEstimator, persistence_counts, score_telemetry
 from .store import Store
+from .service_errors import DomainError
 
 SOURCE_KIND = 'simulated research telemetry'
 LIMITATIONS = [
@@ -43,11 +44,6 @@ STEPS = {
     ],
 }
 
-
-class DomainError(Exception):
-    def __init__(self, code, message, status=400):
-        super().__init__(message)
-        self.code, self.message, self.status = code, message, status
 
 
 def finite(value):
@@ -201,9 +197,9 @@ class ReplayService:
             cursor += int(max(0, time.time() - session['anchor']) * session['speed'])
         return min(cursor, maximum)
 
-    def create(self, scenario_id):
+    def create(self, scenario_id, owner_digest=None, maximum=5):
         scenario = self.scenario(scenario_id)
-        return self.store.create(scenario_id, scenario['default_cursor'])
+        return self.store.create(scenario_id, scenario['default_cursor'], owner_digest, maximum)
 
     def command(self, session_id, command):
         with self.store.lock:
@@ -296,7 +292,7 @@ class ReplayService:
         saved = self.store.review(owner, event['id'])
         if saved:
             return saved
-        return {'event_id': event['id'], 'operator_id': owner, 'operator_label': 'Local operator (unverified)', 'authenticated': False, 'revision': 0, 'status': 'pending', 'steps': [{'step_id': key, 'label': label, 'checked': False, 'evidence': ''} for key, label in STEPS[event['category']]], 'note': '', 'updated_at': None, 'submitted_at': None, 'audit': []}
+        return {'event_id': event['id'], 'operator_id': owner, 'operator_label': 'Guest operator (unverified)', 'authenticated': False, 'revision': 0, 'status': 'pending', 'steps': [{'step_id': key, 'label': label, 'checked': False, 'evidence': ''} for key, label in STEPS[event['category']]], 'note': '', 'updated_at': None, 'submitted_at': None, 'audit': []}
 
     def update_review(self, session_id, event_id, update, submit=False):
         with self.store.lock:

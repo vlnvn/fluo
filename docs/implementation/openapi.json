@@ -6,6 +6,49 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/v1/auth/guest": {
+      "post": {
+        "summary": "Guest Entry",
+        "operationId": "guest_entry_api_v1_auth_guest_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/session": {
+      "get": {
+        "summary": "Guest Session",
+        "operationId": "guest_session_api_v1_auth_session_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "Guest Logout",
+        "operationId": "guest_logout_api_v1_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        }
+      }
+    },
     "/health/live": {
       "get": {
         "summary": "Liveness",
@@ -1241,7 +1284,7 @@
           },
           "operator_label": {
             "type": "string",
-            "const": "Local operator (unverified)",
+            "const": "Guest operator (unverified)",
             "title": "Operator Label"
           },
           "authenticated": {

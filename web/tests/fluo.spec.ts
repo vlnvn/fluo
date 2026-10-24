@@ -1,16 +1,17 @@
+import { enterGuest, csrfHeaders } from './guest';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const out=resolve('../docs/implementation/qa/screenshots');mkdirSync(out,{recursive:true});
-async function boot(page:Page){await page.goto('/');await expect(page.getByRole('heading',{name:'Condensate return',exact:true,level:1})).toBeVisible();await page.evaluate(()=>document.fonts.ready);}
+async function boot(page:Page){await enterGuest(page);await expect(page.getByRole('heading',{name:'Condensate return',exact:true,level:1})).toBeVisible();await page.evaluate(()=>document.fonts.ready);}
 async function capture(page:Page,name:string){await page.screenshot({path:resolve(out,`${name}.png`),animations:'disabled'});}
 async function sid(page:Page){return page.evaluate(()=>localStorage.getItem('fluo.session.v1')!);}
 
 test('real HGB readings, four pages, Full/Compact geometry and original local assets',async({page})=>{
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  const failures:string[]=[];page.on('response',r=>{if(r.status()>=400)failures.push(`${r.status()} ${r.url()}`);});
+  const failures:string[]=[];page.on('response',r=>{if(r.status()>=400 && !(r.status()===401 && r.url().endsWith('/auth/session')))failures.push(`${r.status()} ${r.url()}`);});
   await boot(page);
   const session=await sid(page),state=await (await page.request.get(`/api/v1/sessions/${session}`)).json();
   await expect(page.getByTestId('kpi-steam-feed')).toHaveText(state.current.readings.steam_kg_h.toFixed(1));
@@ -53,7 +54,7 @@ test('deterministic replay controls, scenario reset, model/quality cases, reload
     await page.getByRole('button',{name:new RegExp(`^${name}`)}).click();await expect(page.getByLabel('Replay position',{exact:true})).toHaveValue('0');
   }
   await page.getByRole('button',{name:/^Return diversion/}).click();
-  const session=await sid(page);await page.request.post(`/api/v1/sessions/${session}/replay`,{data:{action:'seek',cursor:80}});
+  const session=await sid(page);await page.request.post(`/api/v1/sessions/${session}/replay`,{headers:await csrfHeaders(page),data:{action:'seek',cursor:80}});
   await page.reload();await expect(page.getByRole('heading',{name:'Scenario Review',exact:true})).toBeVisible();
   await expect(page.getByLabel('Replay position',{exact:true})).toHaveValue('80');
   const before=await(await page.request.get(`/api/v1/sessions/${session}`)).json();
@@ -98,7 +99,7 @@ test('four events have independent persisted checklists, real PDFs, A4 preview/p
     await page.getByLabel('Inspection evidence / note').fill(`Browser QA evidence for ${event.id}`);
     await page.getByRole('button',{name:'Save draft',exact:true}).click();await expect(page.getByRole('button',{name:'Save draft',exact:true})).toBeEnabled();
     await page.reload();await expect(page.getByLabel('Inspection evidence / note')).toHaveValue(`Browser QA evidence for ${event.id}`);
-    await page.getByRole('button',{name:'Record operator review',exact:true}).click();await expect(page.locator('.operator-status')).toContainText('submitted locally');
+    await page.getByRole('button',{name:'Record operator review',exact:true}).click();await expect(page.locator('.operator-status')).toContainText('recorded for this workspace');
     await page.getByRole('button',{name:'View inspection summary'}).click();await expect(page.getByRole('dialog')).toContainText(event.id);
     if(event===events[0])await capture(page,'inspection-summary');
     const download=page.waitForEvent('download');await page.getByRole('button',{name:'Download PDF'}).click();const file=await download;expect(file.suggestedFilename()).toContain(event.id);await file.saveAs(resolve(out,`${event.id}.pdf`));

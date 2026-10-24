@@ -23,6 +23,9 @@ function readSeen(): string[] {
 }
 
 export default function App() {
+  const [authNeeded,setAuthNeeded]=useState(false);
+  const [entryBusy,setEntryBusy]=useState(false);
+  const [guestExpiry,setGuestExpiry]=useState('');
   const [state, setState] = useState<SessionState | null>(null);
   const [preview, setPreview] = useState<SessionState | null>(null);
   const [scrubbing, setScrubbing] = useState(false);
@@ -55,6 +58,8 @@ export default function App() {
   const currentRoute = useRef(route.page);
   const notificationHistory = useRef<{session:string;scenario:string;cursor:number;ids:Set<string>} | null>(null);
 
+  useEffect(()=>{const expired=()=>{setAuthNeeded(true);setState(null);};window.addEventListener('fluo-auth-required',expired);return()=>window.removeEventListener('fluo-auth-required',expired);},[]);
+
   useEffect(() => {
     const sync = (event: StorageEvent) => { if (event.key === 'fluo.seen' || event.key === null) setSeen(readSeen()); };
     window.addEventListener('storage', sync);
@@ -65,6 +70,7 @@ export default function App() {
     let cancelled = false;
     async function bootstrap() {
       try {
+        const identity=await api.authSession();if(!cancelled)setGuestExpiry(identity.expires_at);
         const library = await api.scenarios();
         const existing = localStorage.getItem(SESSION_KEY);
         let initial: SessionState;
@@ -74,7 +80,7 @@ export default function App() {
         } else initial = await api.create();
         const prefs = await api.preferences(initial.session_id);
         if (!cancelled) { localStorage.setItem(SESSION_KEY, initial.session_id); setScenarios(library); setState(initial); setPreferences(prefs); setSoundDraft(prefs.warning_sound); }
-      } catch (e) { if (!cancelled) setError((e as Error).message); }
+      } catch (e) { if (!cancelled) {if(e instanceof ApiError && e.status === 401){setAuthNeeded(true);setError(null);}else setError((e as Error).message);} }
     }
     void bootstrap(); return () => { cancelled = true; };
   }, []);
@@ -101,7 +107,8 @@ export default function App() {
   }, [sessionId, isPlaying]);
 
   useEffect(() => {
-    if (!state) return;
+
+  if (!state) return;
     const previous = notificationHistory.current;
     const ids = new Set(state.events.map(e=>e.id));
     if (naturalTick.current && previous && previous.session === state.session_id && previous.scenario === state.scenario.id && state.cursor > previous.cursor && state.playback !== 'PAUSED') {
@@ -150,8 +157,8 @@ export default function App() {
       const checkedSteps=detail.review.steps.filter(step=>step.step_id===stepId?checked:step.checked).map(step=>step.step_id);
       const updated=await api.review(state.session_id,detail.event.id,{checked_steps:checkedSteps,note:note.current,revision:detail.review.revision},submit);
       setDetail(value=>value ? updateReview(value,updated):value);
-      if(!submit)setToast('Inspection draft saved locally.');
-      if(submit)setToast('Operator review recorded locally. Warning and recovery status are unchanged.');
+      if(!submit)setToast('Inspection draft saved to this workspace.');
+      if(submit)setToast('Operator review saved to this workspace. Warning and recovery status are unchanged.');
     }catch(e){setError((e as Error).message);}finally{reviewLock.current=false;setSavingReview(false);}
   };
 
@@ -170,6 +177,7 @@ export default function App() {
     }catch(e){setError((e as Error).message);}finally{setDownloadBusy(false);}
   };
 
+  if(authNeeded)return <div className="guest-entry"><section><img src="/assets/BrandOriginalRoundedVectorLogo.svg" alt="Fluo"/><h1>Your private guest workspace</h1><p>Explore recorded steam and condensate telemetry, review signals, and save inspection notes in an isolated guest sandbox.</p><p className="guest-note">Fictional facility · Simulated research telemetry · No equipment controls</p><p className="guest-note">Access expires after two hours. Notes are private to this guest. Expired records are cleaned up when new workspaces open. Human operator identity is not verified.</p>{error&&<p role="alert">{error}</p>}<button className="primary" disabled={entryBusy} onClick={()=>{setEntryBusy(true);void api.startGuest().then(()=>{localStorage.removeItem(SESSION_KEY);window.location.reload();}).catch(e=>{setError((e as Error).message);setEntryBusy(false);});}}>{entryBusy?'Opening workspace…':'Start guest workspace'}</button></section></div>;
   if (!state) return <div className="boot-screen"><img src="/assets/BrandOriginalRoundedVectorLogo.svg" alt="Fluo"/><h1>{error ? 'Local service unavailable' : 'Opening your monitoring workspace'}</h1><p>{error ?? 'Loading verified model and recorded telemetry…'}</p>{error&&<button className="primary" onClick={()=>window.location.reload()}>Retry connection</button>}</div>;
   const notificationKey=(id:string)=>`${state.session_id}:${state.current.site_id}:${id}`;
   const viewState=preview ?? state;
@@ -206,9 +214,9 @@ export default function App() {
 
     {overlay==='preferences'&&<Dialog kind="preferences" title="Preferences" onClose={closeOverlay}><h2>Preferences</h2><p className="dialog-subtitle">Workspace and notification settings</p><div className="facility-card"><div><small>FACILITY</small><strong>Pabrik Bandung</strong></div><div><small>PROCESS SCOPE</small><strong>Unit Sizing A</strong></div></div><div className="preferences-section"><h3>Notification preferences</h3><p>Configure how non-critical audible alerts are presented.</p></div><div className="sound-row"><div><strong>Warning sound</strong><p>{soundDraft?'Audio cue is enabled for new warnings':'Audio cue is disabled for new warnings'}</p></div><button className={`sound-toggle ${soundDraft?'on':''}`} role="switch" aria-checked={soundDraft} aria-label="Warning sound" onClick={()=>setSoundDraft(!soundDraft)}>{soundDraft?'On':'Off'}</button></div><button className="primary save-preferences" disabled={busy} onClick={()=>void savePreferences()}>{busy?'Saving…':'Save preferences'}</button></Dialog>}
 
-    {overlay==='profile'&&<Dialog kind="profile" title="Workspace profile" onClose={closeOverlay}><h2>PT Arunika Tekstil</h2><p className="dialog-subtitle">Pabrik Bandung / Unit Sizing A</p><div className="profile-content"><h3>Utility operations</h3><p>Representative facility context. Local operator identity is unverified; this installation has no authentication.</p></div><button className="secondary profile-preferences" onClick={openPreferences}>Preferences</button></Dialog>}
+    {overlay==='profile'&&<Dialog kind="profile" title="Workspace profile" onClose={closeOverlay}><h2>PT Arunika Tekstil</h2><p className="dialog-subtitle">Pabrik Bandung / Unit Sizing A</p><div className="profile-content"><h3>Utility operations</h3><p>Fictional facility. Guest access is isolated; human operator identity is unverified.</p><p>Guest access expires {guestExpiry ? new Date(guestExpiry).toLocaleTimeString('en-GB',{timeZone:'Asia/Jakarta',hour:'2-digit',minute:'2-digit'}) : 'after two hours'} WIB.</p></div><button className="secondary profile-preferences" onClick={openPreferences}>Preferences</button><button className="secondary profile-logout" onClick={()=>void api.logout().then(()=>{localStorage.removeItem(SESSION_KEY);window.location.reload();}).catch(e=>setError((e as Error).message))}>End guest session</button></Dialog>}
 
-    {overlay==='summary'&&detail&&<Dialog kind="summary" title={`Inspection summary ${detail.event.id}`} onClose={closeOverlay} hideClose><h2>Inspection summary — {detail.event.id}</h2><p className="dialog-subtitle">PT Arunika Tekstil / Pabrik Bandung / Unit Sizing A</p><button className="close-summary secondary" onClick={closeOverlay}>Close</button><div className="summary-status">{detail.event.title} / {detail.event.category==='return'?'Cause not confirmed':'Data / mode check'}</div><div className="summary-grid"><section><h3>Observation</h3><p>{detail.event.category==='return'?'Steam and return meters require independent verification.':'Check data availability and process context before interpreting measurements.'}</p><h4>Recommended check</h4><p>Confirm timestamps and mode; compare meter calibration; inspect return routing.</p></section><section><h3>Event evidence</h3><p>Operating mode: {modeLabel(detail.frame.operating_mode)}</p><p>{detail.frame.quality_action === 'SCORE_ALLOWED'?'Return meter: check bias':detail.frame.quality_action}</p><p>Persistence: {detail.frame.inference.persistence_hits} of 10 min</p></section></div><div className="summary-actions"><button className="primary" disabled={downloadBusy} onClick={()=>void downloadReport()}>{downloadBusy?'Generating…':'Download PDF'}</button><button className="secondary" onClick={()=>setOverlay('preview')}>Print</button></div><p className="summary-provenance">Simulated research telemetry · Review: {detail.review.status} · Local operator (unverified)</p></Dialog>}
+    {overlay==='summary'&&detail&&<Dialog kind="summary" title={`Inspection summary ${detail.event.id}`} onClose={closeOverlay} hideClose><h2>Inspection summary — {detail.event.id}</h2><p className="dialog-subtitle">PT Arunika Tekstil / Pabrik Bandung / Unit Sizing A</p><button className="close-summary secondary" onClick={closeOverlay}>Close</button><div className="summary-status">{detail.event.title} / {detail.event.category==='return'?'Cause not confirmed':'Data / mode check'}</div><div className="summary-grid"><section><h3>Observation</h3><p>{detail.event.category==='return'?'Steam and return meters require independent verification.':'Check data availability and process context before interpreting measurements.'}</p><h4>Recommended check</h4><p>Confirm timestamps and mode; compare meter calibration; inspect return routing.</p></section><section><h3>Event evidence</h3><p>Operating mode: {modeLabel(detail.frame.operating_mode)}</p><p>{detail.frame.quality_action === 'SCORE_ALLOWED'?'Return meter: check bias':detail.frame.quality_action}</p><p>Persistence: {detail.frame.inference.persistence_hits} of 10 min</p></section></div><div className="summary-actions"><button className="primary" disabled={downloadBusy} onClick={()=>void downloadReport()}>{downloadBusy?'Generating…':'Download PDF'}</button><button className="secondary" onClick={()=>setOverlay('preview')}>Print</button></div><p className="summary-provenance">Simulated research telemetry · Review: {detail.review.status} · Guest operator (unverified)</p></Dialog>}
 
     {overlay==='preview'&&detail&&<Dialog kind="preview" title={`A4 inspection preview ${detail.event.id}`} onClose={closeOverlay} hideClose><div className="preview-toolbar"><strong>A4 inspection / {detail.event.id}</strong><button className="secondary" onClick={()=>setOverlay('summary')}>Back to summary</button><button className="primary" onClick={()=>{const frame=document.getElementById('report-preview') as HTMLIFrameElement;frame.contentWindow?.focus();frame.contentWindow?.print();}}>Print A4</button><button className="secondary" onClick={closeOverlay}>Close</button></div><iframe id="report-preview" title={`Printable inspection ${detail.event.id}`} src={`${api.reportUrl(state.session_id,detail.event.id,'print')}?embedded=true`} onLoad={()=>{const frame=document.getElementById('report-preview') as HTMLIFrameElement;frame.contentWindow?.focus();frame.contentWindow?.print();}} /></Dialog>}
   </div>;

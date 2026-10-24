@@ -21,6 +21,8 @@ def audit_service(tmp_path_factory):
 @pytest.fixture
 def api(audit_service):
     with TestClient(create_app(audit_service), raise_server_exceptions=False) as value:
+        identity = value.post('/api/v1/auth/guest', headers={'X-Fluo-Intent':'guest'}).json()
+        value.headers['X-CSRF-Token'] = identity['csrf_token']
         yield value
 
 
@@ -104,14 +106,14 @@ def test_database_backup_reopen_and_revision_survive_restart(tmp_path):
         reopened.close()
     import sqlite3
     with sqlite3.connect(source) as connection:
-        connection.execute('PRAGMA user_version=2')
+        connection.execute('PRAGMA user_version=3')
     with pytest.raises(RuntimeError, match='DB_SCHEMA_UNSUPPORTED'):
         Store(source)
 
 
 def test_public_release_mode_fails_closed(monkeypatch):
-    monkeypatch.setenv('FLUO_RELEASE_MODE', 'staging')
-    with pytest.raises(RuntimeError, match='BLOCKED_FOR_PUBLIC_ACCESS'):
+    monkeypatch.setenv('FLUO_RELEASE_MODE', 'public')
+    with pytest.raises(RuntimeError, match='PUBLIC_ORIGIN_REQUIRED'):
         assert_local_release()
 
 
@@ -121,7 +123,6 @@ def test_corrupt_runtime_dataset_fails_before_inference(tmp_path):
         ReplayService(data_dir=tmp_path, db_path=tmp_path / 'unused.sqlite3')
 
 
-@pytest.mark.xfail(strict=True, reason='Release blocker: local prototype has no server-side identity/ownership; never expose publicly')
 def test_anonymous_client_cannot_read_another_session(api, audit_service):
     state = make_session(api)
     with TestClient(create_app(audit_service)) as anonymous:

@@ -1,3 +1,4 @@
+import { enterGuest } from './guest';
 import { test, expect } from '@playwright/test';
 import type { Event } from '../src/contracts';
 import { mkdirSync } from 'node:fs';
@@ -7,7 +8,7 @@ const out = resolve('../docs/implementation/qa/corrections');
 mkdirSync(out, { recursive: true });
 
 test('consistent notification counts, navigation icon states, actual summary visuals and spaced actions', async ({ page }) => {
-  await page.goto('/');
+  await enterGuest(page);
   await expect(page.getByRole('heading', { name: 'Condensate return', exact: true, level: 1 })).toBeVisible();
   await expect(page.locator('.page-title-actions')).toContainText('Production');
   const session = await page.evaluate(() => localStorage.getItem('fluo.session.v1')!);
@@ -74,7 +75,7 @@ test('consistent notification counts, navigation icon states, actual summary vis
 });
 
 test('continuous pointer scrubbing sends one seek on release; keyboard and forward/backward stay deterministic', async ({ page }) => {
-  await page.goto('/');
+  await enterGuest(page);
   await page.getByRole('link', { name: 'Scenario Review', exact: true }).click();
   const slider = page.getByLabel('Replay position', { exact: true });
   await expect(slider).toBeEnabled();

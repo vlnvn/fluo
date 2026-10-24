@@ -20,7 +20,7 @@ def responds(url):
 
 
 def main():
-    if responds('http://127.0.0.1:8000/api/v1/health') or responds('http://127.0.0.1:5173'):
+    if responds('http://127.0.0.1:8000/health/ready') or responds('http://127.0.0.1:5173'):
         raise SystemExit('A server already uses a Fluo port. Use the running application or stop that server explicitly first.')
     local = ROOT / '.local'
     local.mkdir(exist_ok=True)
@@ -37,9 +37,9 @@ def main():
         for _ in range(90):
             if any(child.poll() is not None for child in children):
                 raise RuntimeError('A Fluo process exited. Inspect .local/api.log and .local/web.log.')
-            if responds('http://127.0.0.1:8000/api/v1/health') and responds('http://127.0.0.1:5173'):
+            if responds('http://127.0.0.1:8000/health/ready') and responds('http://127.0.0.1:5173'):
                 print('Fluo is running: http://127.0.0.1:5173', flush=True)
-                print('API / OpenAPI: http://127.0.0.1:8000/docs\nPress Ctrl+C to stop these two processes.', flush=True)
+                print('API readiness: http://127.0.0.1:8000/health/ready\nPress Ctrl+C to stop these two processes.', flush=True)
                 break
             time.sleep(1)
         else:

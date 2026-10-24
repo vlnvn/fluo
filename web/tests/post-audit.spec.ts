@@ -1,3 +1,4 @@
+import { enterGuest } from './guest';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -5,7 +6,7 @@ import { resolve } from 'node:path';
 import { timeLabel } from '../src/api';
 
 const out=resolve('../docs/implementation/qa/post-audit/after');mkdirSync(out,{recursive:true});
-async function boot(page:Page){await page.goto('/');await expect(page.locator('h1')).toHaveText('Condensate return');await page.evaluate(()=>document.fonts.ready);}
+async function boot(page:Page){await enterGuest(page);await expect(page.locator('h1')).toHaveText('Condensate return');await page.evaluate(()=>document.fonts.ready);}
 async function state(page:Page){const id=await page.evaluate(()=>localStorage.getItem('fluo.session.v1'));return (await page.request.get(`/api/v1/sessions/${id}`)).json();}
 async function axe(page:Page,name:string){const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();writeFileSync(resolve(out,`axe-${name}.json`),JSON.stringify(scan.violations,null,2));expect(scan.violations,JSON.stringify(scan.violations)).toEqual([]);}
 
