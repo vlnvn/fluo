@@ -1,6 +1,6 @@
 # Local-only packaging candidate. External deployment is BLOCKED; see deployment runbook.
-ARG NODE_IMAGE=node:22-bookworm-slim
-ARG PYTHON_IMAGE=python:3.12-slim
+ARG NODE_IMAGE=node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d
+ARG PYTHON_IMAGE=python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704
 FROM ${NODE_IMAGE} AS web
 WORKDIR /build
 COPY web/package.json web/package-lock.json ./
