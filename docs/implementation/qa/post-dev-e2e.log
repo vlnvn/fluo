@@ -1,0 +1,23 @@
+
+Running 16 tests using 1 worker
+
+(node:21900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\corrections.spec.ts:9:1 › consistent notification counts, navigation icon states, actual summary visuals and spaced actions (3.1s)
+  ok  2 tests\corrections.spec.ts:76:1 › continuous pointer scrubbing sends one seek on release; keyboard and forward/backward stay deterministic (1.8s)
+  ok  3 tests\fluo.spec.ts:11:1 › real HGB readings, four pages, Full/Compact geometry and original local assets (2.2s)
+  ok  4 tests\fluo.spec.ts:43:1 › deterministic replay controls, scenario reset, model/quality cases, reload and retained navigation (5.9s)
+  ok  5 tests\fluo.spec.ts:65:1 › filter overlay all/return/quality, cancel, reset, contextual notifications/preferences/help and focus (3.1s)
+  ok  6 tests\fluo.spec.ts:90:1 › four events have independent persisted checklists, real PDFs, A4 preview/print, accessible keyboard path (9.4s)
+  ok  7 tests\fluo.spec.ts:123:1 › accessibility, focus trap, reduced motion and narrower desktop remain usable (2.4s)
+  ok  8 tests\fluo.spec.ts:134:1 › warning audio requires opt-in and a newly crossed detector event; no mount cue (3.9s)
+  ok  9 tests\post-audit.spec.ts:12:1 › live scrub previews real frames without committing; playing clock cannot pull thumb back (4.9s)
+  ok 10 tests\post-audit.spec.ts:42:1 › all core routes and contextual dialogs pass scoped Axe; four event contexts in both shells (11.3s)
+  ok 11 tests\post-audit.spec.ts:58:1 › favicon, original chime decoding/media delivery, error recovery and malformed deep link (1.9s)
+  ok 12 tests\post-audit.spec.ts:73:1 › new warning surfaces a notice across routes; seek is silent and autoplay denial is truthful (5.1s)
+  ok 13 tests\post-audit.spec.ts:93:1 › touch scrub previews actual data; delayed preview cannot overwrite committed seek (2.2s)
+  ok 14 tests\post-audit.spec.ts:108:1 › opt-in chime actually starts through native media playback (3.3s)
+  ok 15 tests\post-audit.spec.ts:120:1 › rapid review actions save once, 409 is visible, and empty/backdrop states remain usable (1.9s)
+  ok 16 tests\visual-regression.spec.ts:3:1 › paused fixed telemetry visual baselines: four routes in Full and Compact (3.9s)
+
+  16 passed (1.1m)

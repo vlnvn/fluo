@@ -1,0 +1,37 @@
+{
+  "code_revision": "e84b5ca5630cfbaa0f3880507a8c7268d1769cf4",
+  "baseline_revision": "3f393fe52e12450070b8182e2004a8f263a9a1b9",
+  "local_gates_passed": true,
+  "python_passed": 21,
+  "python_expected_failure": 1,
+  "expected_failure_is_public_auth_blocker": true,
+  "web_unit_passed": 3,
+  "dev_e2e_passed": 16,
+  "built_e2e_passed": 16,
+  "screenshot_assertions": 8,
+  "axe_scans": 10,
+  "axe_violations": 0,
+  "known_installed_advisories_after": 0,
+  "sast_findings": 0,
+  "public_security_gate": "BLOCKED",
+  "deployed": false,
+  "browser": "153.0.8010.12",
+  "runtime": {
+    "python": "3.12.14",
+    "node": "24.11.0",
+    "platform": "Windows",
+    "scale": 1
+  },
+  "figma_current_active_frames": 83,
+  "cloud_resource_inventory": {
+    "visible_vercel_teams": 0,
+    "visible_fluo_projects": 0,
+    "docker_engine_available": false,
+    "hosting_entitlement_verified": false
+  },
+  "memory_sample_bytes": {
+    "working_set": 225857536,
+    "peak_working_set": 298786816,
+    "capacity_claim": false
+  }
+}

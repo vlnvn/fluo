@@ -1,5 +1,7 @@
 # Fluo — local operator workspace
 
+Latest [post-implementation audit](docs/implementation/qa/POST_IMPLEMENTATION_AUDIT.md) and [deployment runbook](docs/implementation/deployment/DEPLOYMENT_RUNBOOK.md): local demo verified; external staging blocked by missing server identity/ownership and protected hosting. Live drag now previews actual cached frames before committing.
+
 Functional React/TypeScript + FastAPI prototype using the **original frozen HGB** and the supplied audited telemetry. Four operator pages, nine recorded scenario windows, replay, quality gates, events, persisted reviews/preferences, genuine PDF and A4 print are implemented. Research scripts and historical results below remain unchanged.
 
 ## Install and run (Windows PowerShell)
@@ -82,6 +84,8 @@ npm run test:e2e
 cd ..
 .\.venv\Scripts\python.exe tools/design_audit.py
 ```
+
+Eight screenshot baselines are retained locally and excluded from Git. A new checkout must obtain the reviewed baselines from the private QA artifacts; alternatively generate them with `npx playwright test tests/visual-regression.spec.ts --update-snapshots`, review them against Figma, then run normally. Baseline creation itself is not visual approval. For motion recording install the matching encoder with `npx playwright install ffmpeg`, then run `node tools/probe_visual.mjs` from the repository root.
 
 Existing local Chromium can be supplied through `FLUO_BROWSER_PATH`. Test output includes actual downloaded PDFs, A4 HTML captures and JSON results. Design comparisons require the already downloaded private Figma references, which remain local. Font rebuild is optional: install fonttools + brotli then run `tools/prepare_report_fonts.py`; generated TTF assets already ship in this checkout.
 

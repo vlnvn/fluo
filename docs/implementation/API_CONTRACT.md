@@ -25,3 +25,7 @@ One sample is one recorded minute. At 1× replay advances one sample per wall-cl
 Event category comes from detector/gate state, never injected event labels. IDs follow per-configuration chronological transitions. CFG_B uses EV-001 etc.; other configurations include a site prefix. Thus illustrative EV-018 data in Figma is not copied into runtime EV-018. Time windows can include past state-change records before the selected chart interval; the event toolbar explicitly says recorded history through current time. Future event timestamps/peak scores are withheld.
 
 Errors are non-200 JSON: `{ "error": { "code": "UNKNOWN_SESSION", "message": "...", "correlation_id": "..." } }`. Schema errors are 422, unknown resources 404, invalid cursor 400, conflicting review revision 409. No physical control routes exist. This is a loopback-only research application without verified identity/authentication; do not expose it publicly.
+
+## Post-audit extension
+
+GET /sessions/{id}/preview?cursor=N returns the same typed snapshot with is_preview=true without changing the stored clock/cursor or rescoring. Quality events expose original quality_action; Data interruptions counts only GATEWAY_OFFLINE/VERIFY_RETURN_METER. Preview polling is throttled80ms, versioned/aborted and never generates new-warning sound. Health/live and health/ready are separate local endpoints. See deployment/security docs for local-only guards and the unresolved authentication blocker.

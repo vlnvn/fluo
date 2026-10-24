@@ -1,0 +1,24 @@
+{
+  "local_status": "LOCAL_DEMO_READY",
+  "staging_status": "BLOCKED_FOR_PUBLIC_ACCESS",
+  "deployed": false,
+  "local_checks": {
+    "model_digest": true,
+    "sensor_digest": true,
+    "executed_local_suites": true
+  },
+  "staging_checks": {
+    "server_identity_enforced": false,
+    "session_ownership_enforced": false,
+    "protected_origin_and_https_verified": false,
+    "hosted_persistence_verified": false,
+    "container_built_and_smoked": false
+  },
+  "blockers": [
+    "server_identity_enforced",
+    "session_ownership_enforced",
+    "protected_origin_and_https_verified",
+    "hosted_persistence_verified",
+    "container_built_and_smoked"
+  ]
+}

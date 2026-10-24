@@ -1,0 +1,49 @@
+
+Running 8 tests using 1 worker
+
+(node:23968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\corrections.spec.ts:9:1 › consistent notification counts, navigation icon states, actual summary visuals and spaced actions (1.8s)
+(node:1472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 tests\corrections.spec.ts:75:1 › continuous pointer scrubbing sends one seek on release; keyboard and forward/backward stay deterministic (2.0s)
+  ok 3 tests\fluo.spec.ts:11:1 › real HGB readings, four pages, Full/Compact geometry and original local assets (3.0s)
+  ok 4 tests\fluo.spec.ts:43:1 › deterministic replay controls, scenario reset, model/quality cases, reload and retained navigation (6.2s)
+  ok 5 tests\fluo.spec.ts:65:1 › filter overlay all/return/quality, cancel, reset, contextual notifications/preferences/help and focus (4.5s)
+  ok 6 tests\fluo.spec.ts:90:1 › four events have independent persisted checklists, real PDFs, A4 preview/print, accessible keyboard path (12.5s)
+  ok 7 tests\fluo.spec.ts:123:1 › accessibility, focus trap, reduced motion and narrower desktop remain usable (2.3s)
+  ok 8 tests\fluo.spec.ts:134:1 › warning audio requires opt-in and a newly crossed detector event; no mount cue (3.8s)
+
+
+  1) tests\corrections.spec.ts:9:1 › consistent notification counts, navigation icon states, actual summary visuals and spaced actions 
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "brightness(0) saturate(1) invert(0.38) sepia(0.17) saturate(9.53) hue-rotate(170deg) brightness(0.94) contrast(0.85)"
+
+      20 |     const active = await page.locator('.sidebar nav .active .icon').evaluate(el => getComputedStyle(el).filter);
+      21 |     for (const icon of await page.locator('.sidebar nav .nav-row:not(.active) .icon').all()) {
+    > 22 |       expect(await icon.evaluate(el => getComputedStyle(el).filter)).not.toBe(active);
+         |                                                                          ^
+      23 |     }
+      24 |   }
+      25 |   await page.locator('.notification-button').click();
+        at C:\College\DEEPX\fluo\web\tests\corrections.spec.ts:22:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\playwright-results\corrections-consistent-not-b4447--visuals-and-spaced-actions\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\playwright-results\corrections-consistent-not-b4447--visuals-and-spaced-actions\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\.local\playwright-results\corrections-consistent-not-b4447--visuals-and-spaced-actions\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\.local\playwright-results\corrections-consistent-not-b4447--visuals-and-spaced-actions\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\corrections.spec.ts:9:1 › consistent notification counts, navigation icon states, actual summary visuals and spaced actions 
+  7 passed (42.2s)

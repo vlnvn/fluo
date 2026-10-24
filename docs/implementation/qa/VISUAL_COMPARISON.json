@@ -19,8 +19,8 @@
     "state": "scenario-full",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.9382,
-    "pixel_fraction_with_channel_error_gt_20": 0.033892,
+    "mean_absolute_RGB_error_0_255": 9.4743,
+    "pixel_fraction_with_channel_error_gt_20": 0.142357,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\scenario-full.png"
   },
   {
@@ -35,16 +35,16 @@
     "state": "events-full",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.7858,
-    "pixel_fraction_with_channel_error_gt_20": 0.037219,
+    "mean_absolute_RGB_error_0_255": 3.6521,
+    "pixel_fraction_with_channel_error_gt_20": 0.035914,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\events-full.png"
   },
   {
     "state": "events-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.7392,
-    "pixel_fraction_with_channel_error_gt_20": 0.037519,
+    "mean_absolute_RGB_error_0_255": 3.5909,
+    "pixel_fraction_with_channel_error_gt_20": 0.036172,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\events-compact.png"
   },
   {
@@ -115,8 +115,8 @@
     "state": "notifications",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "contextual panel crop; underlying active page excluded",
-    "mean_absolute_RGB_error_0_255": 7.3111,
-    "pixel_fraction_with_channel_error_gt_20": 0.060069,
+    "mean_absolute_RGB_error_0_255": 7.4854,
+    "pixel_fraction_with_channel_error_gt_20": 0.061083,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\notifications.png"
   },
   {
@@ -131,8 +131,8 @@
     "state": "help",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "contextual panel crop; underlying active page excluded",
-    "mean_absolute_RGB_error_0_255": 7.0124,
-    "pixel_fraction_with_channel_error_gt_20": 0.060547,
+    "mean_absolute_RGB_error_0_255": 7.4149,
+    "pixel_fraction_with_channel_error_gt_20": 0.063099,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\help.png"
   },
   {

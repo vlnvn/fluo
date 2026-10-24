@@ -94,7 +94,7 @@
     "CFG_E"
   ],
   "tolerance": 0,
-  "inference_seconds": 1.21996560000116,
+  "inference_seconds": 1.8157771999999568,
   "legacy_qa_exit_code": 0,
   "training_performed": false,
   "upstream_zero_valid_prefix_error_count": 15,

@@ -1,0 +1,38 @@
+{
+  "mapped_frames": 83,
+  "compared_states": 20,
+  "comparisons": [
+    {
+      "state": "overview-full",
+      "status": "COMPARED_NOT_PIXEL_IDENTICAL",
+      "region": "whole frame; dynamic measurements/content intentionally differ",
+      "mean_absolute_RGB_error_0_255": 4.3279,
+      "pixel_fraction_with_channel_error_gt_20": 0.038087,
+      "comparison_file": "docs\\implementation\\qa\\visual-diffs\\overview-full.png"
+    },
+    {
+      "state": "overview-compact",
+      "status": "COMPARED_NOT_PIXEL_IDENTICAL",
+      "region": "whole frame; dynamic measurements/content intentionally differ",
+      "mean_absolute_RGB_error_0_255": 4.3237,
+      "pixel_fraction_with_channel_error_gt_20": 0.037614,
+      "comparison_file": "docs\\implementation\\qa\\visual-diffs\\overview-compact.png"
+    },
+    {
+      "state": "scenario-full",
+      "status": "COMPARED_NOT_PIXEL_IDENTICAL",
+      "region": "whole frame; dynamic measurements/content intentionally differ",
+      "mean_absolute_RGB_error_0_255": 9.4743,
+      "pixel_fraction_with_channel_error_gt_20": 0.142357,
+      "comparison_file": "docs\\implementation\\qa\\visual-diffs\\scenario-full.png"
+    },
+    {
+      "state": "scenario-compact",
+      "status": "COMPARED_NOT_PIXEL_IDENTICAL",
+      "region": "whole frame; dynamic measurements/content intentionally differ",
+      "mean_absolute_RGB_error_0_255": 4.073,
+      "pixel_fraction_with_channel_error_gt_20": 0.035586,
+      "comparison_file": "docs\\implementation\\qa\\visual-diffs\\scenario-compact.png"
+    }
+  ]
+}

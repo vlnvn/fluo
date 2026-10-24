@@ -1,5 +1,7 @@
 # Fluo implementation and QA report
 
+Latest audit: [POST_IMPLEMENTATION_AUDIT](docs/implementation/qa/POST_IMPLEMENTATION_AUDIT.md), [functional QA](docs/implementation/qa/FUNCTIONAL_QA_FINAL.md), [visual QA](docs/implementation/qa/VISUAL_QA_FINAL.md), [security/release](docs/implementation/deployment/SECURITY_CHECKLIST.md). Historical counts below are retained; final evidence is21 Python+1 auth xfail,3 unit tests,16 DEV and16 BUILT E2E. Public staging remains BLOCKED.
+
 Latest follow-up: [UI corrections and regression QA](docs/implementation/qa/UI_CORRECTIONS_20261025.md). The initial delivery evidence below is retained as historical context.
 
 25 October 2026 (Asia/Jakarta). Implemented code revision: **f32b0a8dc1c32fe0c0504ca04d59dc8a8f4f133b**; backend revision cb04b96. Branch `feat/fluo-fullstack-audited-replay`, based on verified GitHub main `f2c05af115f374848ee3b8592a32af8648afea53`. This report/evidence is committed separately; `git log -1` identifies the final documentation revision. No push, deployment or private-source upload was performed.

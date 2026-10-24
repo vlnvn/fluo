@@ -6,10 +6,10 @@ The application is not claimed pixel-identical. Original Figma renders are compa
 |---|---:|---:|---|
 | overview-full | 4.3279 | 0.038087 | COMPARED_NOT_PIXEL_IDENTICAL |
 | overview-compact | 4.3237 | 0.037614 | COMPARED_NOT_PIXEL_IDENTICAL |
-| scenario-full | 3.9382 | 0.033892 | COMPARED_NOT_PIXEL_IDENTICAL |
+| scenario-full | 9.4743 | 0.142357 | COMPARED_NOT_PIXEL_IDENTICAL |
 | scenario-compact | 4.073 | 0.035586 | COMPARED_NOT_PIXEL_IDENTICAL |
-| events-full | 3.7858 | 0.037219 | COMPARED_NOT_PIXEL_IDENTICAL |
-| events-compact | 3.7392 | 0.037519 | COMPARED_NOT_PIXEL_IDENTICAL |
+| events-full | 3.6521 | 0.035914 | COMPARED_NOT_PIXEL_IDENTICAL |
+| events-compact | 3.5909 | 0.036172 | COMPARED_NOT_PIXEL_IDENTICAL |
 | details-full | 4.7071 | 0.045051 | COMPARED_NOT_PIXEL_IDENTICAL |
 | details-compact | 4.6815 | 0.045035 | COMPARED_NOT_PIXEL_IDENTICAL |
 | filter-all-full | 10.7096 | 0.14632 | COMPARED_NOT_PIXEL_IDENTICAL |
@@ -18,9 +18,9 @@ The application is not claimed pixel-identical. Original Figma renders are compa
 | filter-all-compact | 10.7067 | 0.14632 | COMPARED_NOT_PIXEL_IDENTICAL |
 | filter-return-compact | 10.739 | 0.143079 | COMPARED_NOT_PIXEL_IDENTICAL |
 | filter-quality-compact | 10.7665 | 0.147429 | COMPARED_NOT_PIXEL_IDENTICAL |
-| notifications | 7.3111 | 0.060069 | COMPARED_NOT_PIXEL_IDENTICAL |
+| notifications | 7.4854 | 0.061083 | COMPARED_NOT_PIXEL_IDENTICAL |
 | preferences | 8.0143 | 0.060074 | COMPARED_NOT_PIXEL_IDENTICAL |
-| help | 7.0124 | 0.060547 | COMPARED_NOT_PIXEL_IDENTICAL |
+| help | 7.4149 | 0.063099 | COMPARED_NOT_PIXEL_IDENTICAL |
 | profile | 5.3638 | 0.047818 | COMPARED_NOT_PIXEL_IDENTICAL |
 | inspection-summary | 9.0186 | 0.077224 | COMPARED_NOT_PIXEL_IDENTICAL |
 | a4-document | 5.8514 | 0.0576 | COMPARED_NOT_PIXEL_IDENTICAL |
