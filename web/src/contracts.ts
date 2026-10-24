@@ -135,7 +135,7 @@ export interface EventDetail {
 }
 
 export interface ReplayCommand {
-  action: "play" | "pause" | "reset" | "rewind" | "seek" | "speed" | "scenario";
+  action: "play" | "pause" | "reset" | "rewind" | "forward" | "seek" | "speed" | "scenario";
   cursor?: number | null;
   speed?: 1 | 2 | null;
   scenario_id?: string | null;

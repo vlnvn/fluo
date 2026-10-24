@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { EventDetail, PreferencesUpdate, ReplayCommand, Scenario, SessionState } from './contracts';
-import { api, ApiError, timeLabel } from './api';
+import { api, ApiError, timeLabel, modeLabel } from './api';
 import { Dialog, Icon } from './components';
 import { EventCenter, EventDetails, Overview, ScenarioReview, updateReview } from './Views';
 
@@ -13,6 +13,11 @@ function parseRoute(): { page: Route; eventId: string | null } {
   const segments = window.location.hash.replace(/^#\/?/, '').split('/');
   if (segments[0] === 'events' && segments[1]) return { page: 'details', eventId: decodeURIComponent(segments[1]) };
   return { page: segments[0] === 'scenarios' ? 'scenarios' : segments[0] === 'events' ? 'events' : 'overview', eventId: null };
+}
+
+function readSeen(): string[] {
+    try { const value: unknown = JSON.parse(localStorage.getItem('fluo.seen') ?? '[]'); return Array.isArray(value) ? value.filter((id): id is string => typeof id === 'string') : []; }
+    catch { return []; }
 }
 
 export default function App() {
@@ -31,10 +36,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState('');
   const [downloadBusy, setDownloadBusy] = useState(false);
-  const [seen, setSeen] = useState<string[]>(() => {
-    try { const value: unknown = JSON.parse(localStorage.getItem('fluo.seen') ?? '[]'); return Array.isArray(value) ? value.filter((id): id is string => typeof id === 'string') : []; }
-    catch { return []; }
-  });
+  const [seen, setSeen] = useState<string[]>(readSeen);
   const note = useRef('');
   const generation = useRef(0);
   const lock = useRef(false);
@@ -42,6 +44,12 @@ export default function App() {
   const scrolls = useRef<Record<string, number>>({});
   const currentRoute = useRef(route.page);
   const notificationHistory = useRef<{session:string;scenario:string;cursor:number;ids:Set<string>} | null>(null);
+
+  useEffect(() => {
+    const sync = (event: StorageEvent) => { if (event.key === 'fluo.seen' || event.key === null) setSeen(readSeen()); };
+    window.addEventListener('storage', sync);
+    return () => window.removeEventListener('storage', sync);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -141,8 +149,10 @@ export default function App() {
   };
 
   if (!state) return <div className="boot-screen"><img src="/assets/BrandOriginalRoundedVectorLogo.svg" alt="Fluo"/><h1>{error ? 'Local service unavailable' : 'Opening your monitoring workspace'}</h1><p>{error ?? 'Loading verified model and recorded telemetry…'}</p>{error&&<button className="primary" onClick={()=>window.location.reload()}>Retry connection</button>}</div>;
-  const unread=state.events.filter(e=>!seen.includes(e.id)).length;
-  const openNotifications=()=>{setOverlay('notifications');const next=[...new Set([...seen,...state.events.map(e=>e.id)])];setSeen(next);localStorage.setItem('fluo.seen',JSON.stringify(next));};
+  const notificationKey=(id:string)=>`${state.session_id}:${state.current.site_id}:${id}`;
+  const unread=state.events.filter(e=>!seen.includes(notificationKey(e.id))).length;
+  const openNotifications=()=>setOverlay('notifications');
+  const markNotificationsRead=()=>{const next=[...new Set([...seen,...state.events.map(e=>notificationKey(e.id))])];setSeen(next);localStorage.setItem('fluo.seen',JSON.stringify(next));};
   const openPreferences=()=>{setSoundDraft(preferences.warning_sound);setOverlay('preferences');};
   const routes=[{page:'overview',label:'Overview',icon:'IconOverview'},{page:'scenarios',label:'Scenario Review',icon:'IconLab'},{page:'events',label:'Event Center',icon:'IconEvents'}] as const;
   return <div className={`app ${compact?'is-compact':''}`}>
@@ -154,11 +164,11 @@ export default function App() {
       <button className="sidebar-toggle" onClick={toggleSidebar} aria-label={compact?'Expand sidebar':'Collapse sidebar'} title={compact?'Expand sidebar':'Collapse sidebar'}><Icon name="IconSidebarToggle" className={compact?'expand-icon':''}/></button>
       <div className="sidebar-utilities"><button className="nav-row" onClick={()=>setOverlay('help')} aria-label="Help center" title={compact?'Help center':undefined}><Icon name="IconHelp"/>{!compact&&<span>Help center</span>}</button><button className="nav-row" onClick={openPreferences} aria-label="Preferences" title={compact?'Preferences':undefined}><Icon name="IconPreferences"/>{!compact&&<span>Preferences</span>}</button></div>
     </aside>
-    <header className="header"><div className="header-context"><strong>Pabrik Bandung</strong><span>Unit Sizing A</span></div><div className="header-actions"><button className="notification-button" aria-label={`Notifications${unread?`, ${unread} unread`:''}`} title="Notifications" onClick={openNotifications}><Icon name="IconBell"/>{unread>0&&<span className="notification-badge">{unread>9?'9+':unread}</span>}</button><button className="avatar" onClick={()=>setOverlay('profile')} aria-label="Open workspace profile">AT</button><button className="workspace-profile" onClick={()=>setOverlay('profile')}><strong>PT Arunika Tekstil</strong><span>Pabrik Bandung</span></button></div></header>
+    <header className="header"><div className="header-context"><strong>Pabrik Bandung</strong><span>Unit Sizing A</span></div><div className="header-actions"><button className="notification-button" aria-label={`Notifications${unread?`, ${unread} unread`:''}`} title="Notifications" onClick={openNotifications}><Icon name="IconBell"/>{unread>0&&<span className="notification-badge" data-testid="notification-count">{unread}</span>}</button><button className="avatar" onClick={()=>setOverlay('profile')} aria-label="Open workspace profile">AT</button><button className="workspace-profile" onClick={()=>setOverlay('profile')}><strong>PT Arunika Tekstil</strong><span>Pabrik Bandung</span></button></div></header>
     <main id="main-content" ref={main} className={`main-content page-${route.page}`} tabIndex={-1}>
       {error&&<div role="alert" className="error-banner"><span>{error}</span><button onClick={()=>setError(null)} aria-label="Dismiss error">×</button></div>}
       {route.page==='overview'&&<Overview state={state} openEvent={openEvent}/>}
-      {route.page==='scenarios'&&<ScenarioReview state={state} scenarios={scenarios} busy={busy} command={data=>void command(data)}/>}
+      {route.page==='scenarios'&&<ScenarioReview state={state} scenarios={scenarios} busy={busy} command={command}/>}
       {route.page==='events'&&<EventCenter key={filter} state={state} filter={filter} openFilter={()=>{setFilterDraft(filter);setOverlay('filter');}} openEvent={openEvent}/>}
       {route.page==='details'&&(detail?<EventDetails key={detail.event.id} detail={detail} saving={savingReview} onCheck={(step,checked)=>void saveReview(step,checked)} onNote={value=>{note.current=value;}} onSaveDraft={()=>void saveReview()} onSubmit={()=>void saveReview(undefined,undefined,true)} onSummary={()=>setOverlay('summary')} onBack={()=>navigate('events')}/>:<div className="loading-state" role="status">{error?'Event unavailable. Return to Event Center to choose a recorded interval.':'Loading event evidence…'}{error&&<button className="secondary" onClick={()=>navigate('events')}>Event Center</button>}</div>)}
     </main>
@@ -167,7 +177,7 @@ export default function App() {
 
     {overlay==='filter'&&<Dialog kind="filter" title="Filter events" onClose={closeOverlay}><h2>Filter events</h2><p className="dialog-subtitle">Choose a category for the event history.</p><fieldset className="filter-options"><legend>Event category</legend>{[['all','All events','Warning and sensor-status changes'],['return','Return deficit','Events requiring verification'],['quality','Data quality','Unavailable or invalid readings']].map(([value,label,description])=><label key={value} className={filterDraft===value?'selected':''}><input type="radio" name="event-category" value={value} checked={filterDraft===value} onChange={()=>setFilterDraft(value)}/><span><strong>{label}</strong><small>{description}</small></span></label>)}</fieldset><div className="filter-context"><div><span>Time window</span><strong>History through {timeLabel(state.current.timestamp)} WIB</strong></div><div><span>Equipment</span><strong>Sizing unit A / {state.current.site_id}</strong></div></div><div className="filter-actions"><button className="secondary" onClick={closeOverlay}>Cancel</button><button className="secondary reset-filter" disabled={filterDraft==='all'} onClick={()=>setFilterDraft('all')}>Reset</button><button className="primary" onClick={()=>{setFilter(filterDraft);localStorage.setItem('fluo.filter',filterDraft);setOverlay(null);}}>Apply filters</button></div></Dialog>}
 
-    {overlay==='notifications'&&<Dialog kind="notifications" title="Notifications" onClose={closeOverlay}><h2>Notifications</h2><p className="dialog-subtitle">Warning and system activity</p><div className="notification-items">{state.events.slice(0,3).map(event=><button className={`notice-item ${event.category==='return'?'notice-warning':''}`} key={event.id} onClick={()=>openEvent(event.id)}><span className="notice-dot"/><strong>{event.title}</strong><small>{event.category==='return'?'Verify the return-flow meter and operating state':'Review data availability and process context'}</small><time>{timeLabel(event.timestamp)}</time></button>)}{!state.events.length&&<p className="empty-state">No recorded activity yet.</p>}</div><button className="primary notification-history" onClick={()=>{setOverlay(null);navigate('events');}}>Open event history</button></Dialog>}
+    {overlay==='notifications'&&<Dialog kind="notifications" title="Notifications" onClose={closeOverlay}><h2>Notifications</h2><button className="mark-notifications-read text-button" disabled={unread===0} onClick={markNotificationsRead}>Mark all as read</button><p className="dialog-subtitle">Warning and system activity</p><div className="notification-items">{state.events.slice(0,3).map(event=><button className={`notice-item ${event.category==='return'?'notice-warning':''}`} key={event.id} onClick={()=>openEvent(event.id)}><span className="notice-dot"/><strong>{event.title}</strong><small>{event.category==='return'?'Verify the return-flow meter and operating state':'Review data availability and process context'}</small><time>{timeLabel(event.timestamp)}</time></button>)}{!state.events.length&&<p className="empty-state">No recorded activity yet.</p>}</div><button className="primary notification-history" onClick={()=>{setOverlay(null);navigate('events');}}>Open event history</button></Dialog>}
 
     {overlay==='help'&&<Dialog kind="help" title="Help center" onClose={closeOverlay}><h2>Help center</h2><p className="dialog-subtitle">How to use Fluo’s monitoring and review tools</p><div className="help-content"><section><h3>Overview</h3><p>Review steam feed, return flow, process state and warning indicators.</p></section><section><h3>Scenario Review</h3><p>Examine recorded process conditions and warning responses. At 1×, one minute of recorded telemetry advances each second.</p></section><section><h3>Event Center</h3><p>Open past warnings, inspect sensor evidence, and record a local operator review.</p></section><section><h3>Safety and provenance</h3><p>Simulated research telemetry; fictional facility. Physical verification and condensate recovery require authorized site personnel. Scores are not cause probabilities.</p></section></div></Dialog>}
 
@@ -175,8 +185,8 @@ export default function App() {
 
     {overlay==='profile'&&<Dialog kind="profile" title="Workspace profile" onClose={closeOverlay}><h2>PT Arunika Tekstil</h2><p className="dialog-subtitle">Pabrik Bandung / Unit Sizing A</p><div className="profile-content"><h3>Utility operations</h3><p>Representative facility context. Local operator identity is unverified; this installation has no authentication.</p></div><button className="secondary profile-preferences" onClick={openPreferences}>Preferences</button></Dialog>}
 
-    {overlay==='summary'&&detail&&<Dialog kind="summary" title={`Inspection summary ${detail.event.id}`} onClose={closeOverlay} hideClose><h2>Inspection summary — {detail.event.id}</h2><p className="dialog-subtitle">PT Arunika Tekstil / Pabrik Bandung / Unit Sizing A</p><button className="close-summary secondary" onClick={closeOverlay}>Close</button><div className="summary-status">{detail.event.title} / {detail.event.category==='return'?'Cause not confirmed':'Data / mode check'}</div><div className="summary-grid"><section><h3>Observation</h3><p>{detail.event.category==='return'?'Steam and return meters require independent verification.':'Check data availability and process context before interpreting measurements.'}</p><h4>Recommended check</h4><p>Confirm timestamps and mode; compare meter calibration; inspect return routing.</p></section><section><h3>Event evidence</h3><p>Operating mode: {detail.frame.operating_mode}</p><p>{detail.frame.quality_action === 'SCORE_ALLOWED'?'Return meter: check bias':detail.frame.quality_action}</p><p>Persistence: {detail.frame.inference.persistence_hits} of 10 min</p></section></div><div className="summary-actions"><button className="primary" disabled={downloadBusy} onClick={()=>void downloadReport()}>{downloadBusy?'Generating…':'Download PDF'}</button><button className="secondary" onClick={()=>setOverlay('preview')}>Print</button></div><p className="summary-provenance">Simulated research telemetry · Review: {detail.review.status} · Local operator (unverified)</p></Dialog>}
+    {overlay==='summary'&&detail&&<Dialog kind="summary" title={`Inspection summary ${detail.event.id}`} onClose={closeOverlay} hideClose><h2>Inspection summary — {detail.event.id}</h2><p className="dialog-subtitle">PT Arunika Tekstil / Pabrik Bandung / Unit Sizing A</p><button className="close-summary secondary" onClick={closeOverlay}>Close</button><div className="summary-status">{detail.event.title} / {detail.event.category==='return'?'Cause not confirmed':'Data / mode check'}</div><div className="summary-grid"><section><h3>Observation</h3><p>{detail.event.category==='return'?'Steam and return meters require independent verification.':'Check data availability and process context before interpreting measurements.'}</p><h4>Recommended check</h4><p>Confirm timestamps and mode; compare meter calibration; inspect return routing.</p></section><section><h3>Event evidence</h3><p>Operating mode: {modeLabel(detail.frame.operating_mode)}</p><p>{detail.frame.quality_action === 'SCORE_ALLOWED'?'Return meter: check bias':detail.frame.quality_action}</p><p>Persistence: {detail.frame.inference.persistence_hits} of 10 min</p></section></div><div className="summary-actions"><button className="primary" disabled={downloadBusy} onClick={()=>void downloadReport()}>{downloadBusy?'Generating…':'Download PDF'}</button><button className="secondary" onClick={()=>setOverlay('preview')}>Print</button></div><p className="summary-provenance">Simulated research telemetry · Review: {detail.review.status} · Local operator (unverified)</p></Dialog>}
 
-    {overlay==='preview'&&detail&&<Dialog kind="preview" title={`A4 inspection preview ${detail.event.id}`} onClose={closeOverlay} hideClose><div className="preview-toolbar"><strong>A4 inspection / {detail.event.id}</strong><button className="secondary" onClick={()=>setOverlay('summary')}>Back to summary</button><button className="primary" onClick={()=>{const frame=document.getElementById('report-preview') as HTMLIFrameElement;frame.contentWindow?.focus();frame.contentWindow?.print();}}>Print A4</button><button className="secondary" onClick={closeOverlay}>Close</button></div><iframe id="report-preview" title={`Printable inspection ${detail.event.id}`} src={api.reportUrl(state.session_id,detail.event.id,'print')} onLoad={()=>{const frame=document.getElementById('report-preview') as HTMLIFrameElement;frame.contentWindow?.focus();frame.contentWindow?.print();}} /></Dialog>}
+    {overlay==='preview'&&detail&&<Dialog kind="preview" title={`A4 inspection preview ${detail.event.id}`} onClose={closeOverlay} hideClose><div className="preview-toolbar"><strong>A4 inspection / {detail.event.id}</strong><button className="secondary" onClick={()=>setOverlay('summary')}>Back to summary</button><button className="primary" onClick={()=>{const frame=document.getElementById('report-preview') as HTMLIFrameElement;frame.contentWindow?.focus();frame.contentWindow?.print();}}>Print A4</button><button className="secondary" onClick={closeOverlay}>Close</button></div><iframe id="report-preview" title={`Printable inspection ${detail.event.id}`} src={`${api.reportUrl(state.session_id,detail.event.id,'print')}?embedded=true`} onLoad={()=>{const frame=document.getElementById('report-preview') as HTMLIFrameElement;frame.contentWindow?.focus();frame.contentWindow?.print();}} /></Dialog>}
   </div>;
 }

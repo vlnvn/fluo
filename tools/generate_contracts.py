@@ -45,8 +45,8 @@ def main():
         lines.extend(['}', ''])
     out = ROOT / 'web/src'
     out.mkdir(parents=True, exist_ok=True)
-    (out / 'contracts.ts').write_text('\n'.join(lines), encoding='utf-8')
-    (ROOT / 'docs/implementation/openapi.json').write_text(json.dumps(create_app().openapi(), indent=2), encoding='utf-8')
+    (out / 'contracts.ts').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
+    (ROOT / 'docs/implementation/openapi.json').write_text(json.dumps(create_app().openapi(), indent=2), encoding='utf-8', newline='\n')
     print('Generated TypeScript contracts and OpenAPI from actual server schemas')
 
 

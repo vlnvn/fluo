@@ -1,5 +1,7 @@
 # Fluo implementation and QA report
 
+Latest follow-up: [UI corrections and regression QA](docs/implementation/qa/UI_CORRECTIONS_20261025.md). The initial delivery evidence below is retained as historical context.
+
 25 October 2026 (Asia/Jakarta). Implemented code revision: **f32b0a8dc1c32fe0c0504ca04d59dc8a8f4f133b**; backend revision cb04b96. Branch `feat/fluo-fullstack-audited-replay`, based on verified GitHub main `f2c05af115f374848ee3b8592a32af8648afea53`. This report/evidence is committed separately; `git log -1` identifies the final documentation revision. No push, deployment or private-source upload was performed.
 
 Fluo now runs end-to-end locally: actual frozen HGB inference, recorded telemetry, nine scenarios, replay, four operator pages, event evidence, persisted independent checklists/notes, explicit review submission, contextual overlays/preferences, real PDF and A4 print. Original research code, model, reports and ZIP were preserved.

@@ -15,3 +15,18 @@
 .sidebar-utilities{border-top:0;padding-top:15px}.sidebar-utilities:before{content:'';position:absolute;top:0;left:5px;right:6px;border-top:1px solid var(--line)}
 .scenario-option{height:62px;min-height:62px;gap:4px}.filter-options legend{line-height:18px}
 @media(min-width:1201px){.page-scenarios{padding-top:26px;padding-left:28px;padding-right:35px}.is-compact .page-scenarios{padding-left:30px;padding-right:42px}.is-compact .scenario-grid{grid-template-columns:290px minmax(0,1fr)}.is-compact .details-grid{grid-template-columns:minmax(0,819fr) minmax(0,457fr)}.is-compact .event-kpis{grid-template-columns:minmax(0,419fr) minmax(0,419fr) minmax(0,422fr)}}
+
+/* Corrected states and data-backed summary visuals. */
+.sidebar .nav-row:not(.active) .icon{filter:brightness(0) saturate(100%) invert(38%) sepia(17%) saturate(953%) hue-rotate(170deg) brightness(94%) contrast(85%)}
+.notification-badge{min-width:18px;max-width:none;width:auto;padding:0 4px;font-variant-numeric:tabular-nums}
+.mark-notifications-read{position:absolute;top:63px;right:19px;font-size:10px}
+.event-histogram{position:absolute;right:20px;bottom:25px;width:44%;max-width:169px;height:36px;overflow:visible}
+.event-histogram .bin-empty{fill:#e7f0fa}.event-histogram .bin-populated{fill:#86bceb}.histogram-quality .bin-populated{fill:#d6a060}.histogram-quality .bin-empty{fill:#f5ecdf}
+.window-progress{position:absolute;right:19px;bottom:20px;width:48px;height:48px}.window-progress circle{fill:none;stroke-width:4}.progress-track{stroke:#e1edf9}.progress-value{stroke:#86bceb;stroke-linecap:round}.window-progress text{fill:var(--muted);font-size:10px;font-weight:500}
+.event-range>strong{right:78px;font-size:clamp(16px,1.5vw,22px);font-variant-numeric:tabular-nums}
+.reading-trend{position:absolute;right:13px;bottom:17px;width:58px;height:29px;color:#78a9dc}.kpi-value{right:12px}.kpi-unit{max-width:calc(100% - 85px)}
+.review-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.review-buttons button{flex:0 0 auto}
+.playback-controls{width:300px;gap:7px}.playback-controls>button{flex:0 0 34px}.playback-controls .forward-icon{transform:rotate(180deg)}.playback-controls>button:hover>.forward-icon{transform:rotate(180deg)}
+@media(max-width:1200px){.playback-controls{width:267px;gap:4px;padding:8px}.playback-card .card-heading{max-width:calc(100% - 290px)}.playback-card .card-heading h2{font-size:11px}.playback-card .card-heading>p{font-size:9px}.event-range>strong{font-size:16px;right:65px}.window-progress{right:12px;width:40px;height:40px}.reading-trend{width:42px;right:9px}}
+
+.sidebar-toggle:hover:not(:disabled)>.expand-icon{transform:rotate(180deg)}

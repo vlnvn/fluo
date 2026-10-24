@@ -103,7 +103,9 @@ test('four events have independent persisted checklists, real PDFs, A4 preview/p
     if(event===events[0])await capture(page,'inspection-summary');
     const download=page.waitForEvent('download');await page.getByRole('button',{name:'Download PDF'}).click();const file=await download;expect(file.suggestedFilename()).toContain(event.id);await file.saveAs(resolve(out,`${event.id}.pdf`));
     await page.getByRole('button',{name:'Print',exact:true}).click();await expect(page.getByRole('dialog',{name:`A4 inspection preview ${event.id}`})).toBeVisible();
-    const report=page.frameLocator('#report-preview');await expect(report.getByRole('heading',{name:'Inspection summary',exact:true})).toBeVisible();
+    const report=page.frameLocator('#report-preview');
+    await expect(page.getByRole('dialog').getByRole('button',{name:'Close',exact:true})).toHaveCount(1);
+    await expect(report.getByRole('button')).toHaveCount(0);await expect(report.getByRole('heading',{name:'Inspection summary',exact:true})).toBeVisible();
     await expect.poll(()=>report.locator('html').getAttribute('data-print-invoked')).toBe('true');
     if(event===events[0]){
       await capture(page,'a4-preview');
@@ -147,6 +149,8 @@ test('warning audio requires opt-in and a newly crossed detector event; no mount
   expect(await calls()).toBe(0);
   await page.getByRole('link',{name:'Scenario Review',exact:true}).click();
   await page.getByLabel('Replay position',{exact:true}).fill(String(before));
+  await page.getByLabel('Replay position',{exact:true}).dispatchEvent('pointerup');
+  await expect(page.getByRole('button',{name:'Play replay',exact:true})).toBeEnabled();
   await expect(page.getByLabel('Replay position',{exact:true})).toHaveValue(String(before));
   expect(await calls()).toBe(0);
   await page.getByRole('button',{name:'Play replay',exact:true}).click();

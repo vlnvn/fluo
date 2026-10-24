@@ -1,21 +1,23 @@
 {
   "date_local": "2026-10-25",
-  "code_revision": "f32b0a8dc1c32fe0c0504ca04d59dc8a8f4f133b",
   "api_tests": {
     "passed": 14,
-    "exit_code": 0
+    "exit_code": 0,
+    "seconds": 8.6
   },
   "chart_unit_tests": {
     "passed": 2,
     "exit_code": 0
   },
   "e2e_dev": {
-    "passed": 6,
-    "exit_code": 0
+    "passed": 8,
+    "exit_code": 0,
+    "scope": "earlier correction pass; final full suite targets the latest built server"
   },
   "e2e_built": {
-    "passed": 6,
-    "exit_code": 0
+    "passed": 8,
+    "exit_code": 0,
+    "seconds": 32.3
   },
   "lint_exit": 0,
   "typecheck_exit": 0,
@@ -26,5 +28,7 @@
   "visual_comparisons": 20,
   "pixel_identity_claim": false,
   "field_validation": false,
-  "notes": "Commands and outputs described in IMPLEMENTATION_REPORT.md; original source text, screenshots and private references remain local."
+  "notes": "Final implementation revision: git log -1. Latest build suite includes cross-tab read-state sync, production label in details/report, all correction screenshots, original flows and audio trigger behavior.",
+  "phase": "UI corrections requested 25 October 2026",
+  "base_revision": "33682e21cbbd55e6d5169c8847da9287eb40558b"
 }

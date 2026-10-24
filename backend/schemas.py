@@ -42,7 +42,7 @@ class CreateSession(StrictModel):
 
 
 class ReplayCommand(StrictModel):
-    action: Literal['play', 'pause', 'reset', 'rewind', 'seek', 'speed', 'scenario']
+    action: Literal['play', 'pause', 'reset', 'rewind', 'forward', 'seek', 'speed', 'scenario']
     cursor: int | None = Field(default=None, ge=0)
     speed: Literal[1, 2] | None = None
     scenario_id: str | None = None

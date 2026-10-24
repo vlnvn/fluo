@@ -1,0 +1,66 @@
+[
+  {
+    "file": "docs/implementation/qa/corrections/events-compact.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "6ec792c1a27635639551f71173f523d9794fa214f0008adaecacc661be5bd6ce"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/events-full.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "e5aa26d9cdc52df5505be05c5954dca385892989953040ad86d6a0ee5a5bac94"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/overview-full.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "60e34ef31df56204ea604454a20fe011682fdc2fcb3561eb1ddd78960914c802"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/print-single-toolbar.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "8a8c17601de0176c3bcf6b82a3162f6000dc1a75710c092460f33821f7ab36e2"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/review-actions.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "794e5ea7b5461bcc4764cc6c35c8fb57c119f0bfb55d4e62d140721143abd735"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/scenario-controls-compact.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "2b33a7c4855c731986dca01e6a757e53b25806ad59d196c778cd9168585f585d"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/scenario-controls-full.png",
+    "size": [
+      1440,
+      900
+    ],
+    "sha256": "b5db3e57c193dbf858c5d3b2bbabf99a0094ba10f1365d130624d09e90570092"
+  },
+  {
+    "file": "docs/implementation/qa/corrections/scenario-controls-narrow.png",
+    "size": [
+      1180,
+      900
+    ],
+    "sha256": "0ee025de9b5704c020e4ff6bf6628b8ceca8bcf31bda7bfc1cfb5c07ca880c06"
+  }
+]

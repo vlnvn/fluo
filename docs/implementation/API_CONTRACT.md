@@ -8,14 +8,14 @@ The authoritative generated OpenAPI is `openapi.json`; TypeScript interfaces in 
 | Nine supported recorded scenario windows | GET `/scenarios` |
 | Create a local replay session | POST `/sessions` `{ "scenario_id": "return-diversion" }` |
 | Current snapshot, recent chart frames, historical events | GET `/sessions/{id}` |
-| Replay controls | POST `/sessions/{id}/replay` `{ "action": "play" }`; pause, reset, rewind; seek with cursor; speed with 1/2; scenario with scenario_id |
+| Replay controls | POST `/sessions/{id}/replay` `{ "action": "play" }`; pause, reset, rewind/forward (10 samples, clamped at bounds); seek with cursor; speed with 1/2; scenario with scenario_id |
 | Search/filter/sort past events | GET `/sessions/{id}/events?category=all&search=&order=desc` |
 | Event-specific context, evidence, review | GET `/sessions/{id}/events/{event}` |
 | Persist draft | PUT `/sessions/{id}/events/{event}/review` `{ "checked_steps": [], "note": "", "revision": 0 }` |
 | Explicitly submit local review | POST `/sessions/{id}/events/{event}/review/submit` same revisioned body |
 | Preferences | GET/PUT `/sessions/{id}/preferences` `{ "warning_sound": false }` |
 | Genuine A4 PDF attachment | GET `/sessions/{id}/events/{event}/report.pdf` |
-| Escaped, event-specific printable HTML | GET `/sessions/{id}/events/{event}/print` |
+| Escaped, event-specific printable HTML; ?embedded=true hides its toolbar inside the app | GET `/sessions/{id}/events/{event}/print` |
 | Sensor-only frozen inference | POST `/inference` `{ "rows": [13-field telemetry], "run_mode": "SYNTHETIC_REPLAY" }` |
 
 Snapshot `schema_version=1.0` includes session/scenario, cursor, speed, PLAYING/PAUSED/ENDED, current measurements, original triage/gate output, causal persistence count, up to 25 past chart frames, past events and lineage. Timestamps preserve source offsets; UI times use Asia/Jakarta. Steam/return are kg/h, pressure bar(g), temperatures °C. Missing readings/scores serialize as null; no interpolation over missing measurements.

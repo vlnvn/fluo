@@ -605,6 +605,16 @@
               "type": "string",
               "title": "Event Id"
             }
+          },
+          {
+            "name": "embedded",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Embedded"
+            }
           }
         ],
         "responses": {
@@ -1074,6 +1084,7 @@
               "pause",
               "reset",
               "rewind",
+              "forward",
               "seek",
               "speed",
               "scenario"

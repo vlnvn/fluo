@@ -120,8 +120,8 @@ def create_app(service=None):
         return Response(pdf_report(detail), media_type='application/pdf', headers={'Content-Disposition': f'attachment; filename="Fluo-{detail["event"]["id"]}-inspection.pdf"'})
 
     @api.get('/api/v1/sessions/{session_id}/events/{event_id}/print', response_class=HTMLResponse)
-    def print_report(session_id: str, event_id: str, request: Request):
-        return HTMLResponse(html_report(current(request).detail(session_id, event_id), session_id))
+    def print_report(session_id: str, event_id: str, request: Request, embedded: bool = False):
+        return HTMLResponse(html_report(current(request).detail(session_id, event_id), session_id, embedded=embedded))
 
     dist = ROOT / 'web/dist'
     if dist.exists():

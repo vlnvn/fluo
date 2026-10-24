@@ -3,64 +3,64 @@
     "state": "overview-full",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 4.2886,
-    "pixel_fraction_with_channel_error_gt_20": 0.037451,
+    "mean_absolute_RGB_error_0_255": 4.3279,
+    "pixel_fraction_with_channel_error_gt_20": 0.038087,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\overview-full.png"
   },
   {
     "state": "overview-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 4.2844,
-    "pixel_fraction_with_channel_error_gt_20": 0.036978,
+    "mean_absolute_RGB_error_0_255": 4.3237,
+    "pixel_fraction_with_channel_error_gt_20": 0.037614,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\overview-compact.png"
   },
   {
     "state": "scenario-full",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.7179,
-    "pixel_fraction_with_channel_error_gt_20": 0.031762,
+    "mean_absolute_RGB_error_0_255": 3.9382,
+    "pixel_fraction_with_channel_error_gt_20": 0.033892,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\scenario-full.png"
   },
   {
     "state": "scenario-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.8567,
-    "pixel_fraction_with_channel_error_gt_20": 0.033431,
+    "mean_absolute_RGB_error_0_255": 4.073,
+    "pixel_fraction_with_channel_error_gt_20": 0.035586,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\scenario-compact.png"
   },
   {
     "state": "events-full",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.5466,
-    "pixel_fraction_with_channel_error_gt_20": 0.03451,
+    "mean_absolute_RGB_error_0_255": 3.7858,
+    "pixel_fraction_with_channel_error_gt_20": 0.037219,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\events-full.png"
   },
   {
     "state": "events-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 3.5009,
-    "pixel_fraction_with_channel_error_gt_20": 0.035097,
+    "mean_absolute_RGB_error_0_255": 3.7392,
+    "pixel_fraction_with_channel_error_gt_20": 0.037519,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\events-compact.png"
   },
   {
     "state": "details-full",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 4.7131,
-    "pixel_fraction_with_channel_error_gt_20": 0.045221,
+    "mean_absolute_RGB_error_0_255": 4.7071,
+    "pixel_fraction_with_channel_error_gt_20": 0.045051,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\details-full.png"
   },
   {
     "state": "details-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "whole frame; dynamic measurements/content intentionally differ",
-    "mean_absolute_RGB_error_0_255": 4.6876,
-    "pixel_fraction_with_channel_error_gt_20": 0.045205,
+    "mean_absolute_RGB_error_0_255": 4.6815,
+    "pixel_fraction_with_channel_error_gt_20": 0.045035,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\details-compact.png"
   },
   {
@@ -91,7 +91,7 @@
     "state": "filter-all-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "675\u00d7624 modal crop; live context text differs",
-    "mean_absolute_RGB_error_0_255": 10.7084,
+    "mean_absolute_RGB_error_0_255": 10.7067,
     "pixel_fraction_with_channel_error_gt_20": 0.14632,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\filter-all-compact.png"
   },
@@ -99,7 +99,7 @@
     "state": "filter-return-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "675\u00d7624 modal crop; live context text differs",
-    "mean_absolute_RGB_error_0_255": 10.7407,
+    "mean_absolute_RGB_error_0_255": 10.739,
     "pixel_fraction_with_channel_error_gt_20": 0.143079,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\filter-return-compact.png"
   },
@@ -107,7 +107,7 @@
     "state": "filter-quality-compact",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "675\u00d7624 modal crop; live context text differs",
-    "mean_absolute_RGB_error_0_255": 10.7682,
+    "mean_absolute_RGB_error_0_255": 10.7665,
     "pixel_fraction_with_channel_error_gt_20": 0.147429,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\filter-quality-compact.png"
   },
@@ -115,8 +115,8 @@
     "state": "notifications",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "contextual panel crop; underlying active page excluded",
-    "mean_absolute_RGB_error_0_255": 7.1996,
-    "pixel_fraction_with_channel_error_gt_20": 0.059338,
+    "mean_absolute_RGB_error_0_255": 7.3111,
+    "pixel_fraction_with_channel_error_gt_20": 0.060069,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\notifications.png"
   },
   {
@@ -147,16 +147,16 @@
     "state": "inspection-summary",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "contextual panel crop; underlying active page excluded",
-    "mean_absolute_RGB_error_0_255": 9.0175,
-    "pixel_fraction_with_channel_error_gt_20": 0.077218,
+    "mean_absolute_RGB_error_0_255": 9.0186,
+    "pixel_fraction_with_channel_error_gt_20": 0.077224,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\inspection-summary.png"
   },
   {
     "state": "a4-document",
     "status": "COMPARED_NOT_PIXEL_IDENTICAL",
     "region": "794\u00d71123 A4; 1 px Chromium outward screenshot rounding cropped",
-    "mean_absolute_RGB_error_0_255": 5.8582,
-    "pixel_fraction_with_channel_error_gt_20": 0.057623,
+    "mean_absolute_RGB_error_0_255": 5.8514,
+    "pixel_fraction_with_channel_error_gt_20": 0.0576,
     "comparison_file": "docs\\implementation\\qa\\visual-diffs\\a4-document.png"
   }
 ]

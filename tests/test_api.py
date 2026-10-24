@@ -93,6 +93,12 @@ def test_pause_play_reset_seek_and_speed(client):
     assert first['current'] == second['current'] and first['frames'] == second['frames']
     assert command(client, state, action='speed', speed=2)['speed'] == 2
     assert command(client, state, action='rewind')['cursor'] == 60
+    assert command(client, state, action='forward')['cursor'] == 70
+    last = state['scenario']['total_frames'] - 1
+    command(client, state, action='seek', cursor=last - 2)
+    assert command(client, state, action='forward')['cursor'] == last
+    command(client, state, action='reset')
+    assert command(client, state, action='rewind')['cursor'] == 0
 
 
 @pytest.mark.parametrize('scenario_id', ['normal','return-meter-bias','transport-delay','connection-outage','meter-dropout','mode-change'])

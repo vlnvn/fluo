@@ -30,11 +30,11 @@ Then open http://127.0.0.1:8000. Build **before** starting the API so the static
 ## Reproducible demonstration
 
 1. First open loads recorded Return diversion, paused after an actual warning. Compare Overview readings and signature score with `/api/v1/sessions/{id}`.
-2. Scenario Review → Reset → Play. One archived minute advances per wall-clock second at 1×; speed, seek, rewind and pause share one backend cursor. Select normal, meter-bias, outage or mode windows to examine withheld/ambiguous evidence.
+2. Scenario Review → Reset → Play. One archived minute advances per wall-clock second at 1×; speed, seek, rewind/forward (10 samples) and pause share one backend cursor. Select normal, meter-bias, outage or mode windows to examine withheld/ambiguous evidence.
 3. Event Center → Filters → All / Return / Data quality → Apply. Search, sort and pagination operate on recorded events through the current cursor.
 4. Open an event; change a verification checkbox, enter a note, Save draft and reload. Record operator review explicitly. This never clears the model warning or authorizes recovery.
 5. View inspection summary → Download PDF / Print. Each selected event has its own data. A4 includes measurements, quality, limitations, model/dataset hashes and operator review; review notes/audit use an appendix.
-6. Collapse/expand sidebar or use contextual Notifications, Help, Profile, Preferences. State persists. Warning sound is off by default and requires opt-in plus a newly crossed detector event; browser autoplay rules still apply.
+6. Collapse/expand sidebar or use contextual Notifications, Help, Profile, Preferences. State persists. Notification badges show exact unread counts for the active session/configuration, retain their count across page navigation and only clear on explicit Mark all as read. Warning sound is off by default and requires opt-in plus a newly crossed detector event; browser autoplay rules still apply.
 
 The facility PT Arunika Tekstil / Pabrik Bandung / Unit Sizing A is fictional. `simulated research telemetry` is disclosed in status/provenance and reports. No connected ESP32, physical diagnosis, industrial savings, field validation or safe-to-recover determination is asserted.
 

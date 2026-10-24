@@ -221,6 +221,8 @@ class ReplayService:
                 session['playing'] = False
             elif action == 'rewind':
                 cursor = max(0, cursor - 10)
+            elif action == 'forward':
+                cursor = min(self.scenario(session['scenario_id'])['total_frames'] - 1, cursor + 10)
             elif action == 'play':
                 if cursor >= self.scenario(session['scenario_id'])['total_frames'] - 1:
                     raise DomainError('REPLAY_ENDED', 'Reset or rewind before playing again', 409)

@@ -29,3 +29,5 @@ export const api = {
 
 export const timeLabel = (timestamp: string) => new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(timestamp));
 export const reading = (value: number | null, digits = 1) => value === null ? '—' : value.toFixed(digits);
+
+export const modeLabel = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
