@@ -12,7 +12,13 @@ class Store:
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         self.lock = threading.RLock()
         self.db = sqlite3.connect(path, check_same_thread=False)
+        schema_version = self.db.execute('PRAGMA user_version').fetchone()[0]
+        if schema_version not in (0, 1):
+            self.db.close()
+            raise RuntimeError('DB_SCHEMA_UNSUPPORTED: refusing a silent schema downgrade')
         self.db.execute('PRAGMA journal_mode=WAL')
+        self.db.execute('PRAGMA busy_timeout=5000')
+        self.db.execute('PRAGMA user_version=1')
         self.db.execute('CREATE TABLE IF NOT EXISTS sessions (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
         self.db.execute('CREATE TABLE IF NOT EXISTS reviews (owner TEXT, event_id TEXT, payload TEXT NOT NULL, PRIMARY KEY(owner,event_id))')
         self.db.execute('CREATE TABLE IF NOT EXISTS preferences (owner TEXT PRIMARY KEY, payload TEXT NOT NULL)')
@@ -52,3 +58,11 @@ class Store:
         with self.lock:
             self.db.execute('INSERT OR REPLACE INTO preferences VALUES (?,?)', (owner, json.dumps(data)))
             self.db.commit()
+
+    def close(self):
+        with self.lock:
+            self.db.close()
+
+    def backup(self, destination):
+        with self.lock, sqlite3.connect(destination) as target:
+            self.db.backup(target)

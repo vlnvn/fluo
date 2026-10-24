@@ -75,6 +75,7 @@ export interface Frame {
 }
 
 export interface Event {
+  quality_action?: string | null;
   id: string;
   site_id: string;
   timestamp: string;
@@ -90,6 +91,7 @@ export interface Event {
 }
 
 export interface SessionState {
+  is_preview?: boolean;
   schema_version: "1.0";
   session_id: string;
   scenario: Scenario;

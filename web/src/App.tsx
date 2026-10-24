@@ -9,9 +9,11 @@ type Route = 'overview'|'scenarios'|'events'|'details';
 const SESSION_KEY = 'fluo.session.v1';
 const COMPACT_KEY = 'fluo.compact.v1';
 
+function safeDecode(value: string) { try { return decodeURIComponent(value); } catch { return value; } }
+
 function parseRoute(): { page: Route; eventId: string | null } {
   const segments = window.location.hash.replace(/^#\/?/, '').split('/');
-  if (segments[0] === 'events' && segments[1]) return { page: 'details', eventId: decodeURIComponent(segments[1]) };
+  if (segments[0] === 'events' && segments[1]) return { page: 'details', eventId: safeDecode(segments[1]) };
   return { page: segments[0] === 'scenarios' ? 'scenarios' : segments[0] === 'events' ? 'events' : 'overview', eventId: null };
 }
 
@@ -22,6 +24,14 @@ function readSeen(): string[] {
 
 export default function App() {
   const [state, setState] = useState<SessionState | null>(null);
+  const [preview, setPreview] = useState<SessionState | null>(null);
+  const [scrubbing, setScrubbing] = useState(false);
+  const scrubActive = useRef(false);
+  const previewRequest = useRef<AbortController | null>(null);
+  const previewGeneration = useRef(0);
+  const naturalTick = useRef(false);
+  const reviewLock = useRef(false);
+  const [warningEvent, setWarningEvent] = useState<string | null>(null);
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
   const [route, setRoute] = useState(parseRoute);
   const [compact, setCompact] = useState(() => localStorage.getItem(COMPACT_KEY) === 'true');
@@ -80,9 +90,9 @@ export default function App() {
     if (!sessionId || !isPlaying) return;
     let cancelled = false, inflight = false;
     const tick = async () => {
-      if (inflight || lock.current) return;
+      if (inflight || lock.current || scrubActive.current) return;
       inflight = true; const stamp = generation.current;
-      try { const next = await api.state(sessionId); if (!cancelled && stamp === generation.current) { setState(next); setError(null); } }
+      try { const next = await api.state(sessionId); if (!cancelled && stamp === generation.current) { naturalTick.current=true;setState(next); setError(null); } }
       catch (e) { if (!cancelled) setError((e as Error).message); }
       finally { inflight = false; }
     };
@@ -94,10 +104,12 @@ export default function App() {
     if (!state) return;
     const previous = notificationHistory.current;
     const ids = new Set(state.events.map(e=>e.id));
-    if (previous && previous.session === state.session_id && previous.scenario === state.scenario.id && state.cursor > previous.cursor && state.playback !== 'PAUSED') {
+    if (naturalTick.current && previous && previous.session === state.session_id && previous.scenario === state.scenario.id && state.cursor > previous.cursor && state.playback !== 'PAUSED') {
       const freshWarning = state.events.some(e => e.category === 'return' && !previous.ids.has(e.id));
+      if (freshWarning) { const event = state.events.find(e => e.category === 'return' && !previous.ids.has(e.id))!; setWarningEvent(event.id);setToast(`New return-flow warning / ${event.id}. Verify the measurements before classifying the cause.`); }
       if (freshWarning && preferences.warning_sound) { const audio = new Audio('/assets/notification-chime.mp3'); audio.volume = .4; void audio.play().catch(()=>setToast('New warning received. Your browser blocked the audio cue.')); }
     }
+    naturalTick.current = false;
     notificationHistory.current = {session:state.session_id, scenario:state.scenario.id, cursor:state.cursor, ids};
   }, [state, preferences.warning_sound]);
 
@@ -115,22 +127,32 @@ export default function App() {
   const openEvent = (id: string) => { setOverlay(null); window.location.hash=`#/events/${encodeURIComponent(id)}`; };
   const toggleSidebar = () => { setCompact(value=>{localStorage.setItem(COMPACT_KEY,String(!value));return !value;}); };
 
+  const beginScrub = () => { if (!scrubActive.current) {scrubActive.current=true;generation.current++;naturalTick.current=false;setScrubbing(true);} };
+  const cancelScrub = useCallback(() => {scrubActive.current=false;previewGeneration.current++;previewRequest.current?.abort();setScrubbing(false);setPreview(null);}, []);
+  const previewCursor = async (cursor: number) => {
+    if (!state || !scrubActive.current) return;
+    previewRequest.current?.abort(); const controller=new AbortController();previewRequest.current=controller;const stamp=++previewGeneration.current;
+    try {const next=await api.preview(state.session_id,cursor,controller.signal);if(scrubActive.current&&stamp===previewGeneration.current)setPreview(next);}
+    catch(error){if(!controller.signal.aborted){setToast(`Cursor preview unavailable: ${(error as Error).message}`);}}
+  };
+
   const command = async (data: ReplayCommand) => {
     if (!state || lock.current) return;
-    lock.current=true;generation.current++;setBusy(true);
+    lock.current=true;generation.current++;naturalTick.current=false;scrubActive.current=false;previewGeneration.current++;previewRequest.current?.abort();setBusy(true);
     try { const next=await api.command(state.session_id,data);setState(next);setError(null);if(data.action==='scenario') {setDetail(null);if(route.page==='details')navigate('scenarios');} }
-    catch(e){setError((e as Error).message);}finally{lock.current=false;setBusy(false);}
+    catch(e){setError((e as Error).message);}finally{lock.current=false;setBusy(false);setPreview(null);setScrubbing(false);}
   };
 
   const saveReview = async (stepId?: string, checked?: boolean, submit=false) => {
-    if (!state || !detail || savingReview) return;
-    setSavingReview(true);
+    if (!state || !detail || reviewLock.current) return;
+    reviewLock.current=true;setSavingReview(true);
     try {
       const checkedSteps=detail.review.steps.filter(step=>step.step_id===stepId?checked:step.checked).map(step=>step.step_id);
       const updated=await api.review(state.session_id,detail.event.id,{checked_steps:checkedSteps,note:note.current,revision:detail.review.revision},submit);
       setDetail(value=>value ? updateReview(value,updated):value);
+      if(!submit)setToast('Inspection draft saved locally.');
       if(submit)setToast('Operator review recorded locally. Warning and recovery status are unchanged.');
-    }catch(e){setError((e as Error).message);}finally{setSavingReview(false);}
+    }catch(e){setError((e as Error).message);}finally{reviewLock.current=false;setSavingReview(false);}
   };
 
   const savePreferences=async()=>{
@@ -150,7 +172,8 @@ export default function App() {
 
   if (!state) return <div className="boot-screen"><img src="/assets/BrandOriginalRoundedVectorLogo.svg" alt="Fluo"/><h1>{error ? 'Local service unavailable' : 'Opening your monitoring workspace'}</h1><p>{error ?? 'Loading verified model and recorded telemetry…'}</p>{error&&<button className="primary" onClick={()=>window.location.reload()}>Retry connection</button>}</div>;
   const notificationKey=(id:string)=>`${state.session_id}:${state.current.site_id}:${id}`;
-  const unread=state.events.filter(e=>!seen.includes(notificationKey(e.id))).length;
+  const viewState=preview ?? state;
+  const unread=viewState.events.filter(e=>!seen.includes(notificationKey(e.id))).length;
   const openNotifications=()=>setOverlay('notifications');
   const markNotificationsRead=()=>{const next=[...new Set([...seen,...state.events.map(e=>notificationKey(e.id))])];setSeen(next);localStorage.setItem('fluo.seen',JSON.stringify(next));};
   const openPreferences=()=>{setSoundDraft(preferences.warning_sound);setOverlay('preferences');};
@@ -167,19 +190,19 @@ export default function App() {
     <header className="header"><div className="header-context"><strong>Pabrik Bandung</strong><span>Unit Sizing A</span></div><div className="header-actions"><button className="notification-button" aria-label={`Notifications${unread?`, ${unread} unread`:''}`} title="Notifications" onClick={openNotifications}><Icon name="IconBell"/>{unread>0&&<span className="notification-badge" data-testid="notification-count">{unread}</span>}</button><button className="avatar" onClick={()=>setOverlay('profile')} aria-label="Open workspace profile">AT</button><button className="workspace-profile" onClick={()=>setOverlay('profile')}><strong>PT Arunika Tekstil</strong><span>Pabrik Bandung</span></button></div></header>
     <main id="main-content" ref={main} className={`main-content page-${route.page}`} tabIndex={-1}>
       {error&&<div role="alert" className="error-banner"><span>{error}</span><button onClick={()=>setError(null)} aria-label="Dismiss error">×</button></div>}
-      {route.page==='overview'&&<Overview state={state} openEvent={openEvent}/>}
-      {route.page==='scenarios'&&<ScenarioReview state={state} scenarios={scenarios} busy={busy} command={command}/>}
-      {route.page==='events'&&<EventCenter key={filter} state={state} filter={filter} openFilter={()=>{setFilterDraft(filter);setOverlay('filter');}} openEvent={openEvent}/>}
+      {route.page==='overview'&&<Overview state={viewState} openEvent={openEvent}/>}
+      {route.page==='scenarios'&&<ScenarioReview state={viewState} scenarios={scenarios} busy={busy} scrubbing={scrubbing} onScrubStart={beginScrub} onScrubCancel={cancelScrub} onPreview={previewCursor} command={command}/>}
+      {route.page==='events'&&<EventCenter key={filter} state={viewState} filter={filter} openFilter={()=>{setFilterDraft(filter);setOverlay('filter');}} openEvent={openEvent}/>}
       {route.page==='details'&&(detail?<EventDetails key={detail.event.id} detail={detail} saving={savingReview} onCheck={(step,checked)=>void saveReview(step,checked)} onNote={value=>{note.current=value;}} onSaveDraft={()=>void saveReview()} onSubmit={()=>void saveReview(undefined,undefined,true)} onSummary={()=>setOverlay('summary')} onBack={()=>navigate('events')}/>:<div className="loading-state" role="status">{error?'Event unavailable. Return to Event Center to choose a recorded interval.':'Loading event evidence…'}{error&&<button className="secondary" onClick={()=>navigate('events')}>Event Center</button>}</div>)}
     </main>
-    <div className="data-provenance" title={`Model SHA-256 ${state.lineage.model_sha256}; dataset SHA-256 ${state.lineage.dataset_sha256}`}>Simulated research telemetry <span aria-hidden="true">·</span> {state.playback.toLowerCase()} <span aria-hidden="true">·</span> {timeLabel(state.current.timestamp)} WIB</div>
-    {toast&&<div className="toast" role="status">{toast}</div>}
+    <div className="data-provenance" title={`Model SHA-256 ${state.lineage.model_sha256}; dataset SHA-256 ${state.lineage.dataset_sha256}`}>Simulated research telemetry <span aria-hidden="true">·</span> {viewState.is_preview ? 'cursor preview' : state.playback.toLowerCase()} <span aria-hidden="true">·</span> {timeLabel(viewState.current.timestamp)} WIB</div>
+    {toast&&<div className="toast" role="status">{toast}{warningEvent&&toast.startsWith('New return-flow warning')&&<button className="text-button" onClick={()=>openEvent(warningEvent)}>Review warning</button>}</div>}
 
     {overlay==='filter'&&<Dialog kind="filter" title="Filter events" onClose={closeOverlay}><h2>Filter events</h2><p className="dialog-subtitle">Choose a category for the event history.</p><fieldset className="filter-options"><legend>Event category</legend>{[['all','All events','Warning and sensor-status changes'],['return','Return deficit','Events requiring verification'],['quality','Data quality','Unavailable or invalid readings']].map(([value,label,description])=><label key={value} className={filterDraft===value?'selected':''}><input type="radio" name="event-category" value={value} checked={filterDraft===value} onChange={()=>setFilterDraft(value)}/><span><strong>{label}</strong><small>{description}</small></span></label>)}</fieldset><div className="filter-context"><div><span>Time window</span><strong>History through {timeLabel(state.current.timestamp)} WIB</strong></div><div><span>Equipment</span><strong>Sizing unit A / {state.current.site_id}</strong></div></div><div className="filter-actions"><button className="secondary" onClick={closeOverlay}>Cancel</button><button className="secondary reset-filter" disabled={filterDraft==='all'} onClick={()=>setFilterDraft('all')}>Reset</button><button className="primary" onClick={()=>{setFilter(filterDraft);localStorage.setItem('fluo.filter',filterDraft);setOverlay(null);}}>Apply filters</button></div></Dialog>}
 
-    {overlay==='notifications'&&<Dialog kind="notifications" title="Notifications" onClose={closeOverlay}><h2>Notifications</h2><button className="mark-notifications-read text-button" disabled={unread===0} onClick={markNotificationsRead}>Mark all as read</button><p className="dialog-subtitle">Warning and system activity</p><div className="notification-items">{state.events.slice(0,3).map(event=><button className={`notice-item ${event.category==='return'?'notice-warning':''}`} key={event.id} onClick={()=>openEvent(event.id)}><span className="notice-dot"/><strong>{event.title}</strong><small>{event.category==='return'?'Verify the return-flow meter and operating state':'Review data availability and process context'}</small><time>{timeLabel(event.timestamp)}</time></button>)}{!state.events.length&&<p className="empty-state">No recorded activity yet.</p>}</div><button className="primary notification-history" onClick={()=>{setOverlay(null);navigate('events');}}>Open event history</button></Dialog>}
+    {overlay==='notifications'&&<Dialog kind="notifications" title="Notifications" onClose={closeOverlay}><h2>Notifications</h2><button className="mark-notifications-read text-button" disabled={unread===0} onClick={markNotificationsRead}>Mark all as read</button><p className="dialog-subtitle">Recent activity · {unread} unread / {viewState.events.length} recorded</p><div className="notification-items">{viewState.events.slice(0,3).map(event=><button className={`notice-item ${event.category==='return'?'notice-warning':''}`} key={event.id} onClick={()=>openEvent(event.id)}><span className="notice-dot"/><strong>{event.title}</strong><small>{event.category==='return'?'Verify the return-flow meter and operating state':'Review data availability and process context'}</small><time>{timeLabel(event.timestamp)}</time></button>)}{!state.events.length&&<p className="empty-state">No recorded activity yet.</p>}</div><button className="primary notification-history" onClick={()=>{setOverlay(null);navigate('events');}}>Open event history</button></Dialog>}
 
-    {overlay==='help'&&<Dialog kind="help" title="Help center" onClose={closeOverlay}><h2>Help center</h2><p className="dialog-subtitle">How to use Fluo’s monitoring and review tools</p><div className="help-content"><section><h3>Overview</h3><p>Review steam feed, return flow, process state and warning indicators.</p></section><section><h3>Scenario Review</h3><p>Examine recorded process conditions and warning responses. At 1×, one minute of recorded telemetry advances each second.</p></section><section><h3>Event Center</h3><p>Open past warnings, inspect sensor evidence, and record a local operator review.</p></section><section><h3>Safety and provenance</h3><p>Simulated research telemetry; fictional facility. Physical verification and condensate recovery require authorized site personnel. Scores are not cause probabilities.</p></section></div></Dialog>}
+    {overlay==='help'&&<Dialog kind="help" title="Help center" onClose={closeOverlay}><h2>Help center</h2><p className="dialog-subtitle">How to use Fluo’s monitoring and review tools</p><div className="help-content"><section><h3>Overview</h3><p>Review steam feed, return flow, process state and warning indicators.</p></section><section><h3>Scenario Review</h3><p>Examine recorded process conditions and warning responses. At 1×, one minute of recorded telemetry advances each second.</p></section><section><h3>Event Center</h3><p>Open past warnings, inspect sensor evidence, and record a local operator review. New warnings show a brief notice; the bell opens recorded activity.</p></section><section><h3>Safety and provenance</h3><p>Simulated research telemetry; fictional facility. Physical verification and condensate recovery require authorized site personnel. Scores are not cause probabilities.</p></section></div></Dialog>}
 
     {overlay==='preferences'&&<Dialog kind="preferences" title="Preferences" onClose={closeOverlay}><h2>Preferences</h2><p className="dialog-subtitle">Workspace and notification settings</p><div className="facility-card"><div><small>FACILITY</small><strong>Pabrik Bandung</strong></div><div><small>PROCESS SCOPE</small><strong>Unit Sizing A</strong></div></div><div className="preferences-section"><h3>Notification preferences</h3><p>Configure how non-critical audible alerts are presented.</p></div><div className="sound-row"><div><strong>Warning sound</strong><p>{soundDraft?'Audio cue is enabled for new warnings':'Audio cue is disabled for new warnings'}</p></div><button className={`sound-toggle ${soundDraft?'on':''}`} role="switch" aria-checked={soundDraft} aria-label="Warning sound" onClick={()=>setSoundDraft(!soundDraft)}>{soundDraft?'On':'Off'}</button></div><button className="primary save-preferences" disabled={busy} onClick={()=>void savePreferences()}>{busy?'Saving…':'Save preferences'}</button></Dialog>}
 

@@ -3,7 +3,7 @@ import type { Event, EventDetail, Review, ReplayCommand, Scenario, SessionState 
 import { reading, timeLabel, modeLabel } from './api';
 import Chart from './Chart';
 import ReplaySeek from './ReplaySeek';
-import { EventHistogram, ReadingTrend, WindowProgress } from './SnapshotVisuals';
+import { EventHistogram, ReadingTrend, WindowProgress, isInterruption } from './SnapshotVisuals';
 import { Card, Icon, Pill } from './components';
 
 export function PageTitle({ title, subtitle, children }: { title: string; subtitle: string; children?: React.ReactNode }) {
@@ -40,20 +40,20 @@ export function Overview({ state, openEvent }: { state: SessionState; openEvent:
   </>;
 }
 
-export function ScenarioReview({ state, scenarios, busy, command }: { state: SessionState; scenarios: Scenario[]; busy: boolean; command: (data: ReplayCommand) => Promise<void> }) {
+export function ScenarioReview({ state, scenarios, busy, scrubbing, onScrubStart, onScrubCancel, onPreview, command }: { state: SessionState; scenarios: Scenario[]; busy: boolean; scrubbing: boolean; onScrubStart: () => void; onScrubCancel: () => void; onPreview: (cursor: number) => Promise<void>; command: (data: ReplayCommand) => Promise<void> }) {
   const { current, frames } = state;
   return <>
     <PageTitle title="Scenario Review" subtitle="Compare operating conditions and review warning responses" />
     <div className="scenario-grid">
       <Card title="Scenario library" subtitle="Choose a scenario to inspect" className="scenario-library"><div className="scenario-list">{scenarios.map(s => <button key={s.id} className={`scenario-option ${s.id === state.scenario.id ? 'selected' : ''}`} aria-pressed={s.id === state.scenario.id} disabled={busy} onClick={() => command({ action: 'scenario', scenario_id: s.id })}><span>{s.name}</span><small>{s.group}</small></button>)}</div></Card>
       <Card title={`${timeLabel(current.timestamp)} / ${timeLabel(state.scenario.end_timestamp)}`} subtitle={`Replay timeline / speed ${state.speed}×`} className="playback-card">
-        <div className="playback-controls" role="group" aria-label="Replay controls">
-          <button aria-label="Rewind 10 samples" title="Rewind 10 samples" disabled={busy || state.cursor === 0} onClick={() => command({ action: 'rewind' })}><Icon name="IconRewind"/></button>
-          <button className="play-button" aria-label="Play replay" title="Play replay" disabled={busy || state.playback !== 'PAUSED'} onClick={() => command({ action: 'play' })}><Icon name="IconPlay"/></button>
-          <button aria-label="Pause replay" title="Pause replay" disabled={busy || state.playback !== 'PLAYING'} onClick={() => command({ action: 'pause' })}><Icon name="IconPause"/></button>
-          <button aria-label="Forward 10 samples" title="Forward 10 samples" disabled={busy || state.cursor >= state.scenario.total_frames - 1} onClick={() => command({ action: 'forward' })}><Icon name="IconRewind" className="forward-icon"/></button>
-          <button aria-label="Reset replay" title="Reset replay" disabled={busy || (state.cursor === 0 && state.playback === 'PAUSED')} onClick={() => command({ action: 'reset' })}><Icon name="IconReset"/></button>
-          <button className="speed-button" aria-label={`Playback speed ${state.speed}x`} disabled={busy} onClick={() => command({ action: 'speed', speed: state.speed === 1 ? 2 : 1 })}>{state.speed}×</button>
+        <div className="playback-controls" aria-busy={scrubbing} role="group" aria-label="Replay controls">
+          <button aria-label="Rewind 10 samples" title="Rewind 10 samples" disabled={busy || scrubbing || state.cursor === 0} onClick={() => command({ action: 'rewind' })}><Icon name="IconRewind"/></button>
+          <button className="play-button" aria-label="Play replay" title="Play replay" disabled={busy || scrubbing || state.playback !== 'PAUSED'} onClick={() => command({ action: 'play' })}><Icon name="IconPlay"/></button>
+          <button aria-label="Pause replay" title="Pause replay" disabled={busy || scrubbing || state.playback !== 'PLAYING'} onClick={() => command({ action: 'pause' })}><Icon name="IconPause"/></button>
+          <button aria-label="Forward 10 samples" title="Forward 10 samples" disabled={busy || scrubbing || state.cursor >= state.scenario.total_frames - 1} onClick={() => command({ action: 'forward' })}><Icon name="IconRewind" className="forward-icon"/></button>
+          <button aria-label="Reset replay" title="Reset replay" disabled={busy || scrubbing || (state.cursor === 0 && state.playback === 'PAUSED')} onClick={() => command({ action: 'reset' })}><Icon name="IconReset"/></button>
+          <button className="speed-button" aria-label={`Playback speed ${state.speed}x`} disabled={busy || scrubbing} onClick={() => command({ action: 'speed', speed: state.speed === 1 ? 2 : 1 })}>{state.speed}×</button>
         </div>
       </Card>
       <Card title="Sizing steam branch" subtitle="Steam distribution and return path" className="process-card gradient-card">
@@ -62,7 +62,7 @@ export function ScenarioReview({ state, scenarios, busy, command }: { state: Ses
       </Card>
       <Card title="Steam / condensate trends" subtitle="Steam feed and return flow" className="scenario-graph"><div className="scenario-chart-slot"><Chart frames={frames} height={215}/></div></Card>
     </div>
-    <ReplaySeek key={state.scenario.id} state={state} busy={busy} command={command}/>
+    <ReplaySeek key={state.scenario.id} state={state} busy={busy} onStart={onScrubStart} onCancel={onScrubCancel} onPreview={onPreview} command={command}/>
   </>;
 }
 
@@ -78,7 +78,7 @@ export function EventCenter({ state, filter, openFilter, openEvent }: { state: S
     <PageTitle title="Signal events" subtitle="Review intervals derived from detector state changes" />
     <div className="event-kpis">
       <Card title="Review items" subtitle="Recorded operating history" className="event-summary"><strong>{String(state.events.filter(e => e.category === 'return').length).padStart(2,'0')}</strong><EventHistogram state={state} category="return"/></Card>
-      <Card title="Data interruptions" subtitle="Requires attention" className="event-summary"><strong>{String(state.events.filter(e => e.category === 'quality' && e.title !== 'Data connection restored').length).padStart(2,'0')}</strong><EventHistogram state={state} category="quality"/></Card>
+      <Card title="Data interruptions" subtitle="Recorded meter / connection gaps" className="event-summary"><strong>{String(state.events.filter(isInterruption).length).padStart(2,'0')}</strong><EventHistogram state={state} category="quality"/></Card>
       <Card title="Review window" subtitle="Selected replay interval" className="event-range"><strong>{timeLabel(state.scenario.start_timestamp)} — {timeLabel(state.current.timestamp)}</strong><WindowProgress state={state}/></Card>
     </div>
     <div className="filter-toolbar"><Icon name="IconFilter"/><span>{categoryName} / history through {timeLabel(state.current.timestamp)} WIB</span><button className="secondary" onClick={openFilter}>Filters</button></div>

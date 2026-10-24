@@ -66,6 +66,10 @@ class ReplayService:
             raise RuntimeError('DATA_UNAVAILABLE: run python tools/prepare_runtime.py with the supplied archive')
         self.model = FrozenEstimator()
         self.dataset_sha = hashlib.sha256(sensor_file.read_bytes()).hexdigest()
+        if self.dataset_sha != 'f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018':
+            raise RuntimeError('DATASET_MISMATCH: audited sensor stream checksum failed')
+        if hashlib.sha256((self.data_dir / 'fluo_episode_labels.csv').read_bytes()).hexdigest() != 'e5b1368942a98452abd8b49e3c93d154b0d07614d33e99ec4e755a8e45611106':
+            raise RuntimeError('DATASET_MISMATCH: audited scenario catalog checksum failed')
         self.sensor = pd.read_csv(sensor_file)
         self.predictions = score_telemetry(self.sensor, self.model)
         self.predictions['persistence_hits'] = persistence_counts(self.predictions)
@@ -250,6 +254,7 @@ class ReplayService:
 
     def visible_event(self, event, absolute, session_id):
         result = self.public(event)
+        result['quality_action'] = str(event['_quality'])
         pred = self.sites[event['site_id']][1]
         end = min(absolute, event['_end'])
         result.update(end_timestamp=str(pred.iloc[end].timestamp), duration_min=end - event['_start'] + 1)
@@ -259,10 +264,12 @@ class ReplayService:
         result['review_status'] = review['status'] if review else 'pending'
         return result
 
-    def snapshot(self, session_id):
+    def snapshot(self, session_id, preview_cursor=None):
         session = self.session(session_id)
         scenario = self.scenario(session['scenario_id'])
-        cursor = self.position(session)
+        cursor = self.position(session) if preview_cursor is None else preview_cursor
+        if cursor < 0 or cursor >= scenario['total_frames']:
+            raise DomainError('INVALID_CURSOR', 'Cursor is outside this recorded scenario')
         absolute = scenario['_start'] + cursor
         site = scenario['site_id']
         events = [self.visible_event(e, absolute, session_id) for e in self.events[site] if e['_start'] <= absolute][-100:][::-1]
@@ -271,7 +278,7 @@ class ReplayService:
         frames = [self.frame(site, i) for i in range(max(scenario['_start'], absolute - 24), absolute + 1)]
         active = next((e for e in events if self.event_lookup[e['id']]['_start'] <= absolute <= self.event_lookup[e['id']]['_end']), None)
         playback = 'ENDED' if cursor == scenario['total_frames'] - 1 else ('PLAYING' if session['playing'] else 'PAUSED')
-        return {'schema_version': '1.0', 'session_id': session_id, 'scenario': self.public(scenario), 'cursor': cursor, 'speed': session['speed'], 'playback': playback, 'current': current, 'frames': frames, 'events': events, 'active_event_id': active['id'] if active else None, 'lineage': self.lineage, 'review_scope': 'Local SQLite research session; operator identity is unverified.'}
+        return {'schema_version': '1.0', 'is_preview': preview_cursor is not None, 'session_id': session_id, 'scenario': self.public(scenario), 'cursor': cursor, 'speed': session['speed'], 'playback': playback, 'current': current, 'frames': frames, 'events': events, 'active_event_id': active['id'] if active else None, 'lineage': self.lineage, 'review_scope': 'Local SQLite research session; operator identity is unverified.'}
 
     def detail(self, session_id, event_id):
         state = self.snapshot(session_id)

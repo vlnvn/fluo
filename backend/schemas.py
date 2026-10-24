@@ -107,6 +107,7 @@ class Lineage(StrictModel):
 
 
 class Event(StrictModel):
+    quality_action: str | None = None
     id: str
     site_id: str
     timestamp: str
@@ -122,6 +123,7 @@ class Event(StrictModel):
 
 
 class SessionState(StrictModel):
+    is_preview: bool = False
     schema_version: Literal['1.0']
     session_id: str
     scenario: Scenario

@@ -28,3 +28,7 @@ node_modules/
 /docs/implementation/qa/playwright-report/
 
 /docs/implementation/qa/corrections/
+
+/docs/implementation/qa/post-audit/
+
+/web/tests/*-snapshots/

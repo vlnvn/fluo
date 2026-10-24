@@ -30,3 +30,14 @@
 @media(max-width:1200px){.playback-controls{width:267px;gap:4px;padding:8px}.playback-card .card-heading{max-width:calc(100% - 290px)}.playback-card .card-heading h2{font-size:11px}.playback-card .card-heading>p{font-size:9px}.event-range>strong{font-size:16px;right:65px}.window-progress{right:12px;width:40px;height:40px}.reading-trend{width:42px;right:9px}}
 
 .sidebar-toggle:hover:not(:disabled)>.expand-icon{transform:rotate(180deg)}
+
+/* Light workspace controls: actual archived samples, no interpolated readings. */
+:root{scrollbar-color:#b8cee5 #f1f6fc;scrollbar-width:thin}*::-webkit-scrollbar{width:10px;height:10px}*::-webkit-scrollbar-track{background:#f1f6fc;border-radius:8px}*::-webkit-scrollbar-thumb{background:#b8cee5;border:2px solid #f1f6fc;border-radius:8px}*::-webkit-scrollbar-thumb:hover{background:#8daecc}
+.replay-seek input[type=range]{appearance:none;-webkit-appearance:none;display:block;width:100%;height:32px;margin:4px 0;background:transparent;cursor:grab;touch-action:none;border:0;box-shadow:none}
+.replay-seek input[type=range]:active{cursor:grabbing}.replay-seek input[type=range]:disabled{cursor:wait;opacity:.6}
+.replay-seek input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(to right,var(--blue) 0 var(--replay-progress),#dce8f5 var(--replay-progress) 100%)}
+.replay-seek input[type=range]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;margin-top:-6px;background:var(--blue);border:3px solid white;border-radius:50%;box-shadow:0 0 0 1px #9eb9db,0 2px 5px #31547724}
+.replay-seek input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:#dce8f5}.replay-seek input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--blue)}.replay-seek input[type=range]::-moz-range-thumb{width:13px;height:13px;border:3px solid white;border-radius:50%;background:var(--blue);box-shadow:0 0 0 1px #9eb9db}
+.replay-seek input[type=range]:focus-visible{outline:2px solid #619bf0;outline-offset:3px;border-radius:6px}.review-buttons{gap:12px}.toast .text-button{display:block;margin-top:8px}
+
+@media(prefers-reduced-motion:reduce){button:hover:not(:disabled)>.icon,.nav-row:hover>.icon{transform:none}.sidebar-toggle:hover:not(:disabled)>.expand-icon,.playback-controls>button:hover>.forward-icon{transform:rotate(180deg)}}

@@ -20,6 +20,7 @@ export const api = {
   create: () => request<SessionState>('/sessions', { method: 'POST', body: '{}' }),
   state: (id: string) => request<SessionState>(`/sessions/${encodeURIComponent(id)}`),
   command: (id: string, command: ReplayCommand) => request<SessionState>(`/sessions/${id}/replay`, { method: 'POST', body: JSON.stringify(command) }),
+  preview: (id: string, cursor: number, signal: AbortSignal) => request<SessionState>(`/sessions/${id}/preview?cursor=${cursor}`, {signal}),
   detail: (id: string, event: string) => request<EventDetail>(`/sessions/${id}/events/${encodeURIComponent(event)}`),
   review: (id: string, event: string, data: ReviewUpdate, submit = false) => request<Review>(`/sessions/${id}/events/${encodeURIComponent(event)}/review${submit ? '/submit' : ''}`, { method: submit ? 'POST' : 'PUT', body: JSON.stringify(data) }),
   preferences: (id: string) => request<PreferencesUpdate>(`/sessions/${id}/preferences`),

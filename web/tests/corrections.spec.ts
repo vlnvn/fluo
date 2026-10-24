@@ -17,6 +17,7 @@ test('consistent notification counts, navigation icon states, actual summary vis
   for (const route of ['Scenario Review', 'Event Center', 'Overview']) {
     await page.getByRole('link', { name: route, exact: true }).click();
     await expect(page.getByTestId('notification-count')).toHaveText(count);
+    await expect(page.getByRole('link',{name:route,exact:true})).toHaveAttribute('aria-current','page');
     const active = await page.locator('.sidebar nav .active .icon').evaluate(el => getComputedStyle(el).filter);
     for (const icon of await page.locator('.sidebar nav .nav-row:not(.active) .icon').all()) {
       expect(await icon.evaluate(el => getComputedStyle(el).filter)).not.toBe(active);
@@ -46,7 +47,7 @@ test('consistent notification counts, navigation icon states, actual summary vis
     const bars = page.locator(`.histogram-${category} rect`);
     await expect(bars).toHaveCount(13);
     const counts = await bars.evaluateAll(items => items.map(el => Number(el.getAttribute('data-count'))));
-    expect(counts.reduce((a, b) => a + b, 0)).toBe(events.filter(e => e.category === category && (category !== 'quality' || e.title !== 'Data connection restored')).length);
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(events.filter(e => e.category === category && (category !== 'quality' || ['GATEWAY_OFFLINE','VERIFY_RETURN_METER'].includes(e.quality_action ?? ''))).length);
     const first = await bars.nth(0).boundingBox(), next = await bars.nth(1).boundingBox();
     expect(first!.x + first!.width).toBeLessThan(next!.x);
   }

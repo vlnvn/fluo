@@ -25,7 +25,7 @@ def main():
     local = ROOT / '.local'
     local.mkdir(exist_ok=True)
     env = {**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'}
-    commands = [([sys.executable, '-m', 'uvicorn', 'backend.app:app', '--host','127.0.0.1','--port','8000'], ROOT, 'api'),
+    commands = [([sys.executable, '-m', 'uvicorn', 'backend.app:app', '--host','127.0.0.1','--port','8000','--no-server-header','--timeout-keep-alive','10'], ROOT, 'api'),
                 ([shutil.which('npm.cmd' if os.name == 'nt' else 'npm') or 'npm', 'run','dev'], ROOT/'web', 'web')]
     children, logs = [], []
     try:

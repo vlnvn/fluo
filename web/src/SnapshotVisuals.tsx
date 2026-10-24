@@ -1,5 +1,7 @@
 import type { Event, Frame, SessionState } from './contracts';
 
+export const isInterruption = (event: Event) => event.category === 'quality' && ['GATEWAY_OFFLINE','VERIFY_RETURN_METER'].includes(event.quality_action ?? '');
+
 export function eventBins(events: Event[], category: 'return' | 'quality', now: string, count = 13): number[] {
   const end = Date.parse(now);
   const start = Math.min(end, ...events.map(event => Date.parse(event.timestamp)));
@@ -7,7 +9,7 @@ export function eventBins(events: Event[], category: 'return' | 'quality', now: 
   const bins = Array<number>(count).fill(0);
   for (const event of events) {
     if (event.category !== category || Date.parse(event.timestamp) > end) continue;
-    if (category === 'quality' && event.title === 'Data connection restored') continue;
+    if (category === 'quality' && !isInterruption(event)) continue;
     const index = Math.min(count - 1, Math.floor((Date.parse(event.timestamp) - start) / span * count));
     bins[index]++;
   }

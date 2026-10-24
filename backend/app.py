@@ -2,6 +2,7 @@
 import json
 import logging
 import uuid
+import secrets
 from contextlib import asynccontextmanager
 
 import pandas as pd
@@ -14,6 +15,7 @@ from .inference_adapter import ROOT, score_telemetry
 from .reporting import html_report, pdf_report
 from .schemas import CreateSession, Event, EventDetail, InferenceRequest, PreferencesUpdate, ReplayCommand, Review, ReviewUpdate, Scenario, SessionState
 from .service import DomainError, ReplayService
+from .security import LocalBoundary, assert_local_release
 
 LOG = logging.getLogger('fluo.api')
 
@@ -21,20 +23,33 @@ LOG = logging.getLogger('fluo.api')
 def create_app(service=None):
     @asynccontextmanager
     async def lifespan(application):
+        assert_local_release()
         application.state.service = service or ReplayService()
         yield
+        if service is None:
+            application.state.service.store.close()
 
     api = FastAPI(title='Fluo research replay API', version='1.0.0', lifespan=lifespan,
                   description='Read-only simulated research telemetry; no equipment controls or verified operator authentication.')
     if service is not None:
         api.state.service = service
 
+    api.add_middleware(LocalBoundary, allow_test_host=service is not None)
+
     @api.middleware('http')
     async def correlation(request: Request, call_next):
         request.state.correlation_id = str(uuid.uuid4())
-        response = await call_next(request)
+        request.state.csp_nonce = secrets.token_urlsafe(24)
+        try:
+            response = await call_next(request)
+        except Exception:
+            LOG.exception('Unhandled request failure correlation=%s', request.state.correlation_id)
+            response = JSONResponse({'error': {'code': 'INTERNAL_ERROR', 'message': 'The local service could not complete this request.', 'correlation_id': request.state.correlation_id}}, status_code=500)
         response.headers['X-Correlation-ID'] = request.state.correlation_id
         response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        response.headers['Permissions-Policy'] = 'camera=(), microphone=(), geolocation=()'
+        response.headers['Content-Security-Policy'] = f"default-src 'self'; script-src 'self' 'nonce-{request.state.csp_nonce}'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
         response.headers['Referrer-Policy'] = 'same-origin'
         response.headers['Cache-Control'] = 'no-store' if request.url.path.startswith('/api/') else 'no-cache'
         return response
@@ -49,6 +64,14 @@ def create_app(service=None):
 
     def current(request):
         return request.app.state.service
+
+    @api.get('/health/live')
+    def liveness():
+        return {'status': 'alive'}
+
+    @api.get('/health/ready')
+    def readiness(request: Request):
+        return {'status': 'ready', 'model_loaded': current(request).model is not None}
 
     @api.get('/api/v1/health')
     def health(request: Request):
@@ -69,6 +92,10 @@ def create_app(service=None):
     @api.get('/api/v1/sessions/{session_id}', response_model=SessionState)
     def snapshot(session_id: str, request: Request):
         return current(request).snapshot(session_id)
+
+    @api.get('/api/v1/sessions/{session_id}/preview', response_model=SessionState)
+    def preview(session_id: str, request: Request, cursor: int = Query(ge=0)):
+        return current(request).snapshot(session_id, preview_cursor=cursor)
 
     @api.post('/api/v1/sessions/{session_id}/replay', response_model=SessionState)
     def command(session_id: str, body: ReplayCommand, request: Request):
@@ -121,7 +148,7 @@ def create_app(service=None):
 
     @api.get('/api/v1/sessions/{session_id}/events/{event_id}/print', response_class=HTMLResponse)
     def print_report(session_id: str, event_id: str, request: Request, embedded: bool = False):
-        return HTMLResponse(html_report(current(request).detail(session_id, event_id), session_id, embedded=embedded))
+        return HTMLResponse(html_report(current(request).detail(session_id, event_id), session_id, embedded=embedded, nonce=request.state.csp_nonce))
 
     dist = ROOT / 'web/dist'
     if dist.exists():

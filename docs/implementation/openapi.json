@@ -6,6 +6,38 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/health/live": {
+      "get": {
+        "summary": "Liveness",
+        "operationId": "liveness_health_live_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "summary": "Readiness",
+        "operationId": "readiness_health_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/health": {
       "get": {
         "summary": "Health",
@@ -94,6 +126,55 @@
             "schema": {
               "type": "string",
               "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{session_id}/preview": {
+      "get": {
+        "summary": "Preview",
+        "operationId": "preview_api_v1_sessions__session_id__preview_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "title": "Cursor"
             }
           }
         ],
@@ -658,6 +739,17 @@
       },
       "Event": {
         "properties": {
+          "quality_action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quality Action"
+          },
           "id": {
             "type": "string",
             "title": "Id"
@@ -1357,6 +1449,11 @@
       },
       "SessionState": {
         "properties": {
+          "is_preview": {
+            "type": "boolean",
+            "title": "Is Preview",
+            "default": false
+          },
           "schema_version": {
             "type": "string",
             "const": "1.0",

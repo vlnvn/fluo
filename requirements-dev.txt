@@ -2,5 +2,5 @@
 pytest==9.1.1
 httpx==0.28.1
 ruff==0.17.2
-pypdf==6.10.0
-Pillow>=11,<13
+pypdf==6.21.2
+Pillow==13.0.0
