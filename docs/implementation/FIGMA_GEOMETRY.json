@@ -1,0 +1,554 @@
+[
+  {
+    "frame": "74:2",
+    "cards": [
+      {
+        "id": "74:3",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "225",
+        "height": "900"
+      },
+      {
+        "id": "74:23",
+        "name": "SHELL/Header",
+        "x": "225",
+        "y": "0",
+        "width": "1215",
+        "height": "70"
+      },
+      {
+        "id": "74:28",
+        "name": "CONTENT/Bento grid",
+        "x": "255",
+        "y": "97",
+        "width": "1152",
+        "height": "782"
+      },
+      {
+        "id": "74:36",
+        "name": "BENTO/KPI/Steam feed",
+        "x": "0",
+        "y": "111",
+        "width": "255",
+        "height": "142"
+      },
+      {
+        "id": "74:40",
+        "name": "BENTO/KPI/Condensate return",
+        "x": "269",
+        "y": "111",
+        "width": "255",
+        "height": "142"
+      },
+      {
+        "id": "74:44",
+        "name": "BENTO/KPI/Steam pressure",
+        "x": "538",
+        "y": "111",
+        "width": "255",
+        "height": "142"
+      },
+      {
+        "id": "74:48",
+        "name": "BENTO/Current monitoring state",
+        "x": "807",
+        "y": "111",
+        "width": "345",
+        "height": "142"
+      },
+      {
+        "id": "74:53",
+        "name": "BENTO/Main telemetry",
+        "x": "0",
+        "y": "269",
+        "width": "755",
+        "height": "339"
+      },
+      {
+        "id": "74:70",
+        "name": "BENTO/Investigate card",
+        "x": "771",
+        "y": "269",
+        "width": "381",
+        "height": "339"
+      },
+      {
+        "id": "74:82",
+        "name": "BENTO/Quality trace",
+        "x": "0",
+        "y": "624",
+        "width": "755",
+        "height": "153"
+      },
+      {
+        "id": "74:103",
+        "name": "BENTO/Recent signal",
+        "x": "771",
+        "y": "624",
+        "width": "381",
+        "height": "153"
+      }
+    ]
+  },
+  {
+    "frame": "74:107",
+    "cards": [
+      {
+        "id": "74:108",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "225",
+        "height": "900"
+      },
+      {
+        "id": "74:128",
+        "name": "SHELL/Header",
+        "x": "225",
+        "y": "0",
+        "width": "1215",
+        "height": "70"
+      },
+      {
+        "id": "74:133",
+        "name": "CONTENT/Bento grid",
+        "x": "253",
+        "y": "96",
+        "width": "1152",
+        "height": "782"
+      },
+      {
+        "id": "74:137",
+        "name": "BENTO/Scenario picker",
+        "x": "0",
+        "y": "111",
+        "width": "274",
+        "height": "642"
+      },
+      {
+        "id": "74:161",
+        "name": "BENTO/Playback",
+        "x": "292",
+        "y": "111",
+        "width": "860",
+        "height": "76"
+      },
+      {
+        "id": "74:166",
+        "name": "BENTO/Process schematic",
+        "x": "292",
+        "y": "202",
+        "width": "860",
+        "height": "234"
+      },
+      {
+        "id": "74:182",
+        "name": "BENTO/Process replay",
+        "x": "292",
+        "y": "451",
+        "width": "860",
+        "height": "302"
+      }
+    ]
+  },
+  {
+    "frame": "74:198",
+    "cards": [
+      {
+        "id": "74:199",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "225",
+        "height": "900"
+      },
+      {
+        "id": "74:219",
+        "name": "SHELL/Header",
+        "x": "225",
+        "y": "0",
+        "width": "1215",
+        "height": "70"
+      },
+      {
+        "id": "74:224",
+        "name": "CONTENT/Bento grid",
+        "x": "255",
+        "y": "97",
+        "width": "1152",
+        "height": "782"
+      },
+      {
+        "id": "74:228",
+        "name": "BENTO/Event summary",
+        "x": "0",
+        "y": "111",
+        "width": "365",
+        "height": "130"
+      },
+      {
+        "id": "74:245",
+        "name": "BENTO/Data integrity events",
+        "x": "381",
+        "y": "111",
+        "width": "365",
+        "height": "130"
+      },
+      {
+        "id": "74:249",
+        "name": "BENTO/Active time range",
+        "x": "762",
+        "y": "111",
+        "width": "390",
+        "height": "130"
+      },
+      {
+        "id": "74:259",
+        "name": "BENTO/Event table",
+        "x": "0",
+        "y": "331",
+        "width": "1152",
+        "height": "445"
+      }
+    ]
+  },
+  {
+    "frame": "74:302",
+    "cards": [
+      {
+        "id": "74:303",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "225",
+        "height": "900"
+      },
+      {
+        "id": "74:323",
+        "name": "SHELL/Header",
+        "x": "225",
+        "y": "0",
+        "width": "1215",
+        "height": "70"
+      },
+      {
+        "id": "74:328",
+        "name": "CONTENT/Bento grid",
+        "x": "255",
+        "y": "97",
+        "width": "1152",
+        "height": "782"
+      },
+      {
+        "id": "74:336",
+        "name": "BENTO/Temporal evidence",
+        "x": "0",
+        "y": "181",
+        "width": "723",
+        "height": "342"
+      },
+      {
+        "id": "74:352",
+        "name": "BENTO/Evidence quality",
+        "x": "739",
+        "y": "181",
+        "width": "413",
+        "height": "342"
+      },
+      {
+        "id": "74:370",
+        "name": "BENTO/Manual inspection",
+        "x": "0",
+        "y": "538",
+        "width": "723",
+        "height": "239"
+      },
+      {
+        "id": "74:381",
+        "name": "BENTO/Action card",
+        "x": "739",
+        "y": "538",
+        "width": "413",
+        "height": "239"
+      }
+    ]
+  },
+  {
+    "frame": "128:5",
+    "cards": [
+      {
+        "id": "128:6",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "76",
+        "height": "900"
+      },
+      {
+        "id": "128:38",
+        "name": "SHELL/Header",
+        "x": "76",
+        "y": "0",
+        "width": "1364",
+        "height": "70"
+      },
+      {
+        "id": "128:55",
+        "name": "CONTENT/Bento grid",
+        "x": "106",
+        "y": "97",
+        "width": "1292",
+        "height": "782"
+      },
+      {
+        "id": "128:62",
+        "name": "BENTO/KPI/Steam feed",
+        "x": "0",
+        "y": "111",
+        "width": "292",
+        "height": "142"
+      },
+      {
+        "id": "128:66",
+        "name": "BENTO/KPI/Condensate return",
+        "x": "306",
+        "y": "111",
+        "width": "292",
+        "height": "142"
+      },
+      {
+        "id": "128:70",
+        "name": "BENTO/KPI/Steam pressure",
+        "x": "612",
+        "y": "111",
+        "width": "292",
+        "height": "142"
+      },
+      {
+        "id": "128:74",
+        "name": "BENTO/Current monitoring state",
+        "x": "918",
+        "y": "111",
+        "width": "374",
+        "height": "142"
+      },
+      {
+        "id": "128:79",
+        "name": "BENTO/Main telemetry",
+        "x": "0",
+        "y": "269",
+        "width": "846",
+        "height": "339"
+      },
+      {
+        "id": "128:100",
+        "name": "BENTO/Investigate card",
+        "x": "862",
+        "y": "269",
+        "width": "430",
+        "height": "339"
+      },
+      {
+        "id": "128:113",
+        "name": "BENTO/Quality trace",
+        "x": "0",
+        "y": "624",
+        "width": "846",
+        "height": "153"
+      },
+      {
+        "id": "128:134",
+        "name": "BENTO/Recent signal",
+        "x": "862",
+        "y": "624",
+        "width": "430",
+        "height": "153"
+      }
+    ]
+  },
+  {
+    "frame": "128:144",
+    "cards": [
+      {
+        "id": "128:145",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "76",
+        "height": "900"
+      },
+      {
+        "id": "128:177",
+        "name": "SHELL/Header",
+        "x": "76",
+        "y": "0",
+        "width": "1364",
+        "height": "70"
+      },
+      {
+        "id": "128:194",
+        "name": "CONTENT/Bento grid",
+        "x": "106",
+        "y": "96",
+        "width": "1292",
+        "height": "782"
+      },
+      {
+        "id": "128:197",
+        "name": "BENTO/Scenario picker",
+        "x": "0",
+        "y": "111",
+        "width": "290",
+        "height": "642"
+      },
+      {
+        "id": "128:227",
+        "name": "BENTO/Playback",
+        "x": "308",
+        "y": "111",
+        "width": "984",
+        "height": "76"
+      },
+      {
+        "id": "128:244",
+        "name": "BENTO/Process schematic",
+        "x": "308",
+        "y": "202",
+        "width": "984",
+        "height": "234"
+      },
+      {
+        "id": "128:260",
+        "name": "BENTO/Process replay",
+        "x": "308",
+        "y": "451",
+        "width": "984",
+        "height": "302"
+      }
+    ]
+  },
+  {
+    "frame": "128:286",
+    "cards": [
+      {
+        "id": "128:287",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "76",
+        "height": "900"
+      },
+      {
+        "id": "128:319",
+        "name": "SHELL/Header",
+        "x": "76",
+        "y": "0",
+        "width": "1364",
+        "height": "70"
+      },
+      {
+        "id": "128:336",
+        "name": "CONTENT/Bento grid",
+        "x": "106",
+        "y": "97",
+        "width": "1292",
+        "height": "782"
+      },
+      {
+        "id": "128:339",
+        "name": "BENTO/Event summary",
+        "x": "0",
+        "y": "111",
+        "width": "419",
+        "height": "130"
+      },
+      {
+        "id": "128:356",
+        "name": "BENTO/Data integrity events",
+        "x": "435",
+        "y": "111",
+        "width": "419",
+        "height": "130"
+      },
+      {
+        "id": "128:360",
+        "name": "BENTO/Active time range",
+        "x": "870",
+        "y": "111",
+        "width": "422",
+        "height": "130"
+      },
+      {
+        "id": "128:371",
+        "name": "BENTO/Event table",
+        "x": "0",
+        "y": "331",
+        "width": "1292",
+        "height": "445"
+      }
+    ]
+  },
+  {
+    "frame": "128:422",
+    "cards": [
+      {
+        "id": "128:423",
+        "name": "SHELL/Navigation",
+        "x": "0",
+        "y": "0",
+        "width": "76",
+        "height": "900"
+      },
+      {
+        "id": "128:455",
+        "name": "SHELL/Header",
+        "x": "76",
+        "y": "0",
+        "width": "1364",
+        "height": "70"
+      },
+      {
+        "id": "128:472",
+        "name": "CONTENT/Bento grid",
+        "x": "106",
+        "y": "97",
+        "width": "1292",
+        "height": "782"
+      },
+      {
+        "id": "128:479",
+        "name": "BENTO/Temporal evidence",
+        "x": "0",
+        "y": "181",
+        "width": "819",
+        "height": "342"
+      },
+      {
+        "id": "128:499",
+        "name": "BENTO/Evidence quality",
+        "x": "835",
+        "y": "181",
+        "width": "457",
+        "height": "342"
+      },
+      {
+        "id": "128:517",
+        "name": "BENTO/Manual inspection",
+        "x": "0",
+        "y": "538",
+        "width": "819",
+        "height": "239"
+      },
+      {
+        "id": "128:532",
+        "name": "BENTO/Action card",
+        "x": "835",
+        "y": "538",
+        "width": "457",
+        "height": "239"
+      }
+    ]
+  }
+]
