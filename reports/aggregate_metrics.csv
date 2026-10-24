@@ -1,0 +1,7 @@
+phase,method,physical_detected,physical_total,sensor_bias_warned,sensor_bias_total,transport_delay_warned,transport_delay_total,dropout_warned,dropout_total,offline_warned,offline_total,clean_false_clusters,clean_hours,scoreable_minutes,total_minutes,physical_event_recall,clean_false_clusters_per_100h,median_first_warning_delay_min
+development,fixed_ratio,49,49,20,20,14,14,0,12,0,13,141,1209.1333333333332,91578,155520,1.0,11.661244968848212,6.0
+development,gb_signature,49,49,20,20,1,14,0,12,0,13,0,1209.1333333333332,91578,155520,1.0,0.0,9.0
+development,physics_residual,49,49,20,20,14,14,0,12,0,13,0,1209.1333333333332,91578,155520,1.0,0.0,10.0
+locked,fixed_ratio,68,68,18,18,18,18,0,8,0,8,146,1347.2333333333333,103287,172800,1.0,10.837024024544128,6.0
+locked,gb_signature,66,68,18,18,2,18,0,8,0,8,0,1347.2333333333333,103287,172800,0.9705882352941176,0.0,10.0
+locked,physics_residual,66,68,18,18,18,18,0,8,0,8,0,1347.2333333333333,103287,172800,0.9705882352941176,0.0,12.0

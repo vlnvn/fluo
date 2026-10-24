@@ -1,0 +1,9 @@
+seed,condition,phys_det,phys_total,shift_det,shift_total,bias_det,bias_total,clean_clusters,clean_hours,unmarked_warning_minutes,unmarked_valid_minutes,median_delay
+20270111,original,33,34,3,9,11,12,0,679.633,250,46154,10.0
+20270111,return_meter_minus_5pct,34,34,3,9,12,12,6,679.633,374,46154,6.0
+20270111,return_meter_minus_10pct,34,34,9,9,12,12,202,679.633,33198,46154,0.0
+20270111,steam_meter_plus_5pct,34,34,2,9,12,12,5,679.633,360,46154,6.0
+20270112,original,36,37,1,4,10,10,0,673.833,270,45782,7.0
+20270112,return_meter_minus_5pct,37,37,1,4,10,10,15,673.833,443,45782,5.0
+20270112,return_meter_minus_10pct,37,37,4,4,10,10,192,673.833,33405,45782,0.0
+20270112,steam_meter_plus_5pct,37,37,1,4,10,10,11,673.833,396,45782,6.0

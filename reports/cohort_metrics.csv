@@ -1,0 +1,16 @@
+phase,seed,method,physical_detected,physical_total,sensor_bias_warned,sensor_bias_total,transport_delay_warned,transport_delay_total,dropout_warned,dropout_total,offline_warned,offline_total,nonphysical_episode_warned,nonphysical_total,clean_false_clusters,clean_hours,clean_clusters_per_100h,median_detection_delay_min,scoreable_minutes,total_minutes,warning_minutes
+development,20261101,fixed_ratio,15,15,7,7,6,6,0,3,0,5,13,21,43,399.68333333333334,10.7585,6.0,30514,51840,5477
+development,20261101,physics_residual,15,15,7,7,6,6,0,3,0,5,13,21,0,399.68333333333334,0.0,11.0,30514,51840,2781
+development,20261101,gb_signature,15,15,7,7,0,6,0,3,0,5,7,21,0,399.68333333333334,0.0,8.0,30514,51840,2258
+development,20261102,fixed_ratio,17,17,9,9,4,4,0,4,0,2,13,19,51,403.5,12.6394,6.0,30727,51840,5640
+development,20261102,physics_residual,17,17,9,9,4,4,0,4,0,2,13,19,0,403.5,0.0,11.0,30727,51840,2998
+development,20261102,gb_signature,17,17,9,9,0,4,0,4,0,2,9,19,0,403.5,0.0,9.0,30727,51840,2585
+development,20261103,fixed_ratio,17,17,4,4,4,4,0,5,0,6,8,19,47,405.95,11.5778,6.0,30337,51840,5121
+development,20261103,physics_residual,17,17,4,4,4,4,0,5,0,6,8,19,0,405.95,0.0,10.0,30337,51840,2458
+development,20261103,gb_signature,17,17,4,4,1,4,0,5,0,6,5,19,0,405.95,0.0,8.0,30337,51840,2027
+locked,20261201,fixed_ratio,37,37,5,5,8,8,0,5,0,5,13,23,77,675.0333333333333,11.4068,6.0,51335,86400,8276
+locked,20261201,physics_residual,36,37,5,5,8,8,0,5,0,5,13,23,0,675.0333333333333,0.0,12.5,51335,86400,4522
+locked,20261201,gb_signature,36,37,5,5,1,8,0,5,0,5,6,23,0,675.0333333333333,0.0,11.0,51335,86400,3755
+locked,20261202,fixed_ratio,31,31,13,13,10,10,0,3,0,3,23,29,69,672.2,10.2648,5.0,51952,86400,8216
+locked,20261202,physics_residual,30,31,13,13,10,10,0,3,0,3,23,29,0,672.2,0.0,11.5,51952,86400,5115
+locked,20261202,gb_signature,30,31,13,13,1,10,0,3,0,3,14,29,0,672.2,0.0,8.5,51952,86400,4359
