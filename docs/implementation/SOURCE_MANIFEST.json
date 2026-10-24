@@ -1,0 +1,1175 @@
+{
+  "archive": "C:\\College\\DEEPX\\FLUO_ML_RESEARCH_AUDITED_20261024.zip",
+  "archive_sha256": "7ad2b4a94a3147241641ff839853c927828ca077858bc801c6e7c157d3c5d5ca",
+  "zip_crc_error": null,
+  "entries": [
+    {
+      "path": ".gitignore",
+      "bytes": 108,
+      "compressed_bytes": 93
+    },
+    {
+      "path": "FLUO_SYNTHETIC_AUDIT_COLAB.ipynb",
+      "bytes": 3090,
+      "compressed_bytes": 1178
+    },
+    {
+      "path": "QUICK_START.md",
+      "bytes": 1668,
+      "compressed_bytes": 933
+    },
+    {
+      "path": "README.md",
+      "bytes": 2533,
+      "compressed_bytes": 1317
+    },
+    {
+      "path": "bootstrap_dataset.py",
+      "bytes": 1286,
+      "compressed_bytes": 670
+    },
+    {
+      "path": "compare_models.py",
+      "bytes": 7250,
+      "compressed_bytes": 2939
+    },
+    {
+      "path": "final_validation.py",
+      "bytes": 3245,
+      "compressed_bytes": 1459
+    },
+    {
+      "path": "generate_final_holdout.py",
+      "bytes": 1191,
+      "compressed_bytes": 636
+    },
+    {
+      "path": "generate_fluo.py",
+      "bytes": 21668,
+      "compressed_bytes": 7608
+    },
+    {
+      "path": "prepare_cohorts.py",
+      "bytes": 1941,
+      "compressed_bytes": 956
+    },
+    {
+      "path": "qa_and_demo.py",
+      "bytes": 4583,
+      "compressed_bytes": 1949
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 112,
+      "compressed_bytes": 89
+    },
+    {
+      "path": "robustness_stress.py",
+      "bytes": 2048,
+      "compressed_bytes": 932
+    },
+    {
+      "path": "run_fluo_ml_v1.py",
+      "bytes": 14399,
+      "compressed_bytes": 5676
+    },
+    {
+      "path": "run_fluo_v2.py",
+      "bytes": 13994,
+      "compressed_bytes": 5360
+    },
+    {
+      "path": "selected_model.joblib",
+      "bytes": 32826,
+      "compressed_bytes": 32834
+    },
+    {
+      "path": "docs/DATA_SOURCES.md",
+      "bytes": 2199,
+      "compressed_bytes": 1201
+    },
+    {
+      "path": "docs/HISTORICAL_V2_REPORT.md",
+      "bytes": 6140,
+      "compressed_bytes": 3091
+    },
+    {
+      "path": "docs/MODEL_CARD.md",
+      "bytes": 1779,
+      "compressed_bytes": 955
+    },
+    {
+      "path": "docs/RESULTS.md",
+      "bytes": 3875,
+      "compressed_bytes": 1914
+    },
+    {
+      "path": "reports/P2_integration_QA.json",
+      "bytes": 698,
+      "compressed_bytes": 350
+    },
+    {
+      "path": "reports/POSTHOC_robustness_stress.csv",
+      "bytes": 746,
+      "compressed_bytes": 294
+    },
+    {
+      "path": "reports/aggregate_metrics.csv",
+      "bytes": 981,
+      "compressed_bytes": 365
+    },
+    {
+      "path": "reports/cohort_episode_evaluation.csv",
+      "bytes": 75928,
+      "compressed_bytes": 6241
+    },
+    {
+      "path": "reports/cohort_metrics.csv",
+      "bytes": 1892,
+      "compressed_bytes": 592
+    },
+    {
+      "path": "reports/development_candidates.csv",
+      "bytes": 2752,
+      "compressed_bytes": 559
+    },
+    {
+      "path": "reports/development_summary.csv",
+      "bytes": 1303,
+      "compressed_bytes": 493
+    },
+    {
+      "path": "reports/fresh_holdout_robustness.csv",
+      "bytes": 728,
+      "compressed_bytes": 287
+    },
+    {
+      "path": "reports/fresh_holdout_summary.json",
+      "bytes": 928,
+      "compressed_bytes": 506
+    },
+    {
+      "path": "reports/frozen_experiment_config.json",
+      "bytes": 1606,
+      "compressed_bytes": 800
+    },
+    {
+      "path": "reports/frozen_selection.json",
+      "bytes": 392,
+      "compressed_bytes": 215
+    },
+    {
+      "path": "reports/p2_io_contract.json",
+      "bytes": 1204,
+      "compressed_bytes": 702
+    },
+    {
+      "path": "datasets/FLUO_DEEPX_SYNTHETIC_DATASET_V1_20261024.zip",
+      "bytes": 3504281,
+      "compressed_bytes": 3504596
+    },
+    {
+      "path": "data/original/fluo_episode_labels.csv",
+      "bytes": 7443,
+      "compressed_bytes": 1369
+    },
+    {
+      "path": "data/original/fluo_manifest.json",
+      "bytes": 4232,
+      "compressed_bytes": 1805
+    },
+    {
+      "path": "data/original/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/original/fluo_physics_ground_truth.csv.gz",
+      "bytes": 2174053,
+      "compressed_bytes": 2169536
+    },
+    {
+      "path": "data/original/fluo_sensor_stream.csv.gz",
+      "bytes": 1301915,
+      "compressed_bytes": 1290250
+    },
+    {
+      "path": "data/original/fluo_site_configs.csv",
+      "bytes": 458,
+      "compressed_bytes": 252
+    },
+    {
+      "path": "data/development/20261101/fluo_episode_labels.csv",
+      "bytes": 7378,
+      "compressed_bytes": 1351
+    },
+    {
+      "path": "data/development/20261101/fluo_manifest.json",
+      "bytes": 4232,
+      "compressed_bytes": 1804
+    },
+    {
+      "path": "data/development/20261101/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/development/20261101/fluo_physics_ground_truth.csv.gz",
+      "bytes": 2172615,
+      "compressed_bytes": 2168132
+    },
+    {
+      "path": "data/development/20261101/fluo_sensor_stream.csv.gz",
+      "bytes": 1303051,
+      "compressed_bytes": 1291271
+    },
+    {
+      "path": "data/development/20261101/fluo_site_configs.csv",
+      "bytes": 458,
+      "compressed_bytes": 252
+    },
+    {
+      "path": "data/development/20261102/fluo_episode_labels.csv",
+      "bytes": 7445,
+      "compressed_bytes": 1362
+    },
+    {
+      "path": "data/development/20261102/fluo_manifest.json",
+      "bytes": 4231,
+      "compressed_bytes": 1793
+    },
+    {
+      "path": "data/development/20261102/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/development/20261102/fluo_physics_ground_truth.csv.gz",
+      "bytes": 2172266,
+      "compressed_bytes": 2167242
+    },
+    {
+      "path": "data/development/20261102/fluo_sensor_stream.csv.gz",
+      "bytes": 1301796,
+      "compressed_bytes": 1289772
+    },
+    {
+      "path": "data/development/20261102/fluo_site_configs.csv",
+      "bytes": 458,
+      "compressed_bytes": 252
+    },
+    {
+      "path": "data/development/20261103/fluo_episode_labels.csv",
+      "bytes": 7297,
+      "compressed_bytes": 1327
+    },
+    {
+      "path": "data/development/20261103/fluo_manifest.json",
+      "bytes": 4231,
+      "compressed_bytes": 1806
+    },
+    {
+      "path": "data/development/20261103/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/development/20261103/fluo_physics_ground_truth.csv.gz",
+      "bytes": 2173348,
+      "compressed_bytes": 2168536
+    },
+    {
+      "path": "data/development/20261103/fluo_sensor_stream.csv.gz",
+      "bytes": 1302628,
+      "compressed_bytes": 1291179
+    },
+    {
+      "path": "data/development/20261103/fluo_site_configs.csv",
+      "bytes": 458,
+      "compressed_bytes": 252
+    },
+    {
+      "path": "data/locked/20261201/fluo_episode_labels.csv",
+      "bytes": 12950,
+      "compressed_bytes": 1891
+    },
+    {
+      "path": "data/locked/20261201/fluo_manifest.json",
+      "bytes": 4892,
+      "compressed_bytes": 1830
+    },
+    {
+      "path": "data/locked/20261201/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/locked/20261201/fluo_physics_ground_truth.csv.gz",
+      "bytes": 3648030,
+      "compressed_bytes": 3639221
+    },
+    {
+      "path": "data/locked/20261201/fluo_sensor_stream.csv.gz",
+      "bytes": 2212908,
+      "compressed_bytes": 2186707
+    },
+    {
+      "path": "data/locked/20261201/fluo_site_configs.csv",
+      "bytes": 605,
+      "compressed_bytes": 250
+    },
+    {
+      "path": "data/locked/20261202/fluo_episode_labels.csv",
+      "bytes": 13113,
+      "compressed_bytes": 1884
+    },
+    {
+      "path": "data/locked/20261202/fluo_manifest.json",
+      "bytes": 4893,
+      "compressed_bytes": 1824
+    },
+    {
+      "path": "data/locked/20261202/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/locked/20261202/fluo_physics_ground_truth.csv.gz",
+      "bytes": 3645580,
+      "compressed_bytes": 3637003
+    },
+    {
+      "path": "data/locked/20261202/fluo_sensor_stream.csv.gz",
+      "bytes": 2213617,
+      "compressed_bytes": 2187158
+    },
+    {
+      "path": "data/locked/20261202/fluo_site_configs.csv",
+      "bytes": 605,
+      "compressed_bytes": 250
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_episode_labels.csv",
+      "bytes": 13088,
+      "compressed_bytes": 1902
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_manifest.json",
+      "bytes": 4892,
+      "compressed_bytes": 1825
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_physics_ground_truth.csv.gz",
+      "bytes": 3644497,
+      "compressed_bytes": 3635729
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_sensor_stream.csv.gz",
+      "bytes": 2213081,
+      "compressed_bytes": 2186469
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_site_configs.csv",
+      "bytes": 605,
+      "compressed_bytes": 250
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_episode_labels.csv",
+      "bytes": 13026,
+      "compressed_bytes": 1880
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_manifest.json",
+      "bytes": 4892,
+      "compressed_bytes": 1825
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_parameter_provenance.csv",
+      "bytes": 2746,
+      "compressed_bytes": 1289
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_physics_ground_truth.csv.gz",
+      "bytes": 3646811,
+      "compressed_bytes": 3637979
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_sensor_stream.csv.gz",
+      "bytes": 2211483,
+      "compressed_bytes": 2185473
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_site_configs.csv",
+      "bytes": 605,
+      "compressed_bytes": 250
+    },
+    {
+      "path": "PACKAGE_SHA256.json",
+      "bytes": 9390,
+      "compressed_bytes": 3688
+    }
+  ],
+  "package_checksum_checks": [
+    {
+      "path": ".gitignore",
+      "expected": "a990a230a33a387a03214b95f7515bb8f7b7b18effaf36e3a29ce9d236864f76",
+      "actual": "a990a230a33a387a03214b95f7515bb8f7b7b18effaf36e3a29ce9d236864f76",
+      "matches": true
+    },
+    {
+      "path": "FLUO_SYNTHETIC_AUDIT_COLAB.ipynb",
+      "expected": "acd46db1b6e427849581c6945c89da21b87f8251001f3edaeabf9c08910161e4",
+      "actual": "acd46db1b6e427849581c6945c89da21b87f8251001f3edaeabf9c08910161e4",
+      "matches": true
+    },
+    {
+      "path": "QUICK_START.md",
+      "expected": "3a41ff03286eeb50aba366c77cda6d39194d1be94d9df0606861632f6cd9661e",
+      "actual": "3a41ff03286eeb50aba366c77cda6d39194d1be94d9df0606861632f6cd9661e",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "expected": "3b2d54f2cfb9aeb2d799f1f50f3df4f6c3a4549ad20a24b33e31682fdeb9d59b",
+      "actual": "3b2d54f2cfb9aeb2d799f1f50f3df4f6c3a4549ad20a24b33e31682fdeb9d59b",
+      "matches": true
+    },
+    {
+      "path": "bootstrap_dataset.py",
+      "expected": "716558a0b7cf42cedc5ec3ab7d0ddf915ed805d1304e453f7ab9370a3cb5328b",
+      "actual": "716558a0b7cf42cedc5ec3ab7d0ddf915ed805d1304e453f7ab9370a3cb5328b",
+      "matches": true
+    },
+    {
+      "path": "compare_models.py",
+      "expected": "7077d4e6370507708d0e0917725f5b2dabaa68f989e2579c8d7838c4634c437e",
+      "actual": "7077d4e6370507708d0e0917725f5b2dabaa68f989e2579c8d7838c4634c437e",
+      "matches": true
+    },
+    {
+      "path": "final_validation.py",
+      "expected": "a17ea934c3b5738a2831841de68c5a6bd08f60342ce390ba7bd7e87ed828a4a3",
+      "actual": "a17ea934c3b5738a2831841de68c5a6bd08f60342ce390ba7bd7e87ed828a4a3",
+      "matches": true
+    },
+    {
+      "path": "generate_final_holdout.py",
+      "expected": "e3832adb9fe48b1fee1a504b8ea0d8827e146bfbb843592a2d6aa847e53ba63a",
+      "actual": "e3832adb9fe48b1fee1a504b8ea0d8827e146bfbb843592a2d6aa847e53ba63a",
+      "matches": true
+    },
+    {
+      "path": "generate_fluo.py",
+      "expected": "65db53cc2546dc1cb6de68c3c8b64b884de2dc5237aab720f627af99e3586325",
+      "actual": "65db53cc2546dc1cb6de68c3c8b64b884de2dc5237aab720f627af99e3586325",
+      "matches": true
+    },
+    {
+      "path": "prepare_cohorts.py",
+      "expected": "153bf2c852c1b591df8b1c422db8408747c3ce0877c1b5bedba2d3b6ca71a7a7",
+      "actual": "153bf2c852c1b591df8b1c422db8408747c3ce0877c1b5bedba2d3b6ca71a7a7",
+      "matches": true
+    },
+    {
+      "path": "qa_and_demo.py",
+      "expected": "024b184381bebb7bb9f2db588666af00744c8bec5d2532caa2394400aa65e725",
+      "actual": "024b184381bebb7bb9f2db588666af00744c8bec5d2532caa2394400aa65e725",
+      "matches": true
+    },
+    {
+      "path": "requirements.txt",
+      "expected": "83938127c0c4dcf85ac10d75024a7455bea9c501e90a592d1d966f7069ecd546",
+      "actual": "83938127c0c4dcf85ac10d75024a7455bea9c501e90a592d1d966f7069ecd546",
+      "matches": true
+    },
+    {
+      "path": "robustness_stress.py",
+      "expected": "212e7a73e15cbe2ec99f0234d0c6375ea6a39444971f40a01bd92149eb4aba01",
+      "actual": "212e7a73e15cbe2ec99f0234d0c6375ea6a39444971f40a01bd92149eb4aba01",
+      "matches": true
+    },
+    {
+      "path": "run_fluo_ml_v1.py",
+      "expected": "7ac06452d41218116f8c9798924ac97342c92df45cb3a16dc658cf2e8b72af62",
+      "actual": "7ac06452d41218116f8c9798924ac97342c92df45cb3a16dc658cf2e8b72af62",
+      "matches": true
+    },
+    {
+      "path": "run_fluo_v2.py",
+      "expected": "5e36f46e486d1eec1e941545975d816442505fc67889ebe31fda24c24be3df34",
+      "actual": "5e36f46e486d1eec1e941545975d816442505fc67889ebe31fda24c24be3df34",
+      "matches": true
+    },
+    {
+      "path": "selected_model.joblib",
+      "expected": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+      "actual": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+      "matches": true
+    },
+    {
+      "path": "docs/DATA_SOURCES.md",
+      "expected": "99542956c9f7d7bcdf82f6ebf9aeaec382cf9fe543877bbbbffb2aba358546d5",
+      "actual": "99542956c9f7d7bcdf82f6ebf9aeaec382cf9fe543877bbbbffb2aba358546d5",
+      "matches": true
+    },
+    {
+      "path": "docs/HISTORICAL_V2_REPORT.md",
+      "expected": "7e06d4a7d54fc8ce96d42cfbaf819a65180961bc92835f5acfc76b95c0d33c01",
+      "actual": "7e06d4a7d54fc8ce96d42cfbaf819a65180961bc92835f5acfc76b95c0d33c01",
+      "matches": true
+    },
+    {
+      "path": "docs/MODEL_CARD.md",
+      "expected": "291e0a769edaf442e5dd3f0731c00e9acec82a373b5ed3056c5cc81ffd90ec80",
+      "actual": "291e0a769edaf442e5dd3f0731c00e9acec82a373b5ed3056c5cc81ffd90ec80",
+      "matches": true
+    },
+    {
+      "path": "docs/RESULTS.md",
+      "expected": "1f60584b976664bc7adeb5542e6824ff65c4394a48d9b635fe07bfa595d0e82c",
+      "actual": "1f60584b976664bc7adeb5542e6824ff65c4394a48d9b635fe07bfa595d0e82c",
+      "matches": true
+    },
+    {
+      "path": "reports/P2_integration_QA.json",
+      "expected": "94f52265df37cf9634522492062361712b2a643e5446aa5210045bfdfd8a36a5",
+      "actual": "94f52265df37cf9634522492062361712b2a643e5446aa5210045bfdfd8a36a5",
+      "matches": true
+    },
+    {
+      "path": "reports/POSTHOC_robustness_stress.csv",
+      "expected": "488f9fdbdd79f355ceff911a333c3c38d21d60cb67e9453e05e6829eef663d59",
+      "actual": "488f9fdbdd79f355ceff911a333c3c38d21d60cb67e9453e05e6829eef663d59",
+      "matches": true
+    },
+    {
+      "path": "reports/aggregate_metrics.csv",
+      "expected": "0817f2225d8ae463f1cc02d91b31e0b5bf8a78884d56c8dcded90210bda35a73",
+      "actual": "0817f2225d8ae463f1cc02d91b31e0b5bf8a78884d56c8dcded90210bda35a73",
+      "matches": true
+    },
+    {
+      "path": "reports/cohort_episode_evaluation.csv",
+      "expected": "8304264a40ef4fc7730f9e439411375adc58cd54bb182b916ccaaa37b1ee5594",
+      "actual": "8304264a40ef4fc7730f9e439411375adc58cd54bb182b916ccaaa37b1ee5594",
+      "matches": true
+    },
+    {
+      "path": "reports/cohort_metrics.csv",
+      "expected": "73fa55890ef6a884f196a471ce7b5854b964824482859f911899d7b0b586618f",
+      "actual": "73fa55890ef6a884f196a471ce7b5854b964824482859f911899d7b0b586618f",
+      "matches": true
+    },
+    {
+      "path": "reports/development_candidates.csv",
+      "expected": "e7fb97e9abcbb3a44816efe60fc6e9c533fec2713d8c5737466468dcfb72ca5e",
+      "actual": "e7fb97e9abcbb3a44816efe60fc6e9c533fec2713d8c5737466468dcfb72ca5e",
+      "matches": true
+    },
+    {
+      "path": "reports/development_summary.csv",
+      "expected": "47e0f182f7818dc84d7a484b294c27a5f2d4bfb6ae4500a2190896f98c39a55c",
+      "actual": "47e0f182f7818dc84d7a484b294c27a5f2d4bfb6ae4500a2190896f98c39a55c",
+      "matches": true
+    },
+    {
+      "path": "reports/fresh_holdout_robustness.csv",
+      "expected": "89fc38f055a379518e904a99e84dabccfbd7e75e76de81123853af2a5a61c629",
+      "actual": "89fc38f055a379518e904a99e84dabccfbd7e75e76de81123853af2a5a61c629",
+      "matches": true
+    },
+    {
+      "path": "reports/fresh_holdout_summary.json",
+      "expected": "b2bb7c0b2df98aef1a00d0d4b69bd2603c8ac0a23c3f927d4d695e70cd00e5d8",
+      "actual": "b2bb7c0b2df98aef1a00d0d4b69bd2603c8ac0a23c3f927d4d695e70cd00e5d8",
+      "matches": true
+    },
+    {
+      "path": "reports/frozen_experiment_config.json",
+      "expected": "70c9c19356d1b22185984a0ee5bcb5ee0373188cfba771a8bf1ed023e8d98443",
+      "actual": "70c9c19356d1b22185984a0ee5bcb5ee0373188cfba771a8bf1ed023e8d98443",
+      "matches": true
+    },
+    {
+      "path": "reports/frozen_selection.json",
+      "expected": "6394873a869bc5b84a28765bd2af494bf33f6e32855944977b726540c3ef7bd9",
+      "actual": "6394873a869bc5b84a28765bd2af494bf33f6e32855944977b726540c3ef7bd9",
+      "matches": true
+    },
+    {
+      "path": "reports/p2_io_contract.json",
+      "expected": "c0ae37ea7c66c15d318ad7fe04e757f3be363948ef5e0353c3f4225918be1d91",
+      "actual": "c0ae37ea7c66c15d318ad7fe04e757f3be363948ef5e0353c3f4225918be1d91",
+      "matches": true
+    },
+    {
+      "path": "datasets/FLUO_DEEPX_SYNTHETIC_DATASET_V1_20261024.zip",
+      "expected": "c3061b3f4a94fb6802a01943d1c4b70d8d7320661214519baa12eb8444f53946",
+      "actual": "c3061b3f4a94fb6802a01943d1c4b70d8d7320661214519baa12eb8444f53946",
+      "matches": true
+    },
+    {
+      "path": "data/original/fluo_episode_labels.csv",
+      "expected": "e5b1368942a98452abd8b49e3c93d154b0d07614d33e99ec4e755a8e45611106",
+      "actual": "e5b1368942a98452abd8b49e3c93d154b0d07614d33e99ec4e755a8e45611106",
+      "matches": true
+    },
+    {
+      "path": "data/original/fluo_manifest.json",
+      "expected": "91151f75dad8028e0884366af8adacc79277dd5659065edc951a4e9d00b4bab1",
+      "actual": "91151f75dad8028e0884366af8adacc79277dd5659065edc951a4e9d00b4bab1",
+      "matches": true
+    },
+    {
+      "path": "data/original/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/original/fluo_physics_ground_truth.csv.gz",
+      "expected": "39d45426c2b138600ee665cd6b88c1bd7c19b28f12bedab577be4533b9f6373f",
+      "actual": "39d45426c2b138600ee665cd6b88c1bd7c19b28f12bedab577be4533b9f6373f",
+      "matches": true
+    },
+    {
+      "path": "data/original/fluo_sensor_stream.csv.gz",
+      "expected": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+      "actual": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+      "matches": true
+    },
+    {
+      "path": "data/original/fluo_site_configs.csv",
+      "expected": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "actual": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261101/fluo_episode_labels.csv",
+      "expected": "c07349793ce6cc52ae42875172fe431a430773f7ad961cf5aeff49d459dc85f7",
+      "actual": "c07349793ce6cc52ae42875172fe431a430773f7ad961cf5aeff49d459dc85f7",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261101/fluo_manifest.json",
+      "expected": "e05ecbefc70aa35864d50de247587d11291de12f3f82c572fe975e640809df2c",
+      "actual": "e05ecbefc70aa35864d50de247587d11291de12f3f82c572fe975e640809df2c",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261101/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261101/fluo_physics_ground_truth.csv.gz",
+      "expected": "3f16dd687e56ee09b4f4f3ef5b2e74255e518fe86e01d0f750b6d71e3ccd57d5",
+      "actual": "3f16dd687e56ee09b4f4f3ef5b2e74255e518fe86e01d0f750b6d71e3ccd57d5",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261101/fluo_sensor_stream.csv.gz",
+      "expected": "62587b99347e38a44f8da55ae26dedb6bf765f494c7c31c0d16e39f9ee97d274",
+      "actual": "62587b99347e38a44f8da55ae26dedb6bf765f494c7c31c0d16e39f9ee97d274",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261101/fluo_site_configs.csv",
+      "expected": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "actual": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261102/fluo_episode_labels.csv",
+      "expected": "854a2e2c60ac89dc6a3f4556412eb6395286469e38ef24c9d5674b563de60eaa",
+      "actual": "854a2e2c60ac89dc6a3f4556412eb6395286469e38ef24c9d5674b563de60eaa",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261102/fluo_manifest.json",
+      "expected": "e0fe49a22a4432b2e030eabf292acaa0aab1dfe48753186a70a957333bf1c184",
+      "actual": "e0fe49a22a4432b2e030eabf292acaa0aab1dfe48753186a70a957333bf1c184",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261102/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261102/fluo_physics_ground_truth.csv.gz",
+      "expected": "51e234b45c0e9d5f22752e11e9a25099bbd77843e373f8fc6587f68548e927b3",
+      "actual": "51e234b45c0e9d5f22752e11e9a25099bbd77843e373f8fc6587f68548e927b3",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261102/fluo_sensor_stream.csv.gz",
+      "expected": "e386ebc926c38352fd7fb0f6769328a28c4b5b011b6b3f86f0675c7c228ea989",
+      "actual": "e386ebc926c38352fd7fb0f6769328a28c4b5b011b6b3f86f0675c7c228ea989",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261102/fluo_site_configs.csv",
+      "expected": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "actual": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261103/fluo_episode_labels.csv",
+      "expected": "01a9a74830ebd5c839866f94d7271d9cb8ccfdf6fc4facfc7da91685322b2052",
+      "actual": "01a9a74830ebd5c839866f94d7271d9cb8ccfdf6fc4facfc7da91685322b2052",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261103/fluo_manifest.json",
+      "expected": "5fd1787bbe2735802e4bce953a9e03677e904c44355d8134d9b6c764e9757cd1",
+      "actual": "5fd1787bbe2735802e4bce953a9e03677e904c44355d8134d9b6c764e9757cd1",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261103/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261103/fluo_physics_ground_truth.csv.gz",
+      "expected": "c4b911b454edca627c6e4cf0fda8c113b55adf33e8c0a03c329e3110b5d199c9",
+      "actual": "c4b911b454edca627c6e4cf0fda8c113b55adf33e8c0a03c329e3110b5d199c9",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261103/fluo_sensor_stream.csv.gz",
+      "expected": "388d0cbe8190f9f038c8190d1f25ae1c2d431d0408694e8c76a07c1f5acfdee2",
+      "actual": "388d0cbe8190f9f038c8190d1f25ae1c2d431d0408694e8c76a07c1f5acfdee2",
+      "matches": true
+    },
+    {
+      "path": "data/development/20261103/fluo_site_configs.csv",
+      "expected": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "actual": "23bfd87d6db477164e779d23a417e93a459bd9371312f6744be03d2c483b778f",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261201/fluo_episode_labels.csv",
+      "expected": "211220c013caa857208d1d2abceb51b1e88a5dfa5529ab59bdbde3fdc42bff8f",
+      "actual": "211220c013caa857208d1d2abceb51b1e88a5dfa5529ab59bdbde3fdc42bff8f",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261201/fluo_manifest.json",
+      "expected": "ba8569ec43de0e30b598f8de8b5fda37ded231b0d1913ddbcf50de30651abe0c",
+      "actual": "ba8569ec43de0e30b598f8de8b5fda37ded231b0d1913ddbcf50de30651abe0c",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261201/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261201/fluo_physics_ground_truth.csv.gz",
+      "expected": "491248b918e82af01369bc7533bd06457e5d30340d151677ab0005ba753833e0",
+      "actual": "491248b918e82af01369bc7533bd06457e5d30340d151677ab0005ba753833e0",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261201/fluo_sensor_stream.csv.gz",
+      "expected": "162ed5816208929ce8f95822c16afbcd8d3f8061719bde1f0c471acf5eea5ada",
+      "actual": "162ed5816208929ce8f95822c16afbcd8d3f8061719bde1f0c471acf5eea5ada",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261201/fluo_site_configs.csv",
+      "expected": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "actual": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261202/fluo_episode_labels.csv",
+      "expected": "0cbaaf5fba02760ac5262b89afcfb529deec69fb4bb9a5b0d615e1e9e7d03be1",
+      "actual": "0cbaaf5fba02760ac5262b89afcfb529deec69fb4bb9a5b0d615e1e9e7d03be1",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261202/fluo_manifest.json",
+      "expected": "5113c0dbb456796289f1e000908af3bdbc7088fadc0e5a3eddbaa7d84c8490bf",
+      "actual": "5113c0dbb456796289f1e000908af3bdbc7088fadc0e5a3eddbaa7d84c8490bf",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261202/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261202/fluo_physics_ground_truth.csv.gz",
+      "expected": "ac844a974ed507d0c1d4cd3e67de47d1340b1e75fece563f3baaa85426ac3b53",
+      "actual": "ac844a974ed507d0c1d4cd3e67de47d1340b1e75fece563f3baaa85426ac3b53",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261202/fluo_sensor_stream.csv.gz",
+      "expected": "f4cac239d9ba55e58e706ad101a9e7d96989710d20c49242f3f092d6fd0877b4",
+      "actual": "f4cac239d9ba55e58e706ad101a9e7d96989710d20c49242f3f092d6fd0877b4",
+      "matches": true
+    },
+    {
+      "path": "data/locked/20261202/fluo_site_configs.csv",
+      "expected": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "actual": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_episode_labels.csv",
+      "expected": "10bec6949a8b6847b3e2856d2bde2b49e5d55353964f45ceb4c67213768b9d79",
+      "actual": "10bec6949a8b6847b3e2856d2bde2b49e5d55353964f45ceb4c67213768b9d79",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_manifest.json",
+      "expected": "8de445894ad340a817d9edc0c7e38cd6a86f6ee42da07d23a2297e3a1056cfc4",
+      "actual": "8de445894ad340a817d9edc0c7e38cd6a86f6ee42da07d23a2297e3a1056cfc4",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_physics_ground_truth.csv.gz",
+      "expected": "1a76b3288a6d4f4c3f75a6f10fec0bd88b6f34ac5a8ef2efb9ba3822a6a5ff26",
+      "actual": "1a76b3288a6d4f4c3f75a6f10fec0bd88b6f34ac5a8ef2efb9ba3822a6a5ff26",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_sensor_stream.csv.gz",
+      "expected": "2000f82595fc977e3542e35927a62a6a83b6035a8e512038617ba0594f2c0793",
+      "actual": "2000f82595fc977e3542e35927a62a6a83b6035a8e512038617ba0594f2c0793",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270111/fluo_site_configs.csv",
+      "expected": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "actual": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_episode_labels.csv",
+      "expected": "5eaad8349048366375cbee8559a493de27d02169a7afcd26dd6d5c82c4369780",
+      "actual": "5eaad8349048366375cbee8559a493de27d02169a7afcd26dd6d5c82c4369780",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_manifest.json",
+      "expected": "65af173bcd607b4c65c746c95c674bcf3a7079891f6ed5be8180bb38acd6ed8f",
+      "actual": "65af173bcd607b4c65c746c95c674bcf3a7079891f6ed5be8180bb38acd6ed8f",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_parameter_provenance.csv",
+      "expected": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "actual": "f6e22431937a64d2e443f40be829139e0b71a0567aa1851279e1d60eb675eeec",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_physics_ground_truth.csv.gz",
+      "expected": "cfa868a8529fa673b911a7aecc072ac5076a149c7ffad5afb3399899e547ef36",
+      "actual": "cfa868a8529fa673b911a7aecc072ac5076a149c7ffad5afb3399899e547ef36",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_sensor_stream.csv.gz",
+      "expected": "8c8102f44726ff47f4d9838d7bb132006ceabbbf4fedc073a44e3ad3f3f36eda",
+      "actual": "8c8102f44726ff47f4d9838d7bb132006ceabbbf4fedc073a44e3ad3f3f36eda",
+      "matches": true
+    },
+    {
+      "path": "data/fresh_holdout/20270112/fluo_site_configs.csv",
+      "expected": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "actual": "ea4f595f1d103309c8c77c70792fd231ed9a0bc7ee43daf3c5bb46c48a7572e6",
+      "matches": true
+    }
+  ],
+  "comparison": [
+    {
+      "path": ".gitignore",
+      "archive_sha256": "a990a230a33a387a03214b95f7515bb8f7b7b18effaf36e3a29ce9d236864f76",
+      "repo_sha256": "f1d35a63b8aa1a926478a7ef5b92fb633388b9fd889de0c763aaf41e3815d878",
+      "identical": false
+    },
+    {
+      "path": "bootstrap_dataset.py",
+      "archive_sha256": "716558a0b7cf42cedc5ec3ab7d0ddf915ed805d1304e453f7ab9370a3cb5328b",
+      "repo_sha256": "1e164fb7d2240447dd77be0dcb9f053179023fb24dc6b14e6af7975da7512c8a",
+      "identical": false
+    },
+    {
+      "path": "compare_models.py",
+      "archive_sha256": "7077d4e6370507708d0e0917725f5b2dabaa68f989e2579c8d7838c4634c437e",
+      "repo_sha256": "7077d4e6370507708d0e0917725f5b2dabaa68f989e2579c8d7838c4634c437e",
+      "identical": true
+    },
+    {
+      "path": "docs/DATA_SOURCES.md",
+      "archive_sha256": "99542956c9f7d7bcdf82f6ebf9aeaec382cf9fe543877bbbbffb2aba358546d5",
+      "repo_sha256": "99542956c9f7d7bcdf82f6ebf9aeaec382cf9fe543877bbbbffb2aba358546d5",
+      "identical": true
+    },
+    {
+      "path": "docs/HISTORICAL_V2_REPORT.md",
+      "archive_sha256": "7e06d4a7d54fc8ce96d42cfbaf819a65180961bc92835f5acfc76b95c0d33c01",
+      "repo_sha256": "7e06d4a7d54fc8ce96d42cfbaf819a65180961bc92835f5acfc76b95c0d33c01",
+      "identical": true
+    },
+    {
+      "path": "docs/MODEL_CARD.md",
+      "archive_sha256": "291e0a769edaf442e5dd3f0731c00e9acec82a373b5ed3056c5cc81ffd90ec80",
+      "repo_sha256": "291e0a769edaf442e5dd3f0731c00e9acec82a373b5ed3056c5cc81ffd90ec80",
+      "identical": true
+    },
+    {
+      "path": "docs/RESULTS.md",
+      "archive_sha256": "1f60584b976664bc7adeb5542e6824ff65c4394a48d9b635fe07bfa595d0e82c",
+      "repo_sha256": "1f60584b976664bc7adeb5542e6824ff65c4394a48d9b635fe07bfa595d0e82c",
+      "identical": true
+    },
+    {
+      "path": "final_validation.py",
+      "archive_sha256": "a17ea934c3b5738a2831841de68c5a6bd08f60342ce390ba7bd7e87ed828a4a3",
+      "repo_sha256": "a17ea934c3b5738a2831841de68c5a6bd08f60342ce390ba7bd7e87ed828a4a3",
+      "identical": true
+    },
+    {
+      "path": "generate_final_holdout.py",
+      "archive_sha256": "e3832adb9fe48b1fee1a504b8ea0d8827e146bfbb843592a2d6aa847e53ba63a",
+      "repo_sha256": "e3832adb9fe48b1fee1a504b8ea0d8827e146bfbb843592a2d6aa847e53ba63a",
+      "identical": true
+    },
+    {
+      "path": "generate_fluo.py",
+      "archive_sha256": "65db53cc2546dc1cb6de68c3c8b64b884de2dc5237aab720f627af99e3586325",
+      "repo_sha256": "65db53cc2546dc1cb6de68c3c8b64b884de2dc5237aab720f627af99e3586325",
+      "identical": true
+    },
+    {
+      "path": "prepare_cohorts.py",
+      "archive_sha256": "153bf2c852c1b591df8b1c422db8408747c3ce0877c1b5bedba2d3b6ca71a7a7",
+      "repo_sha256": "153bf2c852c1b591df8b1c422db8408747c3ce0877c1b5bedba2d3b6ca71a7a7",
+      "identical": true
+    },
+    {
+      "path": "qa_and_demo.py",
+      "archive_sha256": "024b184381bebb7bb9f2db588666af00744c8bec5d2532caa2394400aa65e725",
+      "repo_sha256": "024b184381bebb7bb9f2db588666af00744c8bec5d2532caa2394400aa65e725",
+      "identical": true
+    },
+    {
+      "path": "README.md",
+      "archive_sha256": "3b2d54f2cfb9aeb2d799f1f50f3df4f6c3a4549ad20a24b33e31682fdeb9d59b",
+      "repo_sha256": "3b2d54f2cfb9aeb2d799f1f50f3df4f6c3a4549ad20a24b33e31682fdeb9d59b",
+      "identical": true
+    },
+    {
+      "path": "reports/aggregate_metrics.csv",
+      "archive_sha256": "0817f2225d8ae463f1cc02d91b31e0b5bf8a78884d56c8dcded90210bda35a73",
+      "repo_sha256": "0817f2225d8ae463f1cc02d91b31e0b5bf8a78884d56c8dcded90210bda35a73",
+      "identical": true
+    },
+    {
+      "path": "reports/cohort_episode_evaluation.csv",
+      "archive_sha256": "8304264a40ef4fc7730f9e439411375adc58cd54bb182b916ccaaa37b1ee5594",
+      "repo_sha256": "8304264a40ef4fc7730f9e439411375adc58cd54bb182b916ccaaa37b1ee5594",
+      "identical": true
+    },
+    {
+      "path": "reports/cohort_metrics.csv",
+      "archive_sha256": "73fa55890ef6a884f196a471ce7b5854b964824482859f911899d7b0b586618f",
+      "repo_sha256": "73fa55890ef6a884f196a471ce7b5854b964824482859f911899d7b0b586618f",
+      "identical": true
+    },
+    {
+      "path": "reports/development_candidates.csv",
+      "archive_sha256": "e7fb97e9abcbb3a44816efe60fc6e9c533fec2713d8c5737466468dcfb72ca5e",
+      "repo_sha256": "e7fb97e9abcbb3a44816efe60fc6e9c533fec2713d8c5737466468dcfb72ca5e",
+      "identical": true
+    },
+    {
+      "path": "reports/development_summary.csv",
+      "archive_sha256": "47e0f182f7818dc84d7a484b294c27a5f2d4bfb6ae4500a2190896f98c39a55c",
+      "repo_sha256": "47e0f182f7818dc84d7a484b294c27a5f2d4bfb6ae4500a2190896f98c39a55c",
+      "identical": true
+    },
+    {
+      "path": "reports/fresh_holdout_robustness.csv",
+      "archive_sha256": "89fc38f055a379518e904a99e84dabccfbd7e75e76de81123853af2a5a61c629",
+      "repo_sha256": "89fc38f055a379518e904a99e84dabccfbd7e75e76de81123853af2a5a61c629",
+      "identical": true
+    },
+    {
+      "path": "reports/fresh_holdout_summary.json",
+      "archive_sha256": "b2bb7c0b2df98aef1a00d0d4b69bd2603c8ac0a23c3f927d4d695e70cd00e5d8",
+      "repo_sha256": "b2bb7c0b2df98aef1a00d0d4b69bd2603c8ac0a23c3f927d4d695e70cd00e5d8",
+      "identical": true
+    },
+    {
+      "path": "reports/frozen_experiment_config.json",
+      "archive_sha256": "70c9c19356d1b22185984a0ee5bcb5ee0373188cfba771a8bf1ed023e8d98443",
+      "repo_sha256": "70c9c19356d1b22185984a0ee5bcb5ee0373188cfba771a8bf1ed023e8d98443",
+      "identical": true
+    },
+    {
+      "path": "reports/frozen_selection.json",
+      "archive_sha256": "6394873a869bc5b84a28765bd2af494bf33f6e32855944977b726540c3ef7bd9",
+      "repo_sha256": "6394873a869bc5b84a28765bd2af494bf33f6e32855944977b726540c3ef7bd9",
+      "identical": true
+    },
+    {
+      "path": "reports/P2_integration_QA.json",
+      "archive_sha256": "94f52265df37cf9634522492062361712b2a643e5446aa5210045bfdfd8a36a5",
+      "repo_sha256": "94f52265df37cf9634522492062361712b2a643e5446aa5210045bfdfd8a36a5",
+      "identical": true
+    },
+    {
+      "path": "reports/p2_io_contract.json",
+      "archive_sha256": "c0ae37ea7c66c15d318ad7fe04e757f3be363948ef5e0353c3f4225918be1d91",
+      "repo_sha256": "c0ae37ea7c66c15d318ad7fe04e757f3be363948ef5e0353c3f4225918be1d91",
+      "identical": true
+    },
+    {
+      "path": "reports/POSTHOC_robustness_stress.csv",
+      "archive_sha256": "488f9fdbdd79f355ceff911a333c3c38d21d60cb67e9453e05e6829eef663d59",
+      "repo_sha256": "488f9fdbdd79f355ceff911a333c3c38d21d60cb67e9453e05e6829eef663d59",
+      "identical": true
+    },
+    {
+      "path": "requirements.txt",
+      "archive_sha256": "83938127c0c4dcf85ac10d75024a7455bea9c501e90a592d1d966f7069ecd546",
+      "repo_sha256": "83938127c0c4dcf85ac10d75024a7455bea9c501e90a592d1d966f7069ecd546",
+      "identical": true
+    },
+    {
+      "path": "robustness_stress.py",
+      "archive_sha256": "212e7a73e15cbe2ec99f0234d0c6375ea6a39444971f40a01bd92149eb4aba01",
+      "repo_sha256": "212e7a73e15cbe2ec99f0234d0c6375ea6a39444971f40a01bd92149eb4aba01",
+      "identical": true
+    },
+    {
+      "path": "run_fluo_ml_v1.py",
+      "archive_sha256": "7ac06452d41218116f8c9798924ac97342c92df45cb3a16dc658cf2e8b72af62",
+      "repo_sha256": "7ac06452d41218116f8c9798924ac97342c92df45cb3a16dc658cf2e8b72af62",
+      "identical": true
+    },
+    {
+      "path": "run_fluo_v2.py",
+      "archive_sha256": "5e36f46e486d1eec1e941545975d816442505fc67889ebe31fda24c24be3df34",
+      "repo_sha256": "5e36f46e486d1eec1e941545975d816442505fc67889ebe31fda24c24be3df34",
+      "identical": true
+    }
+  ],
+  "python_static_inventory": [
+    {
+      "path": "bootstrap_dataset.py",
+      "functions": [
+        "main"
+      ],
+      "lines": 31
+    },
+    {
+      "path": "compare_models.py",
+      "functions": [
+        "train",
+        "alert",
+        "summarize",
+        "eval_cohort",
+        "pick"
+      ],
+      "lines": 112
+    },
+    {
+      "path": "final_validation.py",
+      "functions": [
+        "ci",
+        "main"
+      ],
+      "lines": 51
+    },
+    {
+      "path": "generate_final_holdout.py",
+      "functions": [
+        "main"
+      ],
+      "lines": 27
+    },
+    {
+      "path": "generate_fluo.py",
+      "functions": [
+        "sat_props",
+        "generator_rows",
+        "sha",
+        "write_csv",
+        "generate",
+        "main"
+      ],
+      "lines": 290
+    },
+    {
+      "path": "prepare_cohorts.py",
+      "functions": [
+        "run"
+      ],
+      "lines": 32
+    },
+    {
+      "path": "qa_and_demo.py",
+      "functions": [
+        "main"
+      ],
+      "lines": 70
+    },
+    {
+      "path": "robustness_stress.py",
+      "functions": [],
+      "lines": 32
+    },
+    {
+      "path": "run_fluo_ml_v1.py",
+      "functions": [
+        "read_data",
+        "build_features",
+        "calibrate",
+        "event_metrics",
+        "apply_alert",
+        "run"
+      ],
+      "lines": 198
+    },
+    {
+      "path": "run_fluo_v2.py",
+      "functions": [
+        "fmt_data",
+        "train_model",
+        "inference",
+        "evaluate",
+        "main"
+      ],
+      "lines": 166
+    }
+  ],
+  "models": {
+    "archive_selected": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+    "repo_hgb": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09"
+  },
+  "repo_sha": "f2c05af115f374848ee3b8592a32af8648afea53"
+}
