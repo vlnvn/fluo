@@ -906,8 +906,8 @@
     {
       "path": ".gitignore",
       "archive_sha256": "a990a230a33a387a03214b95f7515bb8f7b7b18effaf36e3a29ce9d236864f76",
-      "repo_sha256": "f1d35a63b8aa1a926478a7ef5b92fb633388b9fd889de0c763aaf41e3815d878",
-      "identical": false
+      "repo_sha256": "a990a230a33a387a03214b95f7515bb8f7b7b18effaf36e3a29ce9d236864f76",
+      "identical": true
     },
     {
       "path": "bootstrap_dataset.py",

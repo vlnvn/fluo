@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ok 1 tests\fluo.spec.ts:11:1 › real HGB readings, four pages, Full/Compact geometry and original local assets (2.2s)
+  ok 2 tests\fluo.spec.ts:43:1 › deterministic replay controls, scenario reset, model/quality cases, reload and retained navigation (4.8s)
+  ok 3 tests\fluo.spec.ts:65:1 › filter overlay all/return/quality, cancel, reset, contextual notifications/preferences/help and focus (3.1s)
+  ok 4 tests\fluo.spec.ts:90:1 › four events have independent persisted checklists, real PDFs, A4 preview/print, accessible keyboard path (5.9s)
+  ok 5 tests\fluo.spec.ts:121:1 › accessibility, focus trap, reduced motion and narrower desktop remain usable (1.5s)
+  ok 6 tests\fluo.spec.ts:132:1 › warning audio requires opt-in and a newly crossed detector event; no mount cue (3.0s)
+
+  6 passed (22.5s)

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.joblib binary
+*.png binary
+*.mp3 binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+*.gz binary

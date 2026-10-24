@@ -1,0 +1,30 @@
+{
+  "date_local": "2026-10-25",
+  "code_revision": "f32b0a8dc1c32fe0c0504ca04d59dc8a8f4f133b",
+  "api_tests": {
+    "passed": 14,
+    "exit_code": 0
+  },
+  "chart_unit_tests": {
+    "passed": 2,
+    "exit_code": 0
+  },
+  "e2e_dev": {
+    "passed": 6,
+    "exit_code": 0
+  },
+  "e2e_built": {
+    "passed": 6,
+    "exit_code": 0
+  },
+  "lint_exit": 0,
+  "typecheck_exit": 0,
+  "build_exit": 0,
+  "ruff_exit": 0,
+  "setup_exit": 0,
+  "npm_reported_vulnerabilities": 0,
+  "visual_comparisons": 20,
+  "pixel_identity_claim": false,
+  "field_validation": false,
+  "notes": "Commands and outputs described in IMPLEMENTATION_REPORT.md; original source text, screenshots and private references remain local."
+}

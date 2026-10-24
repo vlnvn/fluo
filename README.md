@@ -1,3 +1,102 @@
+# Fluo — local operator workspace
+
+Functional React/TypeScript + FastAPI prototype using the **original frozen HGB** and the supplied audited telemetry. Four operator pages, nine recorded scenario windows, replay, quality gates, events, persisted reviews/preferences, genuine PDF and A4 print are implemented. Research scripts and historical results below remain unchanged.
+
+## Install and run (Windows PowerShell)
+
+Prerequisites: Python **3.12 or 3.13**, Node.js 22.12+ with npm, and the original `FLUO_ML_RESEARCH_AUDITED_20261024.zip` next to this checkout. No cloud credentials are required. Stop Fluo before installation because Windows locks running dependencies.
+
+```powershell
+cd C:\College\DEEPX\fluo
+.\setup.ps1
+.\.venv\Scripts\python.exe tools\dev.py
+```
+
+Open http://127.0.0.1:5173 ; API/OpenAPI at http://127.0.0.1:8000/docs. The launcher reports readiness only after both services answer. Ctrl+C stops its own child processes. Logs: `.local/api.log`, `.local/web.log`. If Python is not detected: `./setup.ps1 -PythonPath C:/path/to/python.exe`.
+
+`setup.ps1` verifies ZIP SHA-256 and every package checksum, materializes original data without overwriting conflicting files, verifies the selected model and installs locked web dependencies. It never trains. For a different archive location set `$env:FLUO_ARCHIVE_PATH` explicitly; `.env.example` documents optional process environment variables (not automatically loaded).
+
+For a built single-origin application:
+
+```powershell
+cd web
+npm run build
+cd ..
+.\.venv\Scripts\python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+```
+
+Then open http://127.0.0.1:8000. Build **before** starting the API so the static mount exists. Alternatively run API and `npm run dev` in two terminals. These are loopback research services without authenticated user identities.
+
+## Reproducible demonstration
+
+1. First open loads recorded Return diversion, paused after an actual warning. Compare Overview readings and signature score with `/api/v1/sessions/{id}`.
+2. Scenario Review → Reset → Play. One archived minute advances per wall-clock second at 1×; speed, seek, rewind and pause share one backend cursor. Select normal, meter-bias, outage or mode windows to examine withheld/ambiguous evidence.
+3. Event Center → Filters → All / Return / Data quality → Apply. Search, sort and pagination operate on recorded events through the current cursor.
+4. Open an event; change a verification checkbox, enter a note, Save draft and reload. Record operator review explicitly. This never clears the model warning or authorizes recovery.
+5. View inspection summary → Download PDF / Print. Each selected event has its own data. A4 includes measurements, quality, limitations, model/dataset hashes and operator review; review notes/audit use an appendix.
+6. Collapse/expand sidebar or use contextual Notifications, Help, Profile, Preferences. State persists. Warning sound is off by default and requires opt-in plus a newly crossed detector event; browser autoplay rules still apply.
+
+The facility PT Arunika Tekstil / Pabrik Bandung / Unit Sizing A is fictional. `simulated research telemetry` is disclosed in status/provenance and reports. No connected ESP32, physical diagnosis, industrial savings, field validation or safe-to-recover determination is asserted.
+
+## Architecture and source map
+
+```mermaid
+flowchart LR
+  Z[SHA-verified audited archive] --> T[Original sensor stream]
+  M[Frozen HGB / six causal features] --> I[Original Python inference and gates]
+  T --> I
+  I --> C[Immutable chronological frames]
+  C --> A[FastAPI replay / event service]
+  S[(Local SQLite sessions and reviews)] <--> A
+  A <--> U[React / TypeScript / original Figma assets]
+  A --> P[Event-specific PDF and printable HTML]
+```
+
+- `backend/`: trusted artifact adapter, strict schemas, replay/events, SQLite, reports and API.
+- `web/src/`: four routes, contextual dialogs, real SVG charts, typed API client and Figma CSS.
+- `web/public/assets/`: original exported SVGs, supplied notification chime and licensed fonts.
+- `tools/`: checksum audit, preparation, parity verification, contract generation, design comparisons and dev launcher.
+- `tests/`, `web/tests/`: API/model/security and real Chromium workflows.
+- `docs/implementation/`: source reconciliation, ADR, generated OpenAPI, 83-frame traceability and QA evidence.
+- `data/`, `.local/`, downloaded private source text, screenshots and visual diffs stay local and are ignored by Git.
+
+See [implementation report](IMPLEMENTATION_REPORT.md), [source inventory](docs/implementation/SOURCE_INVENTORY.md), [architecture](docs/implementation/ADR-001.md), [API](docs/implementation/API_CONTRACT.md), and [visual QA](docs/implementation/qa/VISUAL_QA.md).
+
+## Verification
+
+With services running for browser tests:
+
+```powershell
+$env:OMP_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS='1'
+.\.venv\Scripts\python.exe tools/verify_inference.py
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m ruff check backend tools tests
+cd web
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+cd ..
+.\.venv\Scripts\python.exe tools/design_audit.py
+```
+
+Existing local Chromium can be supplied through `FLUO_BROWSER_PATH`. Test output includes actual downloaded PDFs, A4 HTML captures and JSON results. Design comparisons require the already downloaded private Figma references, which remain local. Font rebuild is optional: install fonttools + brotli then run `tools/prepare_report_fonts.py`; generated TTF assets already ship in this checkout.
+
+## Scientific and operational boundaries
+
+Model SHA-256: `5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09`. SHA is checked before deserialization. Do not load untrusted external joblib files. HGB uses strict score >0.90, original 5/10 persistence and warmup/connectivity gates. Scores are uncalibrated synthetic signature scores; physical loss and meter under-reading can be observationally ambiguous. Recovery remains a human engineering assessment. Oracle labels only locate research scenario windows, never enter runtime inference or diagnosis.
+
+The original function fails on zero-valid-row prefixes; the adapter supplies an empty score array for that case only. Nonempty predictions are exactly preserved. Full chronological history is scored once at service startup and never trained in request paths. Historical experiment dates/seeds and original metrics are not rewritten.
+
+Visual comparisons cover 20 representative states, with all 83 Figma frames mapped to runtime state. This is **not a pixel-identical claim**: dynamic telemetry, truthful event content, font rasterization and additional functional controls differ. No public deployment, verified operator identity, hardware/plant pilot or production-readiness certification is included. Existing repository rights remain unchanged; third-party font licenses are retained. No archive/private document upload or Git push was performed.
+
+---
+
+## Original research README (preserved)
+
 # fluo
 
 Steam-condensate monitoring and inspection decision support for industrial steam systems. The initial research case is indirect steam heating in textile yarn sizing.

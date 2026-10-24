@@ -24,3 +24,5 @@ node_modules/
 /docs/implementation/qa/visual-diffs/
 /web/test-results/
 /web/playwright-report/
+
+/docs/implementation/qa/playwright-report/

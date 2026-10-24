@@ -1,0 +1,222 @@
+[
+  {
+    "name": "overview-full",
+    "nodeId": "74:2",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\overview-full.png",
+    "sha256": "ea0a78fbc9ef050afd3d7312c299939907a55f9094a0c59c241cf88ec219ad97"
+  },
+  {
+    "name": "overview-compact",
+    "nodeId": "128:5",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\overview-compact.png",
+    "sha256": "b9615ac1eadf29301836321a21eadfc48ff1a91387eb39582e73692c9b795f70"
+  },
+  {
+    "name": "scenario-full",
+    "nodeId": "74:107",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\scenario-full.png",
+    "sha256": "359871537bfaa11816dcf607e93101551fab2be9134ffaa4ffb2c4032f94fa65"
+  },
+  {
+    "name": "scenario-compact",
+    "nodeId": "128:144",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\scenario-compact.png",
+    "sha256": "e573349441702d3223b132de52eda56c649d3e63f3845e8ea76564ed5b15ac4f"
+  },
+  {
+    "name": "events-full",
+    "nodeId": "74:198",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\events-full.png",
+    "sha256": "5f3efde0542ca03c6be95b92314bbe9c2099acee72a4421ae1fd3f25222083b4"
+  },
+  {
+    "name": "events-compact",
+    "nodeId": "128:286",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\events-compact.png",
+    "sha256": "2855e4e934fecdce820a68f7a569cb1f71fe1023429406e5280912190558294d"
+  },
+  {
+    "name": "details-full",
+    "nodeId": "74:302",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\details-full.png",
+    "sha256": "47d7d7b730e37b8aeaa658f1442b74c7110667b1e1a985b85dec64147a5fd77b"
+  },
+  {
+    "name": "details-compact",
+    "nodeId": "128:422",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\details-compact.png",
+    "sha256": "6dc80c594f4b85e32cdfbb854c8c2d4b5c8e287c0ddb2cada8bf4692ba570bfe"
+  },
+  {
+    "name": "filter-all-full",
+    "nodeId": "124:131",
+    "width": 721,
+    "height": 670,
+    "format": "png",
+    "original_width": 721,
+    "original_height": 670,
+    "file": "docs\\implementation\\qa\\figma\\filter-all-full.png",
+    "sha256": "1f6ea6fbe6625cb0ec92b09e0ea738fbb4bab581b981b1e0d5d3baa0d150c837"
+  },
+  {
+    "name": "filter-return-full",
+    "nodeId": "124:289",
+    "width": 721,
+    "height": 670,
+    "format": "png",
+    "original_width": 721,
+    "original_height": 670,
+    "file": "docs\\implementation\\qa\\figma\\filter-return-full.png",
+    "sha256": "c7aa93b8cedc4da213c87c9835c0ce3f0420190b2d68d2d9d233109da82abb76"
+  },
+  {
+    "name": "filter-quality-full",
+    "nodeId": "124:447",
+    "width": 721,
+    "height": 670,
+    "format": "png",
+    "original_width": 721,
+    "original_height": 670,
+    "file": "docs\\implementation\\qa\\figma\\filter-quality-full.png",
+    "sha256": "b14a8972ace563813a6d6e490a0529c21d78050f76fffb92bcf89ebd46a9a302"
+  },
+  {
+    "name": "filter-all-compact",
+    "nodeId": "128:4943",
+    "width": 721,
+    "height": 670,
+    "format": "png",
+    "original_width": 721,
+    "original_height": 670,
+    "file": "docs\\implementation\\qa\\figma\\filter-all-compact.png",
+    "sha256": "1f6ea6fbe6625cb0ec92b09e0ea738fbb4bab581b981b1e0d5d3baa0d150c837"
+  },
+  {
+    "name": "filter-return-compact",
+    "nodeId": "128:5110",
+    "width": 721,
+    "height": 670,
+    "format": "png",
+    "original_width": 721,
+    "original_height": 670,
+    "file": "docs\\implementation\\qa\\figma\\filter-return-compact.png",
+    "sha256": "c7aa93b8cedc4da213c87c9835c0ce3f0420190b2d68d2d9d233109da82abb76"
+  },
+  {
+    "name": "filter-quality-compact",
+    "nodeId": "128:5277",
+    "width": 721,
+    "height": 670,
+    "format": "png",
+    "original_width": 721,
+    "original_height": 670,
+    "file": "docs\\implementation\\qa\\figma\\filter-quality-compact.png",
+    "sha256": "b14a8972ace563813a6d6e490a0529c21d78050f76fffb92bcf89ebd46a9a302"
+  },
+  {
+    "name": "notifications",
+    "nodeId": "170:2",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\notifications.png",
+    "sha256": "e7984980233c297487e67defa533ed4593a8cd71cc8b57570421c843cac8a7f6"
+  },
+  {
+    "name": "preferences",
+    "nodeId": "170:47",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\preferences.png",
+    "sha256": "9102e1c21218946fd3e2835ee4e48836e779f0d251961cdaff435b24c15f060f"
+  },
+  {
+    "name": "help",
+    "nodeId": "170:31",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\help.png",
+    "sha256": "9294b15eb5c0a0aacad97bcac6c87ef559ec38f684a10b9950b4d54384561257"
+  },
+  {
+    "name": "profile",
+    "nodeId": "170:93",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\profile.png",
+    "sha256": "04613b21b4ad96e62fbff7d538704d22e3f0abbfae02171c34d0f22f64325f25"
+  },
+  {
+    "name": "inspection-summary",
+    "nodeId": "170:106",
+    "width": 1440,
+    "height": 900,
+    "format": "png",
+    "original_width": 1440,
+    "original_height": 900,
+    "file": "docs\\implementation\\qa\\figma\\inspection-summary.png",
+    "sha256": "252acf3db526d1132a4c68d3fa2883155aeb23b9d3a2754ff8ac6c591aa859e3"
+  },
+  {
+    "name": "a4",
+    "nodeId": "130:2",
+    "width": 794,
+    "height": 1123,
+    "format": "png",
+    "original_width": 794,
+    "original_height": 1123,
+    "file": "docs\\implementation\\qa\\figma\\a4.png",
+    "sha256": "efefce03cf9384245bc661fea0fa2d5d6e78a5a4aa34cdaf14d6deb6dfa0898b"
+  }
+]

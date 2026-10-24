@@ -10,7 +10,7 @@
 - Archived extraction: `C:\College\DEEPX\source-audit\ml-20261024`; preserved separately from application.
 - Archive selected model SHA-256: `5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09`.
 - Repository HGB model SHA-256: `5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09`.
-- Common archive/repository files with differences: .gitignore, bootstrap_dataset.py.
+- Common archive/repository files with differences: bootstrap_dataset.py.
 - Figma access: connected API available; session `00473d8a-d6b7-4499-b83d-0f6fb37fe34a`.
 - Figma: 83 visible top-level frames; start points `74:2` and `128:5`; 1,465 nodes with prototype reactions (includes hover handlers and repeated states).
 - Google Docs DEEPTECH: readable through connected Drive; modified 24 October 2026; `alven 2` content present. Private text cache is excluded from commits.
