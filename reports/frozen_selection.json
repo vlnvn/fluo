@@ -1,0 +1,23 @@
+{
+  "models": [
+    "hgb_v2",
+    "extra_trees",
+    "lightgbm"
+  ],
+  "thresholds": [
+    0.7,
+    0.8,
+    0.9,
+    0.95
+  ],
+  "persistence": {
+    "window": 10,
+    "hits": 5
+  },
+  "selection": "no model selected from prior locked results; use development scenarios only",
+  "selected": {
+    "model": "hgb_v2",
+    "threshold": 0.9,
+    "selection_status": "meet development gate"
+  }
+}

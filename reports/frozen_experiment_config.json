@@ -1,0 +1,57 @@
+{
+  "model": "HistGradientBoostingClassifier",
+  "model_init": {
+    "max_iter": 75,
+    "max_leaf_nodes": 9,
+    "min_samples_leaf": 70,
+    "l2_regularization": 3.0,
+    "learning_rate": 0.05,
+    "random_state": 71
+  },
+  "train": {
+    "n_train": 10463,
+    "n_positive_train": 1193,
+    "fit_target": "synthetic physical loss OR observed return-meter bias, NOT verified causal diagnosis",
+    "input_features": [
+      "loss_ratio_instant",
+      "loss_ratio_ewma5",
+      "loss_ratio_ewma15",
+      "steam_step_rel",
+      "steam_rolling_cv",
+      "return_rolling_cv"
+    ]
+  },
+  "methods_and_frozen_thresholds": {
+    "fixed_ratio": 0.15,
+    "physics_residual": 0.09,
+    "gb_signature": 0.9
+  },
+  "threshold_selected_with_development_seeds": [
+    20261101,
+    20261102,
+    20261103
+  ],
+  "locked_evaluation_seeds": [
+    20261201,
+    20261202
+  ],
+  "persistence": {
+    "window_min": 10,
+    "min_exceedances": 5,
+    "minimum_production_warmup_min": 20,
+    "reconnect_valid_history_min": 5
+  },
+  "constraints": [
+    "Input from sensor only; synthetic oracle used exclusively as supervised TARGET in original TRAIN and evaluation after scoring.",
+    "ML score is NOT calibrated probability of physical loss.",
+    "Return meter bias and physical return deficit may be observationally indistinguishable.",
+    "Other synthetic seeds are same generator family; no industrial/external validity.",
+    "No valve actuation or authorization of recovered condensate."
+  ],
+  "software": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0"
+  }
+}

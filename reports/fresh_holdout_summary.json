@@ -1,0 +1,31 @@
+{
+  "frozen_method": "hgb_v2",
+  "threshold": 0.9,
+  "fresh_holdout_seeds": [
+    20270111,
+    20270112
+  ],
+  "synthetic_telemetry_rows": 172800,
+  "physical_events_detected": 69,
+  "physical_events_total": 71,
+  "physical_recall": 0.971830985915493,
+  "descriptive_clopper_pearson_95_interval": [
+    0.9019199313429451,
+    0.9965702092287638
+  ],
+  "interval_not_industrial_performance_estimate": true,
+  "transport_shift_alerted": 4,
+  "transport_shift_total": 13,
+  "meter_bias_alerted": 21,
+  "meter_bias_total": 22,
+  "clean_clusters": 0,
+  "clean_hours": 1353.466,
+  "unmarked_warning_minutes": 520,
+  "unmarked_valid_minutes": 91936,
+  "limits": [
+    "all configurations from same simulator family",
+    "physical loss and meter bias not identifiable from paired steam/return flow alone",
+    "5%/10% meter drift robustness evaluated post selection, never used to select model",
+    "field performance unknown"
+  ]
+}

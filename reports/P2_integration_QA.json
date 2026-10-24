@@ -1,0 +1,22 @@
+{
+  "qa_status": "PASS_FOR_SYNTHETIC_REPLAY_ONLY",
+  "checks": {
+    "sensor_input_only": true,
+    "oracle_not_in_runtime_columns": true,
+    "no_offline_alarm": true,
+    "no_missing_flow_alarm": true,
+    "no_nonproduction_alarm": true,
+    "no_automatic_actuation": true,
+    "recovery_quality_always_unknown": true,
+    "score_not_causal_probability": true,
+    "real_field_mode_denied": true,
+    "missing_fields_denied": true,
+    "negative_flow_denied": true
+  },
+  "readiness_gate": {
+    "synthetic_lab_demo": "GO",
+    "industrial_recovery_decision": "NO_GO",
+    "industrial_real_time_alarm": "NO_GO until field calibration, safety review and validation"
+  },
+  "example_scenarios": 6
+}

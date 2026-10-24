@@ -1,0 +1,13 @@
+seed,stress,normal_warn_minutes,normal_valid_minutes,normal_warn_clusters,ambiguous_fault_warn_minutes,physical_warning_minutes
+20261201,original,240,45852,38,486,3005
+20261201,return_meter_95pct,392,45852,53,493,3226
+20261201,return_meter_90pct,33426,45852,213,509,3214
+20261201,return_meter_105pct,173,45852,30,466,2352
+20261201,steam_meter_105pct,348,45852,46,494,3214
+20261201,return_multiplicative_noise_2pct,87,45852,17,290,1727
+20261202,original,230,45702,39,1290,2803
+20261202,return_meter_95pct,381,45702,56,1250,3079
+20261202,return_meter_90pct,32823,45702,220,1197,3099
+20261202,return_meter_105pct,134,45702,25,866,2032
+20261202,steam_meter_105pct,338,45702,51,1257,3073
+20261202,return_multiplicative_noise_2pct,81,45702,17,820,1474

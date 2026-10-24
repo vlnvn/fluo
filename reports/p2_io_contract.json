@@ -1,0 +1,33 @@
+{
+  "input": "one site-sorted synthetic sensor stream, same 13 columns",
+  "required_numeric_units": "steam/return kg/h; pressure bar(g); temp C",
+  "features": [
+    "loss_ratio_instant",
+    "loss_ratio_ewma5",
+    "loss_ratio_ewma15",
+    "steam_step_rel",
+    "steam_rolling_cv",
+    "return_rolling_cv"
+  ],
+  "output": {
+    "triage_status": [
+      "DATA_OR_MODE_CHECK",
+      "INVESTIGATE_RETURN_DEFICIT_UNCONFIRMED",
+      "MONITOR"
+    ],
+    "next_safe_action": "inspection-only human decision",
+    "recovery_eligibility": "UNKNOWN_REQUIRES_SITE_ASSESSMENT",
+    "auto_actuation_allowed": false,
+    "gb_signature_score": "uncalibrated synthetic score, never true-loss probability"
+  },
+  "alert_logic": "5 of last 10 production/valid minutes above GB .90",
+  "safety": "no automatic valve/boiler command; verify meter and condensate quality before any recovery advice",
+  "supported_run_mode": "SYNTHETIC_REPLAY_ONLY",
+  "field_deployment_behavior": "rejected with RuntimeError until separately validated and engineered",
+  "minimum_input_validation": [
+    "required 13 telemetry fields",
+    "no duplicate (site_id,minute_id)",
+    "no negative mass-flow",
+    "link_online in {0,1}"
+  ]
+}
