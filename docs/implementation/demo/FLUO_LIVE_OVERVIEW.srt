@@ -1,0 +1,59 @@
+1
+00:00:00,001 --> 00:00:06,003
+Rekaman lokal aplikasi Fluo.
+Data simulasi riset, bukan pengukuran pabrik.
+
+2
+00:00:06,003 --> 00:00:16,007
+Masuk sebagai tamu.
+Setiap tamu memiliki ruang review sendiri.
+
+3
+00:00:16,007 --> 00:00:26,013
+Pilih skenario Return diversion.
+Posisi replay diatur sebelum peringatan pertama.
+
+4
+00:00:26,013 --> 00:00:34,027
+Tekan Play, lalu kembali ke Overview.
+Replay tetap berjalan saat halaman berpindah.
+
+5
+00:00:34,027 --> 00:00:48,035
+Timestamp, KPI, dan grafik mengikuti frame replay.
+Angka di layar dibaca dari aplikasi yang berjalan.
+
+6
+00:00:48,035 --> 00:00:56,041
+Peringatan muncul setelah syarat detektor terpenuhi.
+Penyebab fisiknya tetap perlu diperiksa.
+
+7
+00:00:57,356 --> 00:01:09,362
+Saat koneksi terputus, quality gate menahan interpretasi.
+Data yang tidak tersedia tidak diganti angka buatan.
+
+8
+00:01:09,362 --> 00:01:21,373
+Event Center menyimpan riwayat sinyal.
+Buka peringatan untuk melihat konteksnya.
+
+9
+00:01:21,373 --> 00:01:39,378
+Review operator mencatat pemeriksaan dan bukti.
+Checklist tidak memberikan izin pemulihan otomatis.
+
+10
+00:01:39,378 --> 00:01:49,383
+Muat ulang: catatan dan checklist tetap tersimpan.
+Identitas manusia operator belum diverifikasi.
+
+11
+00:01:49,383 --> 00:02:11,386
+Unduh PDF khusus event dan lihat tata letak A4.
+Laporan berasal dari review yang baru dicatat.
+
+12
+00:02:11,386 --> 00:02:23,401
+Data sintetis dan fasilitas fiktif.
+Belum ada validasi lapangan, penghematan terukur, atau aktuasi alat.

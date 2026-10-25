@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "date": "2026-10-25T04:27:55.763Z",
+  "provider_oidc_header_used": false,
+  "checks": [
+    "Official share link opened in fresh Chromium",
+    "App guest entry required",
+    "Real overview rendered",
+    "Scenario Review and Overview navigation",
+    "Refresh retained own workspace",
+    "App logout returned to entry"
+  ],
+  "share_link_note": "No TTL supplied to Vercel protection-bypass API; manual revocation required after judging.",
+  "share_capability_omitted": true
+}

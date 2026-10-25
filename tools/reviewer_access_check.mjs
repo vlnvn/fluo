@@ -1,4 +1,4 @@
-// Verify the official temporary share path in a fresh browser, without OIDC headers.
+// Verify the official share path in a fresh browser, without OIDC headers.
 import {chromium} from '../web/node_modules/playwright/index.mjs';
 import {readFileSync,writeFileSync} from 'node:fs';
 let phase='initialize';
@@ -13,6 +13,9 @@ phase='navigate';await page.goto(link.shareableUrl);
 await page.getByRole('button',{name:'Start guest workspace',exact:true}).waitFor();
 phase='guest entry';await page.getByRole('button',{name:'Start guest workspace',exact:true}).click();
 await page.getByRole('heading',{name:'Condensate return',exact:true,level:1}).waitFor();
+phase='navigation';await page.getByRole('link',{name:'Scenario Review',exact:true}).click();
+await page.getByRole('heading',{name:'Scenario Review',exact:true}).waitFor();
+await page.getByRole('link',{name:'Overview',exact:true}).click();
 await page.reload();await page.getByRole('heading',{name:'Condensate return',exact:true,level:1}).waitFor();
 await page.evaluate(()=>document.fonts.ready);
 await page.screenshot({path:'.local/hosted-reviewer-overview.png'});
@@ -20,7 +23,7 @@ phase='logout';await page.getByRole('button',{name:'Open workspace profile'}).cl
 await page.getByRole('button',{name:'End guest session',exact:true}).click();
 await page.getByRole('button',{name:'Start guest workspace',exact:true}).waitFor();
 const evidence={status:'PASS',url:target.origin,date:new Date().toISOString(),provider_oidc_header_used:false,
- checks:['Official temporary share link opened in fresh Chromium','App guest entry required','Real overview rendered','Refresh retained own workspace','App logout returned to entry'],
+ checks:['Official share link opened in fresh Chromium','App guest entry required','Real overview rendered','Scenario Review and Overview navigation','Refresh retained own workspace','App logout returned to entry'],
  share_link_note:link.info,share_capability_omitted:true};
-writeFileSync('docs/implementation/qa/vercel/reviewer-access.json',JSON.stringify(evidence,null,2));
+writeFileSync(process.env.FLUO_REVIEWER_EVIDENCE??'docs/implementation/qa/vercel/reviewer-access.json',JSON.stringify(evidence,null,2));
 await browser.close();console.log(JSON.stringify({status:'PASS',checks:evidence.checks.length}));

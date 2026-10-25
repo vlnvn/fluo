@@ -1,0 +1,319 @@
+{
+  "status": "PASS",
+  "app_commit": "a2f753f42d8fbc5ac2f9301d09681e3c2779eae4",
+  "recorded_at": "2026-10-25T04:34:18.541Z",
+  "url": "http://127.0.0.1:8000",
+  "hosted_recording": false,
+  "videoPath": "C:\\College\\DEEPX\\fluo\\.local\\live-overview-video\\page@fad9245ad925026c2e41836cfb538edd.webm",
+  "seconds": 143.404,
+  "browser": "153.0.8010.12",
+  "captions": [
+    {
+      "start": 0.001,
+      "end": 6.003,
+      "title": "Rekaman lokal aplikasi Fluo.\nData simulasi riset, bukan pengukuran pabrik."
+    },
+    {
+      "start": 6.003,
+      "end": 16.007,
+      "title": "Masuk sebagai tamu.\nSetiap tamu memiliki ruang review sendiri."
+    },
+    {
+      "start": 16.007,
+      "end": 26.013,
+      "title": "Pilih skenario Return diversion.\nPosisi replay diatur sebelum peringatan pertama."
+    },
+    {
+      "start": 26.013,
+      "end": 34.027,
+      "title": "Tekan Play, lalu kembali ke Overview.\nReplay tetap berjalan saat halaman berpindah."
+    },
+    {
+      "start": 34.027,
+      "end": 48.035,
+      "title": "Timestamp, KPI, dan grafik mengikuti frame replay.\nAngka di layar dibaca dari aplikasi yang berjalan."
+    },
+    {
+      "start": 48.035,
+      "end": 56.041,
+      "title": "Peringatan muncul setelah syarat detektor terpenuhi.\nPenyebab fisiknya tetap perlu diperiksa."
+    },
+    {
+      "start": 57.356,
+      "end": 69.362,
+      "title": "Saat koneksi terputus, quality gate menahan interpretasi.\nData yang tidak tersedia tidak diganti angka buatan."
+    },
+    {
+      "start": 69.362,
+      "end": 81.373,
+      "title": "Event Center menyimpan riwayat sinyal.\nBuka peringatan untuk melihat konteksnya."
+    },
+    {
+      "start": 81.373,
+      "end": 99.378,
+      "title": "Review operator mencatat pemeriksaan dan bukti.\nChecklist tidak memberikan izin pemulihan otomatis."
+    },
+    {
+      "start": 99.378,
+      "end": 109.383,
+      "title": "Muat ulang: catatan dan checklist tetap tersimpan.\nIdentitas manusia operator belum diverifikasi."
+    },
+    {
+      "start": 109.383,
+      "end": 131.386,
+      "title": "Unduh PDF khusus event dan lihat tata letak A4.\nLaporan berasal dari review yang baru dicatat."
+    },
+    {
+      "start": 131.386,
+      "end": 143.401,
+      "title": "Data sintetis dan fasilitas fiktif.\nBelum ada validasi lapangan, penghematan terukur, atau aktuasi alat."
+    }
+  ],
+  "samples": [
+    {
+      "at_seconds": 26.356,
+      "cursor": 68,
+      "timestamp": "2026-01-08T13:02:00+07:00",
+      "playback": "PLAYING",
+      "warning": false,
+      "footer": "Simulated research telemetry · playing · 13:02 WIB",
+      "steam": "199.1",
+      "returned": "159.8",
+      "chart": "M42.00,122.68 L70.08,119.99 L98.17,126.58 L126.25,131.22 L154.33,131.32 L182.42,133.35 L210.50,134.67 L238.58,134.53 L266.67,132.26 L294.75,132.94 L322.83,132.79 L350.92,134.37 L379.00,133.78 L407.08,137.16 L435.17,137.95 L463.25,134.65 L491.33,138.96 L519.42,134.33 L547.50,131.31 L575.58,135.74 L603.67,128.74 L631.75,129.28 L659.83,126.91 L687.92,126.60 L716.00,128.29",
+      "warning_heading": "Read-only monitoring"
+    },
+    {
+      "at_seconds": 27.918,
+      "cursor": 69,
+      "timestamp": "2026-01-08T13:03:00+07:00",
+      "playback": "PLAYING",
+      "warning": false,
+      "footer": "Simulated research telemetry · playing · 13:03 WIB",
+      "steam": "201.8",
+      "returned": "160.3",
+      "chart": "M42.00,119.99 L70.08,126.58 L98.17,131.22 L126.25,131.32 L154.33,133.35 L182.42,134.67 L210.50,134.53 L238.58,132.26 L266.67,132.94 L294.75,132.79 L322.83,134.37 L350.92,133.78 L379.00,137.16 L407.08,137.95 L435.17,134.65 L463.25,138.96 L491.33,134.33 L519.42,131.31 L547.50,135.74 L575.58,128.74 L603.67,129.28 L631.75,126.91 L659.83,126.60 L687.92,128.29 L716.00,127.54",
+      "warning_heading": "Read-only monitoring"
+    },
+    {
+      "at_seconds": 29.467,
+      "cursor": 71,
+      "timestamp": "2026-01-08T13:05:00+07:00",
+      "playback": "PLAYING",
+      "warning": false,
+      "footer": "Simulated research telemetry · playing · 13:05 WIB",
+      "steam": "200.5",
+      "returned": "162.4",
+      "chart": "M42.00,131.22 L70.08,131.32 L98.17,133.35 L126.25,134.67 L154.33,134.53 L182.42,132.26 L210.50,132.94 L238.58,132.79 L266.67,134.37 L294.75,133.78 L322.83,137.16 L350.92,137.95 L379.00,134.65 L407.08,138.96 L435.17,134.33 L463.25,131.31 L491.33,135.74 L519.42,128.74 L547.50,129.28 L575.58,126.91 L603.67,126.60 L631.75,128.29 L659.83,127.54 L687.92,126.69 L716.00,124.51",
+      "warning_heading": "Read-only monitoring"
+    },
+    {
+      "at_seconds": 31,
+      "cursor": 72,
+      "timestamp": "2026-01-08T13:06:00+07:00",
+      "playback": "PLAYING",
+      "warning": false,
+      "footer": "Simulated research telemetry · playing · 13:06 WIB",
+      "steam": "201.0",
+      "returned": "159.7",
+      "chart": "M42.00,131.32 L70.08,133.35 L98.17,134.67 L126.25,134.53 L154.33,132.26 L182.42,132.94 L210.50,132.79 L238.58,134.37 L266.67,133.78 L294.75,137.16 L322.83,137.95 L350.92,134.65 L379.00,138.96 L407.08,134.33 L435.17,131.31 L463.25,135.74 L491.33,128.74 L519.42,129.28 L547.50,126.91 L575.58,126.60 L603.67,128.29 L631.75,127.54 L659.83,126.69 L687.92,124.51 L716.00,128.46",
+      "warning_heading": "Read-only monitoring"
+    },
+    {
+      "at_seconds": 32.53,
+      "cursor": 74,
+      "timestamp": "2026-01-08T13:08:00+07:00",
+      "playback": "PLAYING",
+      "warning": false,
+      "footer": "Simulated research telemetry · playing · 13:08 WIB",
+      "steam": "207.4",
+      "returned": "159.3",
+      "chart": "M42.00,134.67 L70.08,134.53 L98.17,132.26 L126.25,132.94 L154.33,132.79 L182.42,134.37 L210.50,133.78 L238.58,137.16 L266.67,137.95 L294.75,134.65 L322.83,138.96 L350.92,134.33 L379.00,131.31 L407.08,135.74 L435.17,128.74 L463.25,129.28 L491.33,126.91 L519.42,126.60 L547.50,128.29 L575.58,127.54 L603.67,126.69 L631.75,124.51 L659.83,128.46 L687.92,131.53 L716.00,129.01",
+      "warning_heading": "Read-only monitoring"
+    },
+    {
+      "at_seconds": 34.058,
+      "cursor": 75,
+      "timestamp": "2026-01-08T13:09:00+07:00",
+      "playback": "PLAYING",
+      "warning": false,
+      "footer": "Simulated research telemetry · playing · 13:09 WIB",
+      "steam": "208.5",
+      "returned": "157.5",
+      "chart": "M42.00,134.53 L70.08,132.26 L98.17,132.94 L126.25,132.79 L154.33,134.37 L182.42,133.78 L210.50,137.16 L238.58,137.95 L266.67,134.65 L294.75,138.96 L322.83,134.33 L350.92,131.31 L379.00,135.74 L407.08,128.74 L435.17,129.28 L463.25,126.91 L491.33,126.60 L519.42,128.29 L547.50,127.54 L575.58,126.69 L603.67,124.51 L631.75,128.46 L659.83,131.53 L687.92,129.01 L716.00,131.72",
+      "warning_heading": "Read-only monitoring"
+    },
+    {
+      "at_seconds": 35.606,
+      "cursor": 77,
+      "timestamp": "2026-01-08T13:11:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:11 WIB",
+      "steam": "205.9",
+      "returned": "159.4",
+      "chart": "M42.00,132.94 L70.08,132.79 L98.17,134.37 L126.25,133.78 L154.33,137.16 L182.42,137.95 L210.50,134.65 L238.58,138.96 L266.67,134.33 L294.75,131.31 L322.83,135.74 L350.92,128.74 L379.00,129.28 L407.08,126.91 L435.17,126.60 L463.25,128.29 L491.33,127.54 L519.42,126.69 L547.50,124.51 L575.58,128.46 L603.67,131.53 L631.75,129.01 L659.83,131.72 L687.92,125.56 L716.00,128.82",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 37.176,
+      "cursor": 79,
+      "timestamp": "2026-01-08T13:13:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:12 WIB",
+      "steam": "210.0",
+      "returned": "160.2",
+      "chart": "M42.00,132.79 L70.08,134.37 L98.17,133.78 L126.25,137.16 L154.33,137.95 L182.42,134.65 L210.50,138.96 L238.58,134.33 L266.67,131.31 L294.75,135.74 L322.83,128.74 L350.92,129.28 L379.00,126.91 L407.08,126.60 L435.17,128.29 L463.25,127.54 L491.33,126.69 L519.42,124.51 L547.50,128.46 L575.58,131.53 L603.67,129.01 L631.75,131.72 L659.83,125.56 L687.92,128.82 L716.00,127.71",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 38.74,
+      "cursor": 80,
+      "timestamp": "2026-01-08T13:14:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:14 WIB",
+      "steam": "209.3",
+      "returned": "160.9",
+      "chart": "M42.00,133.78 L70.08,137.16 L98.17,137.95 L126.25,134.65 L154.33,138.96 L182.42,134.33 L210.50,131.31 L238.58,135.74 L266.67,128.74 L294.75,129.28 L322.83,126.91 L350.92,126.60 L379.00,128.29 L407.08,127.54 L435.17,126.69 L463.25,124.51 L491.33,128.46 L519.42,131.53 L547.50,129.01 L575.58,131.72 L603.67,125.56 L631.75,128.82 L659.83,127.71 L687.92,123.99 L716.00,126.69",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 40.31,
+      "cursor": 82,
+      "timestamp": "2026-01-08T13:16:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:16 WIB",
+      "steam": "208.6",
+      "returned": "159.6",
+      "chart": "M42.00,137.95 L70.08,134.65 L98.17,138.96 L126.25,134.33 L154.33,131.31 L182.42,135.74 L210.50,128.74 L238.58,129.28 L266.67,126.91 L294.75,126.60 L322.83,128.29 L350.92,127.54 L379.00,126.69 L407.08,124.51 L435.17,128.46 L463.25,131.53 L491.33,129.01 L519.42,131.72 L547.50,125.56 L575.58,128.82 L603.67,127.71 L631.75,123.99 L659.83,126.69 L687.92,125.73 L716.00,128.57",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 41.87,
+      "cursor": 83,
+      "timestamp": "2026-01-08T13:17:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:17 WIB",
+      "steam": "208.1",
+      "returned": "163.6",
+      "chart": "M42.00,134.65 L70.08,138.96 L98.17,134.33 L126.25,131.31 L154.33,135.74 L182.42,128.74 L210.50,129.28 L238.58,126.91 L266.67,126.60 L294.75,128.29 L322.83,127.54 L350.92,126.69 L379.00,124.51 L407.08,128.46 L435.17,131.53 L463.25,129.01 L491.33,131.72 L519.42,125.56 L547.50,128.82 L575.58,127.71 L603.67,123.99 L631.75,126.69 L659.83,125.73 L687.92,128.57 L716.00,122.70",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 43.414,
+      "cursor": 85,
+      "timestamp": "2026-01-08T13:19:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:19 WIB",
+      "steam": "210.5",
+      "returned": "163.6",
+      "chart": "M42.00,134.33 L70.08,131.31 L98.17,135.74 L126.25,128.74 L154.33,129.28 L182.42,126.91 L210.50,126.60 L238.58,128.29 L266.67,127.54 L294.75,126.69 L322.83,124.51 L350.92,128.46 L379.00,131.53 L407.08,129.01 L435.17,131.72 L463.25,125.56 L491.33,128.82 L519.42,127.71 L547.50,123.99 L575.58,126.69 L603.67,125.73 L631.75,128.57 L659.83,122.70 L687.92,121.95 L716.00,122.63",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 44.944,
+      "cursor": 86,
+      "timestamp": "2026-01-08T13:20:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:20 WIB",
+      "steam": "211.4",
+      "returned": "158.8",
+      "chart": "M42.00,131.31 L70.08,135.74 L98.17,128.74 L126.25,129.28 L154.33,126.91 L182.42,126.60 L210.50,128.29 L238.58,127.54 L266.67,126.69 L294.75,124.51 L322.83,128.46 L350.92,131.53 L379.00,129.01 L407.08,131.72 L435.17,125.56 L463.25,128.82 L491.33,127.71 L519.42,123.99 L547.50,126.69 L575.58,125.73 L603.67,128.57 L631.75,122.70 L659.83,121.95 L687.92,122.63 L716.00,129.70",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 46.503,
+      "cursor": 88,
+      "timestamp": "2026-01-08T13:22:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:22 WIB",
+      "steam": "214.3",
+      "returned": "162.1",
+      "chart": "M42.00,128.74 L70.08,129.28 L98.17,126.91 L126.25,126.60 L154.33,128.29 L182.42,127.54 L210.50,126.69 L238.58,124.51 L266.67,128.46 L294.75,131.53 L322.83,129.01 L350.92,131.72 L379.00,125.56 L407.08,128.82 L435.17,127.71 L463.25,123.99 L491.33,126.69 L519.42,125.73 L547.50,128.57 L575.58,122.70 L603.67,121.95 L631.75,122.63 L659.83,129.70 L687.92,126.00 L716.00,124.86",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 48.082,
+      "cursor": 89,
+      "timestamp": "2026-01-08T13:23:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:23 WIB",
+      "steam": "211.1",
+      "returned": "164.9",
+      "chart": "M42.00,129.28 L70.08,126.91 L98.17,126.60 L126.25,128.29 L154.33,127.54 L182.42,126.69 L210.50,124.51 L238.58,128.46 L266.67,131.53 L294.75,129.01 L322.83,131.72 L350.92,125.56 L379.00,128.82 L407.08,127.71 L435.17,123.99 L463.25,126.69 L491.33,125.73 L519.42,128.57 L547.50,122.70 L575.58,121.95 L603.67,122.63 L631.75,129.70 L659.83,126.00 L687.92,124.86 L716.00,120.82",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 49.643,
+      "cursor": 91,
+      "timestamp": "2026-01-08T13:25:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:25 WIB",
+      "steam": "215.0",
+      "returned": "159.3",
+      "chart": "M42.00,126.60 L70.08,128.29 L98.17,127.54 L126.25,126.69 L154.33,124.51 L182.42,128.46 L210.50,131.53 L238.58,129.01 L266.67,131.72 L294.75,125.56 L322.83,128.82 L350.92,127.71 L379.00,123.99 L407.08,126.69 L435.17,125.73 L463.25,128.57 L491.33,122.70 L519.42,121.95 L547.50,122.63 L575.58,129.70 L603.67,126.00 L631.75,124.86 L659.83,120.82 L687.92,120.47 L716.00,128.97",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 51.206,
+      "cursor": 93,
+      "timestamp": "2026-01-08T13:27:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:26 WIB",
+      "steam": "216.4",
+      "returned": "163.4",
+      "chart": "M42.00,128.29 L70.08,127.54 L98.17,126.69 L126.25,124.51 L154.33,128.46 L182.42,131.53 L210.50,129.01 L238.58,131.72 L266.67,125.56 L294.75,128.82 L322.83,127.71 L350.92,123.99 L379.00,126.69 L407.08,125.73 L435.17,128.57 L463.25,122.70 L491.33,121.95 L519.42,122.63 L547.50,129.70 L575.58,126.00 L603.67,124.86 L631.75,120.82 L659.83,120.47 L687.92,128.97 L716.00,122.98",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 52.778,
+      "cursor": 94,
+      "timestamp": "2026-01-08T13:28:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:28 WIB",
+      "steam": "214.8",
+      "returned": "162.5",
+      "chart": "M42.00,126.69 L70.08,124.51 L98.17,128.46 L126.25,131.53 L154.33,129.01 L182.42,131.72 L210.50,125.56 L238.58,128.82 L266.67,127.71 L294.75,123.99 L322.83,126.69 L350.92,125.73 L379.00,128.57 L407.08,122.70 L435.17,121.95 L463.25,122.63 L491.33,129.70 L519.42,126.00 L547.50,124.86 L575.58,120.82 L603.67,120.47 L631.75,128.97 L659.83,122.98 L687.92,120.92 L716.00,124.35",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 54.315,
+      "cursor": 96,
+      "timestamp": "2026-01-08T13:30:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:29 WIB",
+      "steam": "216.2",
+      "returned": "164.5",
+      "chart": "M42.00,124.51 L70.08,128.46 L98.17,131.53 L126.25,129.01 L154.33,131.72 L182.42,125.56 L210.50,128.82 L238.58,127.71 L266.67,123.99 L294.75,126.69 L322.83,125.73 L350.92,128.57 L379.00,122.70 L407.08,121.95 L435.17,122.63 L463.25,129.70 L491.33,126.00 L519.42,124.86 L547.50,120.82 L575.58,120.47 L603.67,128.97 L631.75,122.98 L659.83,120.92 L687.92,124.35 L716.00,121.30",
+      "warning_heading": "Return-flow deficit detected"
+    },
+    {
+      "at_seconds": 55.843,
+      "cursor": 97,
+      "timestamp": "2026-01-08T13:31:00+07:00",
+      "playback": "PLAYING",
+      "warning": true,
+      "footer": "Simulated research telemetry · playing · 13:31 WIB",
+      "steam": "213.9",
+      "returned": "165.2",
+      "chart": "M42.00,131.53 L70.08,129.01 L98.17,131.72 L126.25,125.56 L154.33,128.82 L182.42,127.71 L210.50,123.99 L238.58,126.69 L266.67,125.73 L294.75,128.57 L322.83,122.70 L350.92,121.95 L379.00,122.63 L407.08,129.70 L435.17,126.00 L463.25,124.86 L491.33,120.82 L519.42,120.47 L547.50,128.97 L575.58,122.98 L603.67,120.92 L631.75,124.35 L659.83,121.30 L687.92,123.71 L716.00,120.28",
+      "warning_heading": "Return-flow deficit detected"
+    }
+  ],
+  "event": "EV-019",
+  "console_errors": [],
+  "print_dialog_suppressed": false,
+  "muted": true,
+  "quality_gate_verified": true
+}
