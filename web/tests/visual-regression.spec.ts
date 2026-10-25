@@ -1,5 +1,6 @@
+import { test } from './guest';
 import { enterGuest } from './guest';
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
 
 test('paused fixed telemetry visual baselines: four routes in Full and Compact',async({page})=>{
   test.setTimeout(60000);await enterGuest(page);await expect(page.locator('h1')).toHaveText('Condensate return');await page.evaluate(()=>document.fonts.ready);

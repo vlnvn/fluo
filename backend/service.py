@@ -88,7 +88,7 @@ class ReplayService:
         }
         self.runtime_proof = {
             'runtime_rows': len(self.sensor),
-            'runtime_output_sha256': hashlib.sha256(self.predictions.to_csv(index=False, float_format='%.12g', na_rep='null').encode()).hexdigest(),
+            'runtime_output_sha256': hashlib.sha256(self.predictions.to_csv(index=False, float_format='%.12g', na_rep='null', lineterminator='\n').encode()).hexdigest(),
             'inference_execution': 'original frozen HGB scored at instance startup; not precomputed predictions',
         }
 

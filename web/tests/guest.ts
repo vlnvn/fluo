@@ -1,4 +1,4 @@
-import { expect, test, type BrowserContext, type Page } from '@playwright/test';
+import { expect, test as base, type BrowserContext, type Page } from '@playwright/test';
 
 export async function authorizeProvider(context:BrowserContext,baseURL:string){
   const token=process.env.FLUO_VERCEL_OIDC_TOKEN;
@@ -14,13 +14,15 @@ export async function authorizeProvider(context:BrowserContext,baseURL:string){
   }
 }
 
-test.beforeEach(async({context,baseURL})=>{if(baseURL)await authorizeProvider(context,baseURL);});
-test.afterEach(async({page})=>{
-  if(!process.env.FLUO_VERCEL_OIDC_TOKEN)return;
-  // Revoke only this disposable test guest; preserve the separate redeploy proof.
-  const auth=await page.request.get('/api/v1/auth/session');
-  if(auth.ok())await page.request.post('/api/v1/auth/logout',{headers:{'X-CSRF-Token':(await auth.json()).csrf_token}});
-});
+export const test=base.extend({context:async({context,baseURL},use)=>{
+  if(baseURL)await authorizeProvider(context,baseURL);
+  await use(context);
+  if(process.env.FLUO_VERCEL_OIDC_TOKEN){
+    // Revoke only this disposable test guest; preserve the separate redeploy proof.
+    const auth=await context.request.get('/api/v1/auth/session');
+    if(auth.ok())await context.request.post('/api/v1/auth/logout',{headers:{'X-CSRF-Token':(await auth.json()).csrf_token}});
+  }
+}});
 export async function enterGuest(page:Page){
   await page.goto('/');
   await expect(page.locator('h1')).toHaveText(/Your private guest workspace|Condensate return/);

@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { test } from './guest';
+import { expect } from '@playwright/test';
 import { enterGuest, csrfHeaders, authorizeProvider } from './guest';
 import AxeBuilder from '@axe-core/playwright';
 

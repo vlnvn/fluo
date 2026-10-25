@@ -46,6 +46,7 @@ def test_health_model_and_provenance(client):
     assert health['model_loaded'] and not health['training_performed']
     assert not health['lineage']['field_validation']
     assert health['lineage']['source_kind'] == 'simulated research telemetry'
+    assert health['runtime_proof']['runtime_output_sha256'] == '2f334f76816f7cff05f843d77f64a85f393e2ca18336c4acae33eec320a34ac3'
 
 
 def test_adapter_exact_parity_and_zero_valid_prefix(service):
