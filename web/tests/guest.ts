@@ -14,9 +14,9 @@ export async function authorizeProvider(context:BrowserContext,baseURL:string){
   }
 }
 
-export const test=base.extend({context:async({context,baseURL},use)=>{
+export const test=base.extend({context:async({context,baseURL},runContext)=>{
   if(baseURL)await authorizeProvider(context,baseURL);
-  await use(context);
+  await runContext(context);
   if(process.env.FLUO_VERCEL_OIDC_TOKEN){
     // Revoke only this disposable test guest; preserve the separate redeploy proof.
     const auth=await context.request.get('/api/v1/auth/session');
