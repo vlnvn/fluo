@@ -34,6 +34,7 @@ jobs:
       - run: python -m ruff check backend tools tests
       - run: python -m bandit -r backend -q
       - run: python -m pip_audit -r requirements-vercel.txt
+      - run: python -m pytest -q tests/test_public_host_aliases.py
       - run: python -m pytest -q tests/test_guest_security.py -k guest_limits_cleanup_and_persistence
       - run: python -m pytest -q tests/test_postgres.py -k without_research_files
         env:
