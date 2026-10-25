@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-25",
+  "team": "vlnvns-projects",
+  "plan": "hobby",
+  "neon_plan": "free_v3",
+  "card_required": false,
+  "region": "sin1",
+  "private_artifact_upload_explicitly_approved": true,
+  "restricted_dsn_secret_explicitly_approved": true,
+  "public_fullstack_tested": false,
+  "python_local": 34,
+  "postgres_on_neon": 6,
+  "unit": 3,
+  "browser_dev": 18,
+  "browser_built": 18,
+  "baseline_visual_assertions": 8,
+  "baseline_changes": false
+}

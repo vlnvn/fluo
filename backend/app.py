@@ -4,6 +4,8 @@ import logging
 import uuid
 import secrets
 import re
+import os
+import time
 from contextlib import asynccontextmanager
 
 import pandas as pd
@@ -26,8 +28,21 @@ def create_app(service=None, guest_settings=None):
     settings = guest_settings or GuestSettings.from_env()
     @asynccontextmanager
     async def lifespan(application):
+        started = time.perf_counter()
+        if service is None and os.environ.get('VERCEL') == '1':
+            from .serverless_inputs import prepare_inputs
+            os.environ['FLUO_DATA_DIR'] = str(prepare_inputs())
         application.state.service = service or ReplayService()
         application.state.access = GuestAccess(application.state.service.store, settings)
+        peak = None
+        try:
+            import resource
+            peak = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024
+        except ImportError:
+            pass
+        application.state.startup_metrics = {'lifespan_seconds': time.perf_counter() - started,
+                                             'process_peak_rss_bytes': peak,
+                                             'instance_id': str(uuid.uuid4())}
         yield
         if service is None:
             application.state.service.store.close()
@@ -45,6 +60,9 @@ def create_app(service=None, guest_settings=None):
         request.state.csp_nonce = secrets.token_urlsafe(24)
         try:
             path = request.url.path
+            store = request.app.state.service.store
+            if path.startswith('/api/v1/') and getattr(store, 'shared_budgets', False):
+                store.consume_request_budget(path == '/api/v1/auth/guest')
             if path.startswith('/api/v1/') and path != '/api/v1/auth/guest':
                 owner = request.app.state.access.authorize(request)
                 request.state.guest = owner
@@ -111,12 +129,15 @@ def create_app(service=None, guest_settings=None):
 
     @api.get('/health/ready')
     def readiness(request: Request):
+        store = current(request).store
+        if hasattr(store, 'ready') and not store.ready():
+            raise DomainError('STATE_UNAVAILABLE', 'Workspace storage is temporarily unavailable.', 503)
         return {'status': 'ready', 'model_loaded': current(request).model is not None}
 
     @api.get('/api/v1/health')
     def health(request: Request):
         s = current(request)
-        return {'status': 'ok', 'schema_version': '1.0', 'model_loaded': True, 'training_performed': False, 'read_only': True, 'lineage': s.lineage}
+        return {'status': 'ok', 'schema_version': '1.0', 'model_loaded': True, 'training_performed': False, 'read_only': True, 'lineage': s.lineage, 'runtime_proof': s.runtime_proof, 'startup_metrics': request.app.state.startup_metrics}
 
     @api.get('/api/v1/scenarios', response_model=list[Scenario])
     def scenarios(request: Request):

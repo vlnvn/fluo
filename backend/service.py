@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 from .inference_adapter import ROOT, MODEL_SHA, FrozenEstimator, persistence_counts, score_telemetry
-from .store import Store
+from .store import open_store
 from .service_errors import DomainError
 
 SOURCE_KIND = 'simulated research telemetry'
@@ -79,12 +79,17 @@ class ReplayService:
             self.events[site] = self._events(site, pred)
             self.event_lookup.update({e['id']: e for e in self.events[site]})
         self.scenarios = self._scenarios()
-        self.store = Store(db_path or os.environ.get('FLUO_DB_PATH', ROOT / '.local/fluo.sqlite3'))
+        self.store = open_store(db_path or os.environ.get('FLUO_DB_PATH', ROOT / '.local/fluo.sqlite3'))
         self.lineage = {
             'model_sha256': MODEL_SHA, 'dataset_sha256': self.dataset_sha,
             'model': 'HistGradientBoostingClassifier / frozen synthetic deficit signature',
             'source_kind': SOURCE_KIND, 'sample_period_seconds': 60,
             'replay_seconds_per_sample_at_1x': 1, 'field_validation': False, 'facility_is_fictional': True,
+        }
+        self.runtime_proof = {
+            'runtime_rows': len(self.sensor),
+            'runtime_output_sha256': hashlib.sha256(self.predictions.to_csv(index=False, float_format='%.12g', na_rep='null').encode()).hexdigest(),
+            'inference_execution': 'original frozen HGB scored at instance startup; not precomputed predictions',
         }
 
     def _events(self, site, pred):
@@ -248,7 +253,7 @@ class ReplayService:
             'inference': {'score': finite(scored.gb_signature_score), 'warning': bool(scored.gb_signature_warning), 'persistence_hits': int(scored.persistence_hits), 'triage_status': str(scored.triage_status), 'score_meaning': str(scored.score_meaning), 'next_safe_action': str(scored.next_safe_action), 'recovery_eligibility': str(scored.recovery_eligibility), 'auto_actuation_allowed': False, 'fixed_ratio_warning': bool(scored.fixed_ratio_warning), 'physics_residual_warning': bool(scored.physics_residual_warning)},
         }
 
-    def visible_event(self, event, absolute, session_id):
+    def visible_event(self, event, absolute, session_id, reviews=None):
         result = self.public(event)
         result['quality_action'] = str(event['_quality'])
         pred = self.sites[event['site_id']][1]
@@ -256,11 +261,15 @@ class ReplayService:
         result.update(end_timestamp=str(pred.iloc[end].timestamp), duration_min=end - event['_start'] + 1)
         scores = pred.iloc[event['_start']:end + 1].gb_signature_score.dropna()
         result['peak_score'] = float(scores.max()) if len(scores) else None
-        review = self.store.review(session_id, event['id'])
+        review = self.store.review(session_id, event['id']) if reviews is None else reviews.get(event['id'])
         result['review_status'] = review['status'] if review else 'pending'
         return result
 
     def snapshot(self, session_id, preview_cursor=None):
+        with self.store.lock:
+            return self._snapshot(session_id, preview_cursor)
+
+    def _snapshot(self, session_id, preview_cursor=None):
         session = self.session(session_id)
         scenario = self.scenario(session['scenario_id'])
         cursor = self.position(session) if preview_cursor is None else preview_cursor
@@ -268,13 +277,14 @@ class ReplayService:
             raise DomainError('INVALID_CURSOR', 'Cursor is outside this recorded scenario')
         absolute = scenario['_start'] + cursor
         site = scenario['site_id']
-        events = [self.visible_event(e, absolute, session_id) for e in self.events[site] if e['_start'] <= absolute][-100:][::-1]
+        reviews = self.store.reviews(session_id)
+        events = [self.visible_event(e, absolute, session_id, reviews) for e in self.events[site] if e['_start'] <= absolute][-100:][::-1]
         current = self.frame(site, absolute)
         # Only past samples are sent to charts; immutable inference used complete past history.
         frames = [self.frame(site, i) for i in range(max(scenario['_start'], absolute - 24), absolute + 1)]
         active = next((e for e in events if self.event_lookup[e['id']]['_start'] <= absolute <= self.event_lookup[e['id']]['_end']), None)
         playback = 'ENDED' if cursor == scenario['total_frames'] - 1 else ('PLAYING' if session['playing'] else 'PAUSED')
-        return {'schema_version': '1.0', 'is_preview': preview_cursor is not None, 'session_id': session_id, 'scenario': self.public(scenario), 'cursor': cursor, 'speed': session['speed'], 'playback': playback, 'current': current, 'frames': frames, 'events': events, 'active_event_id': active['id'] if active else None, 'lineage': self.lineage, 'review_scope': 'Local SQLite research session; operator identity is unverified.'}
+        return {'schema_version': '1.0', 'is_preview': preview_cursor is not None, 'session_id': session_id, 'scenario': self.public(scenario), 'cursor': cursor, 'speed': session['speed'], 'playback': playback, 'current': current, 'frames': frames, 'events': events, 'active_event_id': active['id'] if active else None, 'lineage': self.lineage, 'review_scope': self.store.description}
 
     def detail(self, session_id, event_id):
         state = self.snapshot(session_id)

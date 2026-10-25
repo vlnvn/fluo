@@ -1,6 +1,6 @@
 {
-  "commits_scanned": 18,
-  "unique_text_blobs_scanned": 308,
+  "commits_scanned": 19,
+  "unique_text_blobs_scanned": 313,
   "findings": [],
   "limitation": "Pattern-based check, not proof that arbitrary secrets are absent; ignored private files are not published.",
   "chime": {
