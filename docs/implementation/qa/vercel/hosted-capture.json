@@ -1,0 +1,347 @@
+{
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "date": "2026-10-25T04:00:05.534Z",
+  "mode": "capture",
+  "checks": [
+    {
+      "name": "readiness",
+      "pass": true
+    },
+    {
+      "name": "guest entry HTTP",
+      "pass": true
+    },
+    {
+      "name": "guest entry HTTP",
+      "pass": true
+    },
+    {
+      "name": "owned session create",
+      "pass": true
+    },
+    {
+      "name": "anonymous ",
+      "pass": true
+    },
+    {
+      "name": "foreign guest ",
+      "pass": true
+    },
+    {
+      "name": "anonymous /preview?cursor=0",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /preview?cursor=0",
+      "pass": true
+    },
+    {
+      "name": "anonymous /preferences",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /preferences",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-019",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-019",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-019/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-019/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-019/print",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-019/print",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-019/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-019/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-018",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-018",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-018/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-018/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-018/print",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-018/print",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-018/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-018/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-017",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-017",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-017/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-017/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-017/print",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-017/print",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-017/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-017/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-016",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-016",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-016/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-016/report.pdf",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-016/print",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-016/print",
+      "pass": true
+    },
+    {
+      "name": "anonymous /events/EV-016/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "foreign guest /events/EV-016/print?embedded=true",
+      "pass": true
+    },
+    {
+      "name": "foreign write /replay",
+      "pass": true
+    },
+    {
+      "name": "foreign write /preferences",
+      "pass": true
+    },
+    {
+      "name": "foreign write /events/EV-019/review",
+      "pass": true
+    },
+    {
+      "name": "foreign write /events/EV-019/review/submit",
+      "pass": true
+    },
+    {
+      "name": "CSRF rejection",
+      "pass": true
+    },
+    {
+      "name": "hostile origin",
+      "pass": true
+    },
+    {
+      "name": "public raw inference forbidden",
+      "pass": true
+    },
+    {
+      "name": "malformed request",
+      "pass": true
+    },
+    {
+      "name": "body limit",
+      "pass": true
+    },
+    {
+      "name": "private route denied /docs",
+      "pass": true
+    },
+    {
+      "name": "private route denied /redoc",
+      "pass": true
+    },
+    {
+      "name": "private route denied /openapi.json",
+      "pass": true
+    },
+    {
+      "name": "private route denied /.env",
+      "pass": true
+    },
+    {
+      "name": "private route denied /.git/config",
+      "pass": true
+    },
+    {
+      "name": "private route denied /models/fluo_hgb_synthetic_v2.joblib",
+      "pass": true
+    },
+    {
+      "name": "private route denied /data/original/fluo_sensor_stream.csv.gz",
+      "pass": true
+    },
+    {
+      "name": "review draft",
+      "pass": true
+    },
+    {
+      "name": "review submit",
+      "pass": true
+    },
+    {
+      "name": "preferences write",
+      "pass": true
+    },
+    {
+      "name": "real PDF",
+      "pass": true
+    },
+    {
+      "name": "PDF type",
+      "pass": true
+    },
+    {
+      "name": "PDF magic",
+      "pass": true
+    },
+    {
+      "name": "actual HTML report",
+      "pass": true
+    },
+    {
+      "name": "nonce CSP",
+      "pass": true
+    },
+    {
+      "name": "frozen model SHA",
+      "pass": true
+    },
+    {
+      "name": "runtime parity digest",
+      "pass": true
+    },
+    {
+      "name": "runtime rows",
+      "pass": true
+    },
+    {
+      "name": "cookie Secure",
+      "pass": true
+    },
+    {
+      "name": "cookie HttpOnly",
+      "pass": true
+    },
+    {
+      "name": "cookie SameSite",
+      "pass": true
+    },
+    {
+      "name": "HSTS",
+      "pass": true
+    },
+    {
+      "name": "logout",
+      "pass": true
+    },
+    {
+      "name": "revoked cookie",
+      "pass": true
+    }
+  ],
+  "public_anonymous_provider_access": false,
+  "first_observed_ready_ms": 159,
+  "pdf_bytes": 27572,
+  "health": {
+    "status": "ok",
+    "schema_version": "1.0",
+    "model_loaded": true,
+    "training_performed": false,
+    "read_only": true,
+    "lineage": {
+      "model_sha256": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+      "dataset_sha256": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+      "model": "HistGradientBoostingClassifier / frozen synthetic deficit signature",
+      "source_kind": "simulated research telemetry",
+      "sample_period_seconds": 60,
+      "replay_seconds_per_sample_at_1x": 1,
+      "field_validation": false,
+      "facility_is_fictional": true
+    },
+    "runtime_proof": {
+      "runtime_rows": 51840,
+      "runtime_output_sha256": "2f334f76816f7cff05f843d77f64a85f393e2ca18336c4acae33eec320a34ac3",
+      "inference_execution": "original frozen HGB scored at instance startup; not precomputed predictions"
+    },
+    "startup_metrics": {
+      "lifespan_seconds": 3.3959297090000007,
+      "process_peak_rss_bytes": 351576064,
+      "instance_id": "4f403a68-5329-4f81-9c8a-adfbb63cbe9e"
+    }
+  },
+  "persistence_anchor_created": true,
+  "status": "PASS"
+}

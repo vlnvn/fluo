@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-25T04:03:52.879095+00:00",
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "browser_url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "deployed_git_sha": "ab3ebc9650cabdc9e90f46b3e27df0959a904f50",
+  "deployment_id": "dpl_AtmJuJn8gAH4po1h1mbwiWYe7XHa",
+  "provider_state": "READY",
+  "provider_target": null,
+  "region": "sin1",
+  "team": "vlnvns-projects",
+  "project": "fluo",
+  "vercel_plan": "hobby",
+  "neon_plan": "free_v3",
+  "free_plan_verified": true,
+  "owner_educational_use_confirmed": true,
+  "ci_passed": true,
+  "ci_urls": [
+    "https://github.com/vlnvn/fluo/actions/runs/40160112052/job/121069697376",
+    "https://github.com/vlnvn/fluo/actions/runs/40160109778/job/121069690098"
+  ],
+  "pdf_a4_pages": 2,
+  "pdf_bytes": 27572,
+  "runtime_fingerprint_scope": "51840 actual runtime rows, original frozen HGB; CSV 12 significant digits, LF. Separate locked 86400-row exact local repeat/prefix parity.",
+  "application_files": 76,
+  "production_promoted": false,
+  "provider_protection_enabled": true,
+  "reviewer_share_link_in_git": false,
+  "retest_history": [
+    {
+      "scope": "initial preview",
+      "passed": 18,
+      "failed": 0
+    },
+    {
+      "scope": "06c1a55 run",
+      "passed": 15,
+      "failed": 3,
+      "causes": [
+        "9.476s auth response exceeded old assertion budget plus page initialization",
+        "60 guest entries/hour reached; two entries returned 429"
+      ]
+    },
+    {
+      "scope": "final verified deployment",
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    }
+  ],
+  "remaining_risks": [
+    "Free provider quotas and cold-start latency; no SLA",
+    "Temporary reviewer share expires; owner can renew",
+    "Guest capability auth does not verify human identity",
+    "Global demo advisory lock limits throughput",
+    "Only Chromium browser suite; no Safari/Firefox certification",
+    "Synthetic research, no plant validation or savings",
+    "Logical isolated restore, not managed PITR or production rollback"
+  ]
+}

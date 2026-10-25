@@ -1,5 +1,7 @@
 # Visual QA — final
 
+Vercel migration: no frontend redesign or screenshot baseline update. Actual HTTPS execution is recorded in `vercel/hosted-e2e.json` and the current release audit. It re-exercises eight fixed screenshot assertions for four routes in Full/Compact plus the corrected card visuals, notification consistency, print actions, spacing, pointer/touch scrub and Forward/Rewind. This retains the Figma audit below; it is not a new claim of universal pixel perfection.
+
 Current Figma file `M1xy04eLqGOsjH505y99mW` was re-read:83 active frames; Full74:2 / Compact128:5. Shell/icon/filter/card properties and prototype reactions were inspected. Existing high-fidelity contexts, original SVGs and20 trusted exported references were reused. Google Docs DEEPTECH/alven2 remained readable; no private text dump was published.
 
 Windows/Chromium153.0.8010.12; scale1;1440×900; bundled Archivo/Barlow Condensed. Screenshots disable animations, while the motion video retains them. Dynamic readings/history/event IDs differ from illustrative Figma contents. Windows font rasterization also differs. Neither MAE nor screenshot regression implies pixel identity.

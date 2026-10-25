@@ -1,7 +1,6 @@
 """Execute browser tests on an explicit HTTPS preview; never print provider tokens."""
 import json
 import os
-import shutil
 import subprocess
 from pathlib import Path
 from urllib.parse import urlparse
@@ -25,8 +24,9 @@ def main():
             completed = subprocess.run(['npm.cmd', 'run', 'test:e2e'], cwd=ROOT / 'web', env=env,
                                        stdout=output, stderr=subprocess.STDOUT)
         result = json.loads(destination.read_text(encoding='utf-8'))
+        result['hosted_origin'] = base
         archived = ROOT / 'docs/implementation/qa/vercel/hosted-e2e.json'
-        shutil.copyfile(destination, archived)
+        archived.write_text(json.dumps(result, indent=2), encoding='utf-8')
         print(json.dumps({'url': base, 'exit_code': completed.returncode, 'stats': result['stats']}))
         return completed.returncode
     finally:

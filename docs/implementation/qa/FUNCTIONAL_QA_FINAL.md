@@ -1,5 +1,7 @@
 # Functional QA — final
 
+Historical implementation checkpoint. The xfail and earlier counts below are superseded by `FINAL_RELEASE_AUDIT.md` and `vercel/` evidence: the final migrated local suite has34 passed with0 skips/xfails. Do not cite this older checkpoint as the current release decision.
+
 Implementation `e84b5ca`. Windows, Python3.12.14, Node24.11.0, Chromium153.0.8010.12, device scale1. Archivo/Barlow Condensed are local assets.
 
 | Executed command | Exit | Actual evidence |

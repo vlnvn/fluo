@@ -1,6 +1,6 @@
 # Secure guest deployment runbook — 25 October 2026
 
-**PUBLIC_DEPLOYMENT_BLOCKED. No public HTTPS deployment exists.** Guest authentication and object ownership are implemented and tested locally. Account access, billing approval, private artifact storage, Linux startup and actual hosted TLS/persistence tests remain outstanding. No public tunnel is permitted.
+**Historical Render recipe; superseded by [VERCEL_RELEASE_RUNBOOK.md](VERCEL_RELEASE_RUNBOOK.md).** The current Vercel/Neon decision and executed evidence are in `RELEASE_DECISION.json` and `qa/vercel/`. The Render instructions below were never provisioned and must not be used to purchase resources for this free-tier release.
 
 ## Local reproduction
 

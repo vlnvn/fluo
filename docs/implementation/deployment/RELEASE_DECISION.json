@@ -1,7 +1,9 @@
 {
   "local_status": "LOCAL_DEMO_READY",
-  "staging_status": "PUBLIC_DEPLOYMENT_BLOCKED",
-  "deployed": false,
+  "staging_status": "DEPLOYED_ACCESS_CONTROLLED",
+  "deployed": true,
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "deployed_git_sha": "ab3ebc9650cabdc9e90f46b3e27df0959a904f50",
   "local_checks": {
     "model_digest": true,
     "sensor_digest": true,
@@ -11,13 +13,17 @@
   "staging_checks": {
     "server_identity_enforced_locally": true,
     "session_ownership_enforced_locally": true,
-    "protected_origin_and_https_verified": false,
-    "hosted_persistence_verified": false,
-    "approved_hosting_and_budget_available": false
+    "protected_origin_and_https_verified": true,
+    "hosted_negative_security": true,
+    "hosted_persistence_verified": true,
+    "hosted_browser_passed": true,
+    "reviewer_share_access_verified": true,
+    "logical_backup_restore_verified": true,
+    "approved_hosting_and_budget_available": true,
+    "actual_provider_ready": true,
+    "deployed_application_source_matches": true,
+    "pdf_parsed": true,
+    "ci_passed": true
   },
-  "blockers": [
-    "protected_origin_and_https_verified",
-    "hosted_persistence_verified",
-    "approved_hosting_and_budget_available"
-  ]
+  "blockers": []
 }

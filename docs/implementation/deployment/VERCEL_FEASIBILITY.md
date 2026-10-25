@@ -1,6 +1,6 @@
 # Vercel Hobby feasibility — 25 October 2026
 
-Decision before full deployment: **technically feasible; hosted release tests pending**. Current branch deploy/vercel-hobby starts at d604748b6ec542b4a0a88fb736df217f5f2b5f6f. Original research requirements, HGB, data and research code are preserved. No precomputed prediction fallback is used.
+Decision: **actual fullstack Vercel Python + Neon is technically feasible**. Final hosted release status is generated in `RELEASE_DECISION.json`; exact build, SHA and evidence are in `qa/vercel/CLOUD_RELEASE.json`. Branch deploy/vercel-hobby starts at d604748b6ec542b4a0a88fb736df217f5f2b5f6f. Original research requirements, HGB, data and research code are preserved. No precomputed prediction fallback is used.
 
 ## Account, terms and free resources
 
@@ -26,10 +26,18 @@ SQLite local mode remains intact. Vercel refuses startup without public mode and
 
 Global DB budgets:1200API requests/minute,12000/hour,60guest entries/hour. Vercel guests:50active,2sessions,200mutations; TTL2hours and30review revisions. Quotas span instances. Requests still consume platform/DB resources before rejection; no DDoS resistance or unlimited free uptime is claimed.
 
-Only two owner-approved runtime files are stored as private bytea rows in Neon. The app role can SELECT them but cannot UPDATE them. Exact names, size limits and original SHA256 are checked again before scoring. Files are retrieved into ephemeral scratch; neither private packet, archive, labels for evaluation, proposal, local DB nor notes enter public Git/static/build uploads. Runtime catalog labels select reviewed windows; model inference remains sensor-only. Vercel owner explicitly approved storing the restricted app-role DSN in project Secret settings. No credential is printed or versioned.
+Only two owner-approved runtime files are stored as private bytea rows in Neon. The app role can SELECT them but cannot UPDATE them. Exact names, size limits and original SHA256 are checked again before scoring. Files are retrieved into ephemeral scratch; neither private packet, archive, labels for evaluation, proposal, local DB nor notes enter public Git/static/build uploads. Runtime catalog labels select reviewed windows; model inference remains sensor-only. Vercel owner explicitly approved storing the restricted app-role DSN in project Secret settings. Database credentials are not printed or versioned. The private-tool OIDC logging incident and mitigation are documented in the final security audit.
 
-The runtime stream has51840rows; its model-produced output CSV fingerprint (12-significant-digit serialization) is cdd1a7a7c46d27b63482860ca193890b7e98c0357e82d9b634daf82a2e8df81d. This differs from the separate86400-row locked evaluation, whose exact local repeat/prefix parity was rerun. Hosted runtime fingerprint comparison must be recorded after full deployment; no industrial accuracy claim follows.
+The runtime stream has 51,840 rows. Its canonical LF CSV fingerprint (12 significant digits) is `2f334f76816f7cff05f843d77f64a85f393e2ca18336c4acae33eec320a34ac3`, matching actual Linux inference and local Windows inference with the same serialization. The earlier Windows CRLF fingerprint `cdd1a7...` differed solely in line endings, verified by hashing both serializations of identical predictions. The code now explicitly uses LF. This is a serialization parity check, distinct from the separate 86,400-row locked evaluation with exact repeat/prefix parity; it is not a field accuracy claim.
 
 ## Gates at this checkpoint
 
-G0 baseline26API passes and real browser smoke passed. Migrated local suite34passes; real Neon suite6passes; built browser18passes; DEV run/security scans finishing. G1 minimal actual Python/Vite probe passes. G2 adapter/private artifacts/secrets implemented. G3/G4/G5 full hosted tests still pending. RELEASE_DECISION must remain PUBLIC_DEPLOYMENT_BLOCKED until actual fullstack/security/persistence/browser/PDF evidence exists.
+G0 baseline 26 API tests and browser smoke passed. Migrated local suite 34 passed; real Neon suite 6 passed; built and DEV browser suites 18 each passed. G1 actual Python/Vite probe passes. G2 adapter/private artifacts/secrets implemented. Full HTTPS API, security, browser and persistence evidence is recorded under `qa/vercel`; the release gate reads those files and remains blocked if any required scope fails.
+
+## Actual cloud observations
+
+The complete frozen HGB pipeline ran on Vercel Python 3.12.14/GCC, not a mocked service. One observed instance reported lifespan initialization 3.460 seconds and peak RSS 351,277,056 bytes. This includes private-input fetch/scoring but excludes platform queue/boot time. An actual browser auth request took 9.476 seconds; most API requests in that trace were approximately 74–250 ms. These are samples, not a p95/SLA or guaranteed cold-start bound. First observed readiness in the API capture was 177 ms on an already responsive deployment, not a cold-start claim.
+
+The build log reported **297.05 MB before dependency optimization**, then compiled bytecode and completed. The provider did not return a final optimized bundle byte count in the inspected output, so the local wheel measurement must not be called that final size or used to certify beta eligibility. Actual deployment completed successfully within the configured runtime.
+
+Test runs intentionally retained database budgets. The cumulative guest-entry suite hit the 60/hour cap and returned 429; subsequent release testing waits for a fresh clock-hour window rather than clearing shared counters. There was also a corrected test fixture import-cache issue and a CI lint failure from a Playwright callback named `use`; both are recorded in the final QA report. Provider protection was never disabled to pass tests.

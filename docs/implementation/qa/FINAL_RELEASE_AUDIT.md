@@ -1,45 +1,32 @@
-# Final release audit — 25 October 2026
+# Final Vercel release audit — 25 October 2026
 
-Decision: **LOCAL_DEMO_READY / PUBLIC_DEPLOYMENT_BLOCKED**. No public HTTPS URL exists. Branch release/fluo-secure-guest-demo; draft PR https://github.com/vlnvn/fluo/pull/1 targets main and is not merged. Baseline tag fluo-local-baseline-20261025 preserves a3b4bf4. No reset/rebuild/retraining or proposal edits.
+Hosted source `ab3ebc9650cabdc9e90f46b3e27df0959a904f50` at https://fluo-o3h0wtwma-vlnvns-projects.vercel.app, preview deployment `dpl_AtmJuJn8gAH4po1h1mbwiWYe7XHa`. Final machine decision: `deployment/RELEASE_DECISION.json`; provider/source/test hashes in `qa/vercel/`. Both deployed-commit GitHub quality workflows passed. PR#2 remains draft and unmerged; PR#1 unchanged.
 
-## Executed evidence
-
-| Check | Result | Evidence |
+| Executed scope | Result | Evidence |
 |---|---|---|
-| Python API/store/security |26 passed,0 skipped,0 xfail;1 upstream Starlette/httpx deprecation warning |guest-api.xml; guest-security-api.log|
-| Frontend unit |3 passed|final-web-checks.log|
-| DEV browser |18 passed,0 skipped/unexpected/flaky;56.3s|final-dev-e2e.json/log|
-| Built single-origin browser |18 passed,0 skipped/unexpected/flaky;51.0s|final-built-e2e.json/log|
-| Visual regression |8 assertions on four routes Full/Compact; no baseline updates|visual-regression.spec.ts and browser JSON|
-| Accessibility |11 scoped Axe scans with0 violations, including guest entry; keyboard entry and dialogs|browser tests; not full WCAG certification or screen-reader testing|
-| Typecheck/lint/build/Ruff |PASS|final-web-checks.log,final-web-build.log; Ruff executed on backend/tools/tests|
-| Model parity |86,400 locked rows, exact repeat/prefix parity5sites, tolerance0|INFERENCE_VERIFICATION.json; digest276bcd03bcd1be4d1d7c708f53e4cba49cce4b5b18b1b6bb5161345a24c3cf93|
-| Dependency advisories |0 known in executed npm/runtime/installed scans|final-npm-audit.json,release-python-audit.json,release-installed-audit.json|
-| Bandit/source history |0 Bandit findings;0 detected secret patterns in18 commits/308 unique text blobs at pre-final scan|guest-bandit.json,SECURITY_INVENTORY.json; bounded detection only|
-| Video |Actual continuous local capture,185.8s,H264/1440x980/25fps,muted; full decode0;13 sampled QA frames|../demo/VIDEO_PROVENANCE.json; actual MP4 ignored locally|
-| PDF/print/media |Actual event PDF downloaded and parsed in tests; real A4 paths and original chime/native playback exercised|browser/API cases; demo real PDF and150/153s sampled preview|
-| Real public HTTPS/security/persistence |NOT EXECUTED|No approved hosting/billing/artifact storage or deployed URL|
+| Final local Python / real PG18.6 |34 passed,0 skipped/xfail; one Starlette/httpx deprecation warning |vercel/final-local-api.xml|
+| Actual Neon restricted-role suite |6 passed |vercel/neon-api.xml|
+| Local DEV / built browser |18 passed each |vercel/local-dev-e2e.json; earlier private logs|
+| Actual final HTTPS browser |18 passed,0 skipped/unexpected/flaky |vercel/hosted-e2e.json|
+| Visual / accessibility / media |8 screenshot assertions unchanged;11 scoped Axe scans0 violations; keyboard and actual opt-in audio passed |same browser suite; existing Figma audit retained|
+| HTTPS API/security/ownership |77 checks +15 additional checks; hostile Host404 and forged forwarding401 |vercel/hosted-capture.json,hosted-security.json,hosted-host-boundary.json|
+| Redeploy persistence |7 checks, new instance UUID; review revision/status/note and preferences survive |vercel/hosted-verify.json; credential domain-transfer limitation explicit|
+| Official reviewer access without OIDC |5 browser steps passed, including reload and logout |vercel/reviewer-access.json; capability excluded from Git|
+| Event PDF / print |Actual downloaded PDF parses as2 A4 pages; four independent browser event reports; CSP/escaping pass |vercel/CLOUD_RELEASE.json and browser/API results|
+| Backup / isolated restore |PASS; five exact table comparisons; source unchanged |vercel/hosted-backup-restore.json|
+| Frozen model reproduction |86,400 locked-row exact repeat/prefix parity;51,840 actual cloud runtime fingerprint matches canonical local |INFERENCE_VERIFICATION.json;vercel/hosted-capture.json|
+| SAST / advisories / source patterns |Bandit0; runtime pip-audit0; npm audit0 in deployed CI;22 commits scanned0 bounded secret-pattern findings at recorded scan |vercel/final-bandit.json,python-audit.json,CI_DEPLOYED_COMMIT.json;SECURITY_INVENTORY.json|
 
-Security implementation f7d4ae9; recorded app0c0fe3b. Final application adds only a semantic main landmark to guest entry after that capture. TESTED_SOURCE_MANIFEST.json records exact tested source files. Historical audit files predate guest isolation and should not be quoted as current results. CI runs public-source checks only; private-data ML/full browser evidence is local and separately versioned.
+## Failures found and resolved
 
-## Independent review of boundaries and true issue ledger
+Initial probe packaging failures were corrected before accepting full Fluo. The first full deployment was unexpectedly assigned production by Vercel, stayed protected, and was not used as the release. API target `staging` is a different environment and OIDC was correctly rejected; official omitted-target preview semantics were verified and guarded against unexpected targets.
 
-| Severity / finding | Resolution / evidence | Status |
-|---|---|---|
-|P0 anonymous and cross-session object exposure|Cryptographic guest cookie, server-side expiry/revocation/ownership before object routes, all PDF/HTML/preview/preferences/review endpoints negative-tested; former xfail now normal PASS|CLOSED in local implementation; real host checks pending|
-|P1 new guest page lacks main landmark|Added main; new unfiltered guest-entry Axe and keyboard test passes|CLOSED|
-|P1 final Home-after-End test raced an in-flight seek|Wait for enabled control before next keyboard command; no assertion removed;18 built and18DEV pass|CLOSED test synchronization defect|
-|P1 recorder stale scenario/check state|Wait for selected/ready scenario and async server-confirmed check; two stopped attempts not delivered|CLOSED recorder defect|
-|P2 encoded captions initially overlapped UI|Reduced subtitle size; re-encoded from original continuous source; sampled frames show caption strip below UI|CLOSED|
-|Release blocker: provider account, budget and private artifact storage|Native blueprint/private packet/secret configuration/runbook prepared; Render inspection reached login|OPEN external action|
-|Release blocker: actual TLS, hostname/origin, Linux startup, disk restart/redeploy/restore, capacity|Must execute on actual provider; never substitute TestClient/local screenshots|OPEN until hosting exists|
+Windows/Linux runtime fingerprints initially differed because CSV defaults used CRLF versus LF. Hashing identical predictions with both endings reproduced both hashes; explicit LF fixed portability without touching the model or predictions. A shared imported browser hook registered inconsistently; a context fixture fixed it. CI then caught the callback name `use` as a React hook; renaming it passed lint and both CI workflows. A later06c1a55 browser run had15 passes and3 failures: one auth request9.476s plus initialization exceeded the10s assertion budget, and two guest entries hit the unchanged60/hour bound. Final hosted assertions allow30s and the final complete run used the next hourly window; no counters or protection were cleared. Final suite18/18 is recorded separately from failed runs.
 
-The already-correct sidebar, Production capitalization, shared notification state, actual histogram/progress/sparkline data, single report action toolbar, operator button spacing and Forward/Rewind/live scrub are preserved and covered by corrections/post-audit tests. The83-frame Figma inventory is retained; guest entry/expiry/logout intentionally extend the operator design for security. No fresh claim of pixel-perfect matching of every frame.
+## Practical limits
 
-Independent boundary inspection confirmed authorization precedes all current API object routes, ignores user-supplied identity headers, and covers reports as well as JSON. Public mode refuses raw inference, uses exact HTTPS origin/host and secure cookies. Minimal live/ready and static guest entry are intentionally public; starting a guest grants only a new isolated sandbox. Human operator identity remains unverified. Cookies authenticate possession, not employment or industrial authorization.
+Actual instance lifespan initialization samples approximately3.4s and peak RSS approximately352MB; this excludes provider boot/queue. An already warm readiness request177ms is not a cold-start claim. Builder reported297.05MB before optimization, not a final bundle byte count. Free-tier capacity and tail latency are unproven; no load/DDoS/uptime claim. Only Chromium was exercised; no independent Safari/Firefox/mobile or screen-reader certification. Logical restore is separate from managedPITR/productionrollback. Provider-protected preview sharing expires, while app guest TTL remains two hours. Synthetic research and fictional facility; no plant/customer/savings validation. Existing real video remains a local recording.
 
-Residual risks: one worker/process-local abuse budgets; open guest entry can consume quota; no distributed DDoS defense; guest cleanup occurs on subsequent entry; no verified named identities; local cookie HTTP is not equivalent to public Secure TLS; no hosted capacity/disaster-recovery evidence; scanner blind spots and future dependency changes. SQLite migration preserves old unowned records privately, and no new guest can auto-claim them. No physical sensors, actuation, field diagnosis, measured savings, partner commitment or TKT4 claim.
+## Temporary OIDC logging incident
 
-Reproduce local setup/build/API/browser using README and deployment runbook. Gate local exits0; staging deliberately returns nonzero and records PUBLIC_DEPLOYMENT_BLOCKED. Deployment is unfinished, not waived.
-
-Exact tested application/source commit: **4b21a7203f4ec7e9b07e2ca734c32176eceb421f**. This final documentation update changes no application/test/model code; the tested source manifest still matches. Secret scan covers history through that commit.
+An initial Playwright DNS failure printed the short-lived project development OIDC header in private tool output and an ignored local log. The saved log was redacted and the HTTPS helper now reports only a sanitized first error line. The token was not committed; the source/history scan now explicitly includes JWT patterns. No database DSN, database password or guest-owner credential was printed by that failure. The private conversation output cannot be retroactively erased by this agent. Revocation was not verified; its encoded expiry is2026-10-25T15:34:37Z (22:34:37 WIB). Do not share that earlier private output before expiry. Existing provider protection and app guest ownership remain enabled. This incident is not represented as a successful revocation or proof of public disclosure.
