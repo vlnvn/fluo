@@ -25,13 +25,19 @@ class GuestSettings:
         if mode not in ('local', 'public'):
             raise RuntimeError('INVALID_RELEASE_MODE')
         origin = os.environ.get('FLUO_PUBLIC_ORIGIN', os.environ.get('RENDER_EXTERNAL_URL', '')).rstrip('/')
+        vercel = os.environ.get('VERCEL') == '1'
+        if vercel and not origin:
+            origin = 'https://' + os.environ.get('VERCEL_URL', '')
+        if vercel and (mode != 'public' or not os.environ.get('FLUO_DATABASE_URL')):
+            raise RuntimeError('VERCEL_PUBLIC_DATABASE_REQUIRED')
         if mode == 'public':
             parsed = urlsplit(origin)
             if parsed.scheme != 'https' or not parsed.hostname or parsed.username or parsed.password or parsed.path or parsed.query or parsed.fragment or parsed.hostname in ('localhost', '127.0.0.1'):
                 raise RuntimeError('PUBLIC_ORIGIN_REQUIRED: provide the exact approved HTTPS origin')
-            if not os.environ.get('FLUO_DB_PATH'):
+            if not os.environ.get('FLUO_DB_PATH') and not os.environ.get('FLUO_DATABASE_URL'):
                 raise RuntimeError('PUBLIC_STATE_PATH_REQUIRED: configure the verified persistent volume')
-        return cls(public=mode == 'public', public_origin=origin)
+        return cls(public=mode == 'public', public_origin=origin, max_guests=50 if vercel else 200,
+                   sessions_per_guest=2 if vercel else 5, mutations_per_guest=200 if vercel else 500)
 
     @property
     def cookie_name(self):

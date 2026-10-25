@@ -1,0 +1,6 @@
+# Full original inference dependencies, plus persistent PostgreSQL driver.
+-r requirements-runtime.lock
+psycopg==3.3.6
+psycopg-binary==3.3.6
+psycopg-pool==3.3.3
+certifi==2026.10.19

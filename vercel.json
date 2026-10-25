@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "fastapi",
+  "buildCommand": "npm ci --prefix web && npm run build --prefix web",
+  "functions": {
+    "server.py": {
+      "maxDuration": 60,
+      "includeFiles": "{web/dist/**,web/public/assets/**,models/fluo_hgb_synthetic_v2.joblib,run_fluo_v2.py,run_fluo_ml_v1.py,backend/**}",
+      "excludeFiles": "{.local/**,.venv/**,.env*,.git/**,data/**,reports/**,tests/**,docs/**,tools/**,web/node_modules/**,web/tests/**,*.zip,*.csv,*.parquet}"
+    }
+  }
+}

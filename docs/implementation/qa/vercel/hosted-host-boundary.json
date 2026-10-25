@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "hostile_host_http": 404,
+  "forged_forwarding_no_identity_http": 401,
+  "scope": "Provider edge rejects hostile Host; forwarded identity cannot authenticate. Does not assert every edge routing variation."
+}

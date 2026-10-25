@@ -1,5 +1,6 @@
+import { test } from './guest';
 import { enterGuest } from './guest';
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
 import type { Event } from '../src/contracts';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';

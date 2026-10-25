@@ -1,0 +1,21 @@
+{
+  "scope": "Fresh Windows process, local SQLite. Not Vercel cold start or capacity.",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.14",
+  "initialization_wall_seconds": 4.05360180000207,
+  "peak_rss_bytes": 275165184,
+  "snapshot_p95_seconds": 0.009682200001407182,
+  "snapshot_mean_cpu_seconds": 0.0078125,
+  "snapshot_json_bytes": 31072,
+  "runtime_proof": {
+    "runtime_rows": 51840,
+    "runtime_output_sha256": "cdd1a7a7c46d27b63482860ca193890b7e98c0357e82d9b634daf82a2e8df81d",
+    "inference_execution": "original frozen HGB scored at instance startup; not precomputed predictions"
+  },
+  "model_bytes": 32826,
+  "model_sha256": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+  "linux_cp312_wheels": 31,
+  "linux_wheels_compressed_bytes": 93837597,
+  "linux_wheels_uncompressed_bytes": 310115949,
+  "actual_vercel_bundle_size": null
+}

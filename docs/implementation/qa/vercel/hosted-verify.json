@@ -1,0 +1,66 @@
+{
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "date": "2026-10-25T03:58:43.343Z",
+  "mode": "verify",
+  "checks": [
+    {
+      "name": "session after redeploy",
+      "pass": true
+    },
+    {
+      "name": "review revision survives",
+      "pass": true
+    },
+    {
+      "name": "review submission survives",
+      "pass": true
+    },
+    {
+      "name": "review note survives",
+      "pass": true
+    },
+    {
+      "name": "preferences survive",
+      "pass": true
+    },
+    {
+      "name": "new function instance",
+      "pass": true
+    },
+    {
+      "name": "runtime digest after redeploy",
+      "pass": true
+    }
+  ],
+  "public_anonymous_provider_access": false,
+  "health": {
+    "status": "ok",
+    "schema_version": "1.0",
+    "model_loaded": true,
+    "training_performed": false,
+    "read_only": true,
+    "lineage": {
+      "model_sha256": "5237917ae6ccfccd2ff21d288b92201536c923028d8931599aaf9715033e9b09",
+      "dataset_sha256": "f9fe34bf04a31e753df47c6f736f5155a4eaf34a8a6dedf7b6b5a53ed00ce018",
+      "model": "HistGradientBoostingClassifier / frozen synthetic deficit signature",
+      "source_kind": "simulated research telemetry",
+      "sample_period_seconds": 60,
+      "replay_seconds_per_sample_at_1x": 1,
+      "field_validation": false,
+      "facility_is_fictional": true
+    },
+    "runtime_proof": {
+      "runtime_rows": 51840,
+      "runtime_output_sha256": "2f334f76816f7cff05f843d77f64a85f393e2ca18336c4acae33eec320a34ac3",
+      "inference_execution": "original frozen HGB scored at instance startup; not precomputed predictions"
+    },
+    "startup_metrics": {
+      "lifespan_seconds": 3.3959297090000007,
+      "process_peak_rss_bytes": 351576064,
+      "instance_id": "4f403a68-5329-4f81-9c8a-adfbb63cbe9e"
+    }
+  },
+  "previous_url": "https://fluo-c87c9fg5p-vlnvns-projects.vercel.app",
+  "cookie_scope_note": "Own test credential transferred to the new verified deployment hostname for cross-instance storage verification; this does not claim browsers share cookies across domains.",
+  "status": "PASS"
+}

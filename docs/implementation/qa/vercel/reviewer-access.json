@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "date": "2026-10-25T04:00:33.285Z",
+  "provider_oidc_header_used": false,
+  "checks": [
+    "Official temporary share link opened in fresh Chromium",
+    "App guest entry required",
+    "Real overview rendered",
+    "Refresh retained own workspace",
+    "App logout returned to entry"
+  ],
+  "share_link_note": "Shareable URL created. Expires on 10/26/2026, 2:58:53 AM.",
+  "share_capability_omitted": true
+}

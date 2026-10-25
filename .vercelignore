@@ -1,0 +1,13 @@
+.local/
+.venv/
+.env*
+.git/
+data/
+reports/
+docs/
+tests/
+web/node_modules/
+web/tests/
+*.zip
+*.csv
+*.parquet

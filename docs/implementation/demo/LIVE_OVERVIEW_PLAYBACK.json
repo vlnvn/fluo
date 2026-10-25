@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "ended": true,
+  "current_time": 144.64,
+  "duration": 144.64,
+  "width": 1440,
+  "height": 980,
+  "qa_playback_rate": 8,
+  "note": "QA playback accelerated only; delivered MP4 is continuous original recording speed. Full FFmpeg decode verifies every frame separately."
+}

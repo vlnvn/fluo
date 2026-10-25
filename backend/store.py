@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 class Store:
+    description = 'Private SQLite guest workspace; human operator identity is unverified.'
     def __init__(self, path):
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         self.lock = threading.RLock()
@@ -53,6 +54,10 @@ class Store:
         with self.lock:
             row = self.db.execute('SELECT payload FROM reviews WHERE owner=? AND event_id=?', (owner, event_id)).fetchone()
         return json.loads(row[0]) if row else None
+
+    def reviews(self, owner):
+        with self.lock:
+            return {event: json.loads(payload) for event, payload in self.db.execute('SELECT event_id,payload FROM reviews WHERE owner=?', (owner,))}
 
     def save_review(self, owner, event_id, review):
         if review.get('revision', 0) > 30:
@@ -118,3 +123,14 @@ class Store:
             if self.db.execute('SELECT COUNT(*) FROM session_owners WHERE digest=?', (digest,)).fetchone()[0] >= maximum:
                 raise DomainError('SESSION_QUOTA', 'This guest workspace reached its replay-session limit.', 429)
             self.db.execute('INSERT INTO session_owners VALUES (?,?)', (session_id,digest))
+
+
+def open_store(path):
+    import os
+    dsn = os.environ.get('FLUO_DATABASE_URL', '')
+    if dsn:
+        from .postgres_store import PostgresStore
+        return PostgresStore(dsn)
+    if os.environ.get('VERCEL') == '1':
+        raise RuntimeError('DURABLE_DATABASE_REQUIRED: SQLite is never online state on Vercel')
+    return Store(path)

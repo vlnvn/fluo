@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "url": "https://fluo-o3h0wtwma-vlnvns-projects.vercel.app",
+  "date": "2026-10-25T04:00:19Z",
+  "scope": "Two concurrent requests, no destructive load; expiry limited to own test guest.",
+  "checks": [
+    {
+      "name": "forged identity headers",
+      "pass": true
+    },
+    {
+      "name": "forged cookie",
+      "pass": true
+    },
+    {
+      "name": "traversal denied /assets/%2e%2e/%2e%2e/.env",
+      "pass": true
+    },
+    {
+      "name": "traversal denied /assets/%2e%2e/backend/app.py",
+      "pass": true
+    },
+    {
+      "name": "traversal denied /api/v1/../../data/original/fluo_sensor_stream.csv.gz",
+      "pass": true
+    },
+    {
+      "name": "test guest entry",
+      "pass": true
+    },
+    {
+      "name": "authenticated long query bounded",
+      "pass": true
+    },
+    {
+      "name": "concurrent revision conflict",
+      "pass": true
+    },
+    {
+      "name": "report escapes operator HTML",
+      "pass": true
+    },
+    {
+      "name": "escaped operator note retained",
+      "pass": true
+    },
+    {
+      "name": "guest session quota",
+      "pass": true
+    },
+    {
+      "name": "third session denied",
+      "pass": true
+    },
+    {
+      "name": "expire only own disposable guest",
+      "pass": true
+    },
+    {
+      "name": "expired credential denied",
+      "pass": true
+    },
+    {
+      "name": "expired PDF denied",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\College\\DEEPX\\fluo\\web\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep",
+      "real HGB readings"
+    ],
+    "configFile": "C:\\College\\DEEPX\\fluo\\web\\playwright.config.ts",
+    "rootDir": "C:/College/DEEPX/fluo/web/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "evidenceDirectory": "C:\\College\\DEEPX\\fluo\\docs\\implementation\\qa",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/College/DEEPX/fluo/.local/playwright-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "evidenceDirectory": "C:\\College\\DEEPX\\fluo\\docs\\implementation\\qa",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/College/DEEPX/fluo/web/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\College\\DEEPX\\fluo\\.local\\playwright-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "evidenceDirectory": "C:\\College\\DEEPX\\fluo\\docs\\implementation\\qa",
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\College\\DEEPX\\fluo\\web\\tests",
+        "snapshotDir": "C:\\College\\DEEPX\\fluo\\web\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:8000",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "headless": true,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "C:/Users/Valensius Alven/AppData/Local/ms-playwright/chromium-1243/chrome-win64/chrome.exe"
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/implementation/qa/e2e-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "../docs/implementation/qa/playwright-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fluo.spec.ts",
+      "file": "fluo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real HGB readings, four pages, Full/Compact geometry and original local assets",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2341,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T02:58:25.914Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "664b0b539bed332f9cf3-ac8b7274cdce99691755",
+          "file": "fluo.spec.ts",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T02:58:24.831Z",
+    "duration": 5115.96,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

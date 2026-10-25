@@ -1,0 +1,68 @@
+{
+  "status": "PASS_DECODE_AND_ASSERTIONS",
+  "recorded_app_commit": "a2f753f42d8fbc5ac2f9301d09681e3c2779eae4",
+  "url": "http://127.0.0.1:8000",
+  "hosted_recording": false,
+  "file": "FLUO_LIVE_OVERVIEW.mp4",
+  "sha256": "0bbc3d2afc5203c05bda29db9feb4f72b2ca765c2cd5b46713a09eeb050c2347",
+  "bytes": 3936227,
+  "metadata": {
+    "ffmpeg_version": "7.1-essentials_build-www.gyan.dev built with gcc 14.2.0 (Rev1, Built by MSYS2 project)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "fps": 25.0,
+    "source_size": [
+      1440,
+      980
+    ],
+    "size": [
+      1440,
+      980
+    ],
+    "rotate": 0,
+    "duration": 144.64
+  },
+  "srt_sha256": "d8f9a90e40616e3a394d39d8337ca24d1f80904fda7e05b6fdb607f56e16be7c",
+  "source_sha256": "6d7caa1b6b87fbf7044e1c27f28b89866e6210b35d7fcd5f5283ae982f71c25c",
+  "recorder_sha256": "ab8f159cbebd5701be421d2f7fa586d5661b8bfc0242e8e9980976899640d56e",
+  "full_decode_exit": 0,
+  "frames_decoded": 3616,
+  "pdf_pages": 2,
+  "pdf_sha256": "289d65bfd5245d5c9a021e875add740a4adb9b401fb702d6b474ae6520ffd439",
+  "live_overview_samples": 20,
+  "quality_gate_verified": true,
+  "edit": "Continuous real local Playwright capture; H264 encode and Indonesian captions in added bottom strip. No UI numbers, states or animations fabricated. No time cuts or speed changes.",
+  "audio": "No audio track; captioned demonstration",
+  "visual_review": {
+    "status": "PASS_IN_SAMPLED_SCOPE",
+    "samples": 12,
+    "full_size_frames_reviewed": [
+      30.02,
+      120.38
+    ],
+    "findings": "Caption band readable; live Overview before/after warning, quality gate, event review and A4 report visible; no sampled clipping. Not a claim of frame-by-frame human review."
+  },
+  "sample_seconds": [
+    3.0,
+    11.01,
+    21.01,
+    30.02,
+    41.03,
+    52.04,
+    63.36,
+    75.37,
+    90.38,
+    104.38,
+    120.38,
+    137.39
+  ],
+  "old_video_audit": {
+    "hash_matches_original_provenance": true,
+    "duration_seconds": 185.8,
+    "recorder_gap": "Old script paused replay in Scenario Review before later navigating to Overview. No live Overview transition proof; English captions; 185.8 seconds.",
+    "original_files_preserved": true
+  },
+  "deployed_reference_sha": "ab3ebc9650cabdc9e90f46b3e27df0959a904f50",
+  "application_matches_deployed_manifest": true,
+  "recorder_note": "Recorder added in working tree after recorded_app_commit; exact script SHA recorded. Application files unchanged."
+}

@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "Logical snapshot restored into a separate new database in the same Neon Free project; no production rollback or managed PITR claimed.",
+  "source_database_untouched": true,
+  "restore_database": "fluo_restore_check_729e40fb",
+  "server_version": "18.6 (fd34222)",
+  "backup_bytes": 1472220,
+  "backup_sha256": "256da1db420bb413848758a213d6c7e0571d285352210005197b306fa6fbb3fa",
+  "table_hashes_match": {
+    "fluo_guests": {
+      "exact_rows_equal": true,
+      "rows": 16
+    },
+    "fluo_sessions": {
+      "exact_rows_equal": true,
+      "rows": 9
+    },
+    "fluo_reviews": {
+      "exact_rows_equal": true,
+      "rows": 4
+    },
+    "fluo_preferences": {
+      "exact_rows_equal": true,
+      "rows": 4
+    },
+    "fluo_artifacts": {
+      "exact_rows_equal": true,
+      "rows": 2
+    }
+  }
+}
